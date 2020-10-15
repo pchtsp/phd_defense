@@ -1,0 +1,136 @@
+\documentclass[usenames,dvipsnames]{beamer}
+
+\include{configuration}
+\include{macros}
+
+\title{PhD Title}
+\author{Franco Peschiera}
+\date{}
+
+\setbeamerfont{frametitle}{size=\large}
+
+\begin{document}
+{
+  \setbeamertemplate{footline}{} 
+  \begin{frame}{}%
+    \begin{picture}(0,0)%
+      %\makebox(600,-40)[]{\includegraphics[width=2cm]{images/logos/universite}}
+    \end{picture}
+    \vspace{1cm}
+    \titlepage
+    \vspace{-1cm}
+    \begin{figure}%
+      \centering
+      %\makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{images/logos/all-logos}}%
+    \end{figure}%
+  \end{frame}
+}
+\addtocounter{framenumber}{-1}
+
+\def\introtitle{Introduction}
+\def\firsttitle{Complexity and exact methods}
+\def\secondtitle{Pattern-like modeling and machine learning}
+\def\thirdtitle{Graph-based VND}
+\def\conclusiontitle{Conclusions}
+
+\def\sommvspace{2em}
+
+% \begin{frame}
+% \tableofcontents[hideallsubsections]
+% \end{frame}
+\begin{frame}
+
+\begin{block}{Contents}
+
+\begin{enumerate}
+  \item \introtitle
+  \item \firsttitle
+  \item \secondtitle
+  \item \thirdtitle
+  \item \conclusiontitle
+\end{enumerate}
+
+\end{block}
+
+\end{frame}
+
+\include{introduction}
+
+\miniframesoff
+\begin{frame}[noframenumbering, plain]
+  \frametitle{\textbf{ Outline}}
+  \setbeamercovered{transparent}
+\begin{enumerate}
+  \transparent{0.3}
+  \item \introtitle
+  \transparent{1}
+  \item \textbf{\firsttitle}
+  \item \secondtitle
+  \item \thirdtitle
+  \item \conclusiontitle
+\end{enumerate}
+\end{frame}
+\miniframeson
+
+\include{first}
+
+\miniframesoff
+\begin{frame}[noframenumbering, plain]
+  \frametitle{\textbf{ Outline}}
+  \setbeamercovered{transparent}
+\begin{enumerate}
+  \transparent{0.3}
+  \item \introtitle
+  \item \firsttitle
+  \transparent{1}
+  \item \textbf{\secondtitle}
+  \item \thirdtitle
+  \item \conclusiontitle
+\end{enumerate}
+\end{frame}
+\miniframeson
+
+\include{second}
+
+\miniframesoff
+\begin{frame}[noframenumbering, plain]
+  \frametitle{\textbf{ Outline}}
+  \setbeamercovered{transparent}
+\begin{enumerate}
+  \transparent{0.3}
+  \item \introtitle
+  \item \firsttitle
+  \item \secondtitle
+  \transparent{1}
+  \item \textbf{\thirdtitle}
+  \item \conclusiontitle
+\end{enumerate}
+\end{frame}
+\miniframeson
+
+\include{third}
+
+\miniframesoff
+\begin{frame}[noframenumbering, plain]
+  \frametitle{\textbf{ Outline}}
+  \setbeamercovered{transparent}
+\begin{enumerate}
+  \transparent{0.3}
+  \item \introtitle
+  \item \firsttitle
+  \item \secondtitle
+  \item \thirdtitle
+  \transparent{1}
+  \item \textbf{\conclusiontitle}
+\end{enumerate}
+\end{frame}
+\miniframeson
+
+
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+NULL
+
+\end{document}

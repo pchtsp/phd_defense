@@ -1,0 +1,52 @@
+\section{Complexity analysis and exact methods}
+
+\begin{frame}
+
+\begin{block}{Complexity analysis}
+
+safdasdf
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{block}{Exact methods}
+
+\begin{tabular}{p{15mm}p{110mm}}
+  $a_{jit}$ &  :  =1 if mission $j \in J$ in period $t \in \mathcal{T}_j$ is realized with aircraft $i \in \mathcal{I}_j$, 0 otherwise.  \\
+  $m_{it}$   & :  =1 if aircraft $i \in I$ starts a check in period $t \in \mathcal{T}$, 0 otherwise.  \\
+  $u_{it}$    &:  flown time (continuous) by aircraft $i \in I$ during period $t \in \mathcal{T}$. \\
+\end{tabular}
+
+\begin{align}
+ & u_{it} \geq \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{jti} H_j 
+    & t =1, ..., \mathcal{T}, i \in \mathcal{I} \label{eq:flight1}\\
+ & u_{it} \geq U^{min} (1 - \sum_{t' \in \mathcal{T}^s_t} m_{it'})
+    & t =1, ..., \mathcal{T}, i \in \mathcal{I} \label{eq:flight2}\\
+ & rft_{it} \leq rft_{i(t-1)} - u_{it} + H^M m_{it}
+    & t =1, ..., \mathcal{T}, i \in \mathcal{I} \label{eq:first_rft_upper}\\
+& rft_{it} \in [0,H^M]
+      & t \in \mathcal{T}, i \in \mathcal{I} \label{eq:first-mu}
+\end{align}
+
+\end{block}
+
+\begin{block}{Contents}
+
+\begin{enumerate}[<+->]
+
+\item
+  Introduction.
+\item
+  Complexity analysis and exact methods.
+\item
+  Pattern-like modeling and machine learning.
+\item
+  Efficient pattern-generation with DP.
+\end{enumerate}
+
+\end{block}
+
+\end{frame}

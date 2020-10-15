@@ -19,6 +19,7 @@
 \usepackage[export]{adjustbox}
 \usepackage{wrapfig}
 \usepackage[absolute,overlay]{textpos}
+\usepackage[utf8]{inputenc}
 %\usepackage[texcoord, grid, gridcolor=red!10, subgridcolor=green!10, gridunit=cm]{eso-pic}
 
 \usepackage{tikz}
@@ -44,7 +45,21 @@
 
 %& BEAMER SETTINGS
 \usetheme{default}
-\usecolortheme{seagull}
+% \usecolortheme{seagull}
 
 \setbeamertemplate{blocks}[rounded]% Rounded blocks
 
+\useoutertheme[subsection=false]{miniframes}
+
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  {%else
+    % removed \addtocontents commands
+    \clearpage\beamer@notesactions%
+  }
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\makeatother
