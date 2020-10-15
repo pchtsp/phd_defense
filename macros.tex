@@ -1,0 +1,428 @@
+%& BEAMER
+
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{footline}[frame number]
+
+\newcommand{\sectiontitle}{}
+%\newcommand{\sectionnumber}{}
+\newcommand{\newsection}[1]{\section{#1}\renewcommand{\sectiontitle}{#1}}
+
+\newcommand{\mdpgray}{black!10}
+
+\newcommand{\citesize}{\tiny} % \scriptsize
+
+\newcommand{\ftitleintro}[1]{%
+	\frametitle{#1}%
+}%
+\newcommand{\ftitlei}[1]{%
+	\frametitle{\makebox[1.13\textwidth]{#1\hfill\includegraphics[height=5mm, trim={0mm 2mm 0mm 0mm}]{images/numbers/i}}}%
+}%
+\newcommand{\ftitleii}[1]{%
+	\frametitle{\makebox[1.13\textwidth]{#1\hfill\includegraphics[height=5mm, trim={0mm 2mm 0mm 0mm}]{images/numbers/ii}}}%
+}%
+\newcommand{\ftitleiii}[1]{%
+	\frametitle{\makebox[1.13\textwidth]{#1\hfill\includegraphics[height=5mm, trim={0mm 2mm 0mm 0mm}]{images/numbers/iii}}}%
+}%
+
+% Contributions drawing
+\newcommand{\cla}{red}
+\newcommand{\clb}{cyan}
+\newcommand{\clc}{orange}
+\newcommand{\arrowcolor}{orange!30}
+\newcommand{\thk}{thick}
+\newcommand{\cone}[3]{
+	\draw [draw=none, fill=#3, opacity=0.25] plot [] coordinates {(#1, #2) (#1 + 9mm, #2 + 8mm) (#1 + 9mm, #2 - 8mm)};
+	
+%	\draw[dashed] (#1, #2) -- (#1 + 9mm, #2 + 8mm);
+%	\draw[dashed] (#1, #2) -- (#1 + 9mm, #2 - 8mm);
+	
+	\draw (#1, #2) node [oltadot, color=\clb, fill=white] {};
+}
+\newcommand{\finalcone}[3]{
+	\draw [draw=none, fill=#3, opacity=0.25] plot [] coordinates {(#1, #2) (#1 + 9mm, #2 + 8mm) (#1 + 9mm, #2 - 8mm)};
+	
+	\draw (#1, #2) node [oltadot, color=\clb, fill=white] {};
+}
+\newcommand{\lipub}[4]{ % color thickness x y
+	\draw [#1, #2] (#3, #4) -- (#3-1, #4+2.8);
+	\draw [#1, #2] (#3, #4) -- (#3+1, #4+2.8);
+}
+\newcommand{\lipcone}[4]{ % color thickness x y fillcolor
+	\def\ratio{0.35}
+	\draw [#1, #2, dashed, name path = A] (#3-\ratio*1, #4-\ratio*2.8) -- (#3+\ratio*1, #4+\ratio*2.8);
+	\draw [#1, #2, dashed, name path = B] (#3+\ratio*1, #4-\ratio*2.8) -- (#3-\ratio*1, #4+\ratio*2.8);
+	\tikzfillbetween[of = A and B]{#1, opacity=0.2};
+}
+
+
+%\begin{tcolorbox}[title=Planification]
+%	TODO
+%\end{tcolorbox}
+
+\newtcolorbox{mdpbox}[1][]{
+	notitle,
+	height=1.3cm,
+	colframe=green!60!black,
+	colback=green!20!white,
+	boxrule=-0.1mm,
+	valign=center,
+	valign lower=center,
+	halign=center,
+	#1
+}
+
+%\newcommand{\sectiontitle}{#1}
+%\newcommand{\setsectiontitle}[1]{\renewcommand{sectiontitle}{#1}}
+
+%& TEXTS
+\newcommand{\ie}{\emph{i.e.}}
+\newcommand{\eg}{\emph{e.g.}}
+\newcommand{\vs}{\emph{vs.}}
+\newcommand{\etc}{\emph{etc.}}
+\newcommand{\wrt}{with respect to}
+\newcommand{\st}{s.t.}
+\newcommand{\ub}{upper bound}
+\newcommand{\Ub}{Upper bound}
+\newcommand{\cf}{closed-form}
+\newcommand{\fp}{fixed-point}
+
+\newcommand{\Qfun}{Q-function}
+\newcommand{\Qval}{Q-value}
+
+\newcommand{\ts}{tree search}
+\newcommand{\Ts}{Tree search}
+\newcommand{\TS}{Tree Search}
+\newcommand{\ol}{open-loop}
+\newcommand{\Ol}{Open-loop}
+\newcommand{\cl}{closed-loop}
+\newcommand{\Cl}{Closed-loop}
+
+\newcommand{\wc}{worst case}
+\newcommand{\Wc}{Worst case}
+\newcommand{\ra}{risk averse}
+\newcommand{\Ra}{Risk averse}
+
+\newcommand{\ns}{non-stationary}
+\newcommand{\Ns}{Non-stationary}
+\newcommand{\NS}{Non-Stationary}
+\newcommand{\nsty}{non-stationarity}
+\newcommand{\nsties}{non-stationarities}
+\newcommand{\Nsty}{Non-stationarity}
+\renewcommand{\ne}{non-episodic}
+
+\renewcommand{\l}{lifelong}
+\renewcommand{\ll}{\l{} learning}
+\newcommand{\lml}{\l{} {ML}}
+\newcommand{\lrl}{\l{} {RL}}
+\newcommand{\Lrl}{Lifelong {RL}}
+
+\newcommand{\perspectiveintrosentence}{The content of this chapter suggests a few perspectives.}
+
+\newcommand{\proofsentence}[2]{The proof of #1 is reported in the Appendix, Chapter~\ref{chap:app:proofs}, Section~\ref{#2}.}
+
+\newcommand{\proofsentenceplural}[2]{The proofs of #1 are reported in the Appendix, Chapter~\ref{chap:app:proofs}, Section~\ref{#2}.}
+
+%& Notations for larger symbols
+\makeatletter
+\newcommand{\vast}{\bBigg@{3}}
+\newcommand{\Vast}{\bBigg@{5}}
+\newcommand{\vastl}{\mathopen\vast}
+\newcommand{\vastm}{\mathrel\vast}
+\newcommand{\vastr}{\mathclose\vast}
+\newcommand{\Vastl}{\mathopen\Vast}
+\newcommand{\Vastm}{\mathrel\Vast}
+\newcommand{\Vastr}{\mathclose\Vast}
+\makeatother
+
+%& MATHS
+\newcommand*{\SET}[1]{\ensuremath{ \left\{ #1 \right\} }}
+\newcommand*{\EXP}[1]{\ensuremath{ \mathbb{E} \left( #1 \right) }}
+\newcommand*{\EXPLOW}[1]{\ensuremath{ \mathbb{E}_{#1} }}
+\newcommand*{\EXPENS}[2]{\ensuremath{ \mathbb{E}_{#1} \left( #2 \right) }}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\MAX}[1]{\ensuremath{ \max \left\{ #1 \right\} }}
+\newcommand{\MAXENS}[2]{\ensuremath{ \max_{#1} \left\{ #2 \right\} }}
+\newcommand{\MIN}[1]{\ensuremath{ \min \left\{ #1 \right\} }}
+\newcommand{\MINENS}[2]{\ensuremath{ \min_{#1} \left\{ #2 \right\} }}
+\newcommand{\ARGMAX}[1]{\ensuremath{ \argmax \left\{ #1 \right\} }}
+\newcommand{\ARGMAXENS}[2]{\ensuremath{ \argmax_{#1} \left\{ #2 \right\} }}
+\newcommand{\ARGMIN}[1]{\ensuremath{ \argmin \left\{ #1 \right\} }}
+\newcommand{\ARGMINENS}[2]{\ensuremath{ \argmin_{#1} \left\{ #2 \right\} }}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\newcommand{\bigo}{\ensuremath{\mathcal{O}}} % big O
+\newcommand{\bigotilde}{\ensuremath{\tilde{\mathcal{O}}}}
+\newcommand{\functionspace}[2]{\mathcal{F} \left( #1, #2 \right)}
+\newcommand{\FUNCTION}[5]{
+	\ensuremath{
+		\begin{array}{llll}
+			#1: & #2 & \rightarrow & #3 \\
+			& #4 & \mapsto & #5
+		\end{array}
+	}
+}
+
+% Norms
+\renewcommand{\L}{\ensuremath{\mathcal{L}}}
+\newcommand{\absnorm}[1]{\ensuremath{ \left| #1 \right| }}
+\newcommand{\nnorm}[2]{\ensuremath{ \left\lVert #1 \right\rVert_{#2} }}
+\newcommand{\onenorm}[1]{\nnorm{#1}{1}}
+\newcommand{\twonorm}[1]{\nnorm{#1}{2}}
+\newcommand{\inftynorm}[1]{\nnorm{#1}{\infty}}
+
+% Sets
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\M}{\ensuremath{\mathcal{M}}}
+\newcommand{\T}{\ensuremath{\mathcal{T}}}
+\newcommand{\B}{\ensuremath{\mathcal{B}}}
+\newcommand{\ball}[3]{\ensuremath{\B_{#1} \left( #2, #3 \right)}} % metric center radius
+\newcommand{\intrange}[2]{\ensuremath{\left\{#1, \dots, #2\right\}}} % range of integers
+\newcommand{\intrangeinfty}[2]{\ensuremath{\left\{#1, #2, \dots \right\}}} % infinite range of integers
+\newcommand{\tuple}[2]{\ensuremath{\left( #1, #2 \right)}} % 2-uple
+\newcommand{\threeuple}[3]{\ensuremath{\left( #1, #2, #3 \right)}} % 3-uple
+\newcommand{\fouruple}[4]{\ensuremath{\left( #1, #2, #3, #4 \right)}} % 4-uple
+\newcommand{\setcomplement}[1]{\ensuremath{{#1}^{c}}}
+
+% Probabilities
+\renewcommand{\Pr}{\ensuremath{\textbf{Pr}}}
+\newcommand{\condPr}[2]{\ensuremath{\Pr \left( #1 \;\middle|\; #2 \right)}}
+\renewcommand{\P}{\ensuremath{\mathcal{P}}} % set of probabilities
+
+% Display
+\newcommand{\mthspc}{\ensuremath{\,}}
+\newcommand{\ms}{\ensuremath{\,}}
+\newcommand{\eqspacing}{\ensuremath{\;}}
+\newcommand{\rforall}{\ensuremath{\eqspacing\forall}}
+\newcommand{\phleq}{\hphantom{\leq\text{ }}}
+\newcommand{\phgeq}{\hphantom{\geq\text{ }}}
+\newcommand{\pheq}{\hphantom{=\text{ }}}
+
+%& MDP elements
+\newcommand{\initstatedistrib}{\ensuremath{\P_0}}
+\renewcommand{\S}{\ensuremath{\mathcal{S}}}
+\newcommand{\A}{\ensuremath{\mathcal{A}}}
+\newcommand{\cardinalactions}{\ensuremath{\SET{\text{Right, Up, Left, Down}}}}
+\newcommand{\sa}{\ensuremath{\tuple{s}{a}}}
+\newcommand{\SA}{\ensuremath{\S \times \A}}
+\newcommand{\STA}{\ensuremath{\S \times \T \times \A}}
+\newcommand{\nS}{\ensuremath{S}} % number of states
+\newcommand{\nA}{\ensuremath{A}} % number of actions
+
+\newcommand{\transition}{\ensuremath{T}}
+\newcommand{\tra}[3]{\ensuremath{\transition{}_{#1 #3}^{#2}}} % s a s'
+\newcommand{\trahat}[3]{\ensuremath{\hat{\transition{}}_{#1 #3}^{#2}}}
+\newcommand{\trabar}[3]{\ensuremath{\bar{\transition{}}_{#1 #3}^{#2}}}
+\newcommand{\trat}[4]{\ensuremath{\transition{}_{#2} \left( #4 \;\middle|\; #1, #3 \right)}} % s t a s'
+\newcommand{\trahatt}[4]{\ensuremath{\hat{\transition{}}_{#2} \left( #4 \;\middle|\; #1, #3 \right)}}
+\newcommand{\trabart}[4]{\ensuremath{\bar{\transition{}}_{#2} \left( #4 \;\middle|\; #1, #3 \right)}}
+\newcommand{\tratildet}[4]{\ensuremath{\tilde{\transition{}}_{#2} \left( #4 \;\middle|\; #1, #3 \right)}}
+
+\newcommand{\reward}{\ensuremath{r}}
+\newcommand{\rew}[3]{\ensuremath{\reward{}_{#1 #3}^{#2}}} % s a s'
+\newcommand{\rewhat}[3]{\ensuremath{\hat{\reward{}}_{#1 #3}^{#2}}}
+\newcommand{\rewbar}[3]{\ensuremath{\bar{\reward{}}_{#1 #3}^{#2}}}
+\newcommand{\rewhatbar}[3]{\ensuremath{\hat{\bar{\reward{}}}_{#1 #3}^{#2}}}
+\newcommand{\rewt}[4]{\ensuremath{\reward{}_{#2} \left( #1, #3, #4 \right)}} % s t a s'
+\newcommand{\rewhatt}[4]{\ensuremath{\hat{\reward{}}_{#2} \left( #1, #3, #4 \right)}}
+\newcommand{\rewbart}[4]{\ensuremath{\bar{\reward{}}_{#2} \left( #1, #3, #4 \right)}}
+\newcommand{\rewtildet}[4]{\ensuremath{\tilde{\reward{}}_{#2} \left( #1, #3, #4 \right)}}
+
+\newcommand{\Reward}{\ensuremath{R}}
+\newcommand{\Rew}[2]{\ensuremath{\Reward{}_{#1}^{#2}}} % s a
+\newcommand{\Rewhat}[2]{\ensuremath{\hat{\Reward{}}_{#1}^{#2}}}
+\newcommand{\Rewbar}[2]{\ensuremath{\bar{\Reward{}}_{#1}^{#2}}}
+\newcommand{\Rewhatbar}[2]{\ensuremath{\hat{\bar{\Reward{}}}_{#1}^{#2}}}
+\newcommand{\Rewt}[3]{\ensuremath{\Reward{}_{#2} \left( #1, #3 \right)}} % s t a
+\newcommand{\Rewhatt}[3]{\ensuremath{\hat{\Reward{}}_{#2} \left( #1, #3 \right)}}
+\newcommand{\Rewbart}[3]{\ensuremath{\bar{\Reward{}}_{#2} \left( #1, #3 \right)}}
+\newcommand{\Rewtildet}[3]{\ensuremath{\tilde{\Reward{}}_{#2} \left( #1, #3 \right)}}
+
+\newcommand{\Rmax}{\ensuremath{\Reward{}_{\text{max}}}}
+\newcommand{\Vmax}{\ensuremath{V_{\text{max}}}}
+\newcommand{\return}{\ensuremath{Z}}
+\newcommand{\returnn}[1]{\ensuremath{\return^{#1}}}
+\newcommand{\returnmax}{\ensuremath{\return_{\text{max}}}}
+\newcommand{\horizon}{\ensuremath{H}}
+
+%& Value functions
+\newcommand{\V}[2]{\ensuremath{V^{#1}_{#2}}} % \pi M
+\newcommand{\Vhat}[2]{\ensuremath{\hat{V}^{#1}_{#2}}} % \pi M
+\newcommand{\Q}[2]{\ensuremath{Q^{#1}_{#2}}} % \pi M
+\newcommand{\Qhat}[2]{\ensuremath{\hat{Q}^{#1}_{#2}}} % \pi M
+\newcommand{\bellmanoperator}[2]{\ensuremath{\mathscr{T}^{#1}_{#2}}} % Bellman operator {\pi}{V}
+
+% NS value functions
+\newcommand{\Vt}[3]{\ensuremath{V^{#1}_{#2 #3}}} % \pi t M
+\newcommand{\Qt}[3]{\ensuremath{Q^{#1}_{#2 #3}}} % \pi t M
+
+% \Wc{} NS value functions
+\newcommand{\Vwc}[3]{\ensuremath{\bar{V}^{#1}_{#2, #3}}} % \pi t_0 t
+\newcommand{\Qwc}[3]{\ensuremath{\bar{Q}^{#1}_{#2, #3}}} % \pi t_0 t
+\newcommand{\Vwcapprox}[3]{\ensuremath{\hat{V}^{#1}_{#2, #3}}} % \pi t_0 t
+\newcommand{\Qwcapprox}[3]{\ensuremath{\hat{Q}^{#1}_{#2, #3}}} % \pi t_0 t
+
+%& Algorithms / policies
+\newcommand{\algo}{\ensuremath{\mathscr{A}}}
+\newcommand{\randompolicy}{\ensuremath{\pi_{\text{random}}}}
+\newcommand{\treepolicy}{\ensuremath{\pi_{\text{tree}}}}
+\newcommand{\ucttreepolicy}{\ensuremath{\pi_{\text{UCT}}}}
+\newcommand{\defaultpolicy}{\ensuremath{\pi_{\text{default}}}}
+
+\newcommand{\qlearningalg}{Q-Learning}
+\newcommand{\rmaxalg}{RMAX}
+\newcommand{\maxqinitalg}{MaxQInit}
+\newcommand{\lrmaxalg}{{LRMAX}}
+\newcommand{\lrmaxalgs}{{LRMAX}}
+\newcommand{\lrmaxalgl}{{LRMAX}}
+\newcommand{\lrmaxqinitalg}{LRMaxQInit}
+\newcommand{\mctsalg}{{MCTS}}
+\newcommand{\mctsalgs}{{MCTS}}
+\newcommand{\uctalg}{{UCT}}
+\newcommand{\oluctalg}{{OLUCT}}
+\newcommand{\oluctalgs}{{OLUCT}}
+\newcommand{\oltaalg}{{OLTA}}
+\newcommand{\oltaalgs}{{OLTA}}
+\newcommand{\oltaalgl}{{OLTA}}
+\newcommand{\olopalg}{{OLOP}}
+\newcommand{\holopalg}{{HOLOP}}
+\newcommand{\oletsalg}{{OLETS}}
+\def\algocommentcolor{green!50!black} % Comment color in algorithms
+\def\algocomment#1{
+	 %\hfill
+	 \texttt{\footnotesize \color{\algocommentcolor}\# #1}
+}
+% TODO Check whether algorithms names are included in list of acronyms
+
+%& Trees (MCTS UCT OLUCT OLTA Minimax and so on)
+\newcommand{\budget}{\ensuremath{B}} % tree budget
+\newcommand{\node}{\ensuremath{\nu}}
+\newcommand{\chancenode}[2]{\ensuremath{\node_{#1}^{#2}}} % {s}{a}
+\newcommand{\decisionnode}[1]{\ensuremath{\node_{#1}}} % {s}
+
+%& Chapter 2 (OLTA)
+\newcommand{\nvisits}[3]{\ensuremath{T^{#1}_{#2,#3}}} % {depth}{action index}{decision epoch}
+\newcommand{\returnestimate}{\ensuremath{\hat{\return}}}
+\newcommand{\returnestimateat}[3]{\ensuremath{\returnestimate^{#1}_{#2, #3}}} % {depth}{action index}{decision epoch}
+\newcommand{\tree}{\ensuremath{\Gamma}} % tree
+\renewcommand{\a}[1]{\ensuremath{a^{#1}}} % ith action of \A
+
+%& Chapter 3 (RATS)
+\newcommand{\wass}[1]{\ensuremath{W_{#1}}} % p
+\newcommand{\wasserstein}[3]{\ensuremath{\wass{#1} \left( #2, #3 \right)}} % p mu nu
+\newcommand{\snapshot}[1]{\ensuremath{\text{MDP}_{#1}}} % t
+\newcommand{\dmax}{\ensuremath{d_{\text{max}}}} % maximum depth
+\newcommand{\heuristicfunction}{\ensuremath{\mathcal{H}}} % heuristic function
+\newcommand{\heuristicerror}{\ensuremath{\delta_{\heuristicfunction}}} % heuristic error
+
+%& Chapter 4 (LLRL)
+\newcommand{\agent}{\ensuremath{\blacktriangle}}
+\newcommand{\model}{\ensuremath{M}}
+\newcommand{\lrldistrib}{\ensuremath{\mathcal{D}}}
+\newcommand{\nknown}{\ensuremath{n_{\text{known}}}}
+\newcommand{\ntimesteps}{\ensuremath{\tau}}
+\newcommand{\prior}{\ensuremath{D_{\text{max}}}} % prior knowledge
+\newcommand{\pmin}{\ensuremath{p_{\min}}}
+
+% former
+%\newcommand{\Dmodel}[4]{\ensuremath{D_{#3}^{#1 #2} #4}} % {M}{\bar{M}}{f}{(s, a)}
+%\newcommand{\Dmodelhat}[3]{\ensuremath{\hat{D}^{#1 #2} #3}}
+%\newcommand{\Deltamodel}[3]{\ensuremath{\Delta^{#1 #2}(#3)}} % M1 M2 s,a
+
+% new
+\newcommand{\modpm}[5]{\ensuremath{D_{#1 #2}^{#3} ( #4, #5 )}} % {s}{a}{f}{M1}{M2}
+\newcommand{\modiv}[5]{\ensuremath{D_{#1 #2} ( #4 \| #5 ) }} % {s}{a}{f}{M1}{M2} -> light notation for \modpm when f = gamma times the optimal value function of {M2}
+\newcommand{\modivhat}[4]{\ensuremath{\hat{D}_{#1 #2} ( #3 \| #4 )}} % {s}{a}{M1}{M2}
+
+\newcommand{\mdpdiv}[4]{\ensuremath{d_{#1 #2} ( #3 \| #4 ) }} % {s}{a}{M1}{M2}
+\newcommand{\mdpdivhat}[4]{\ensuremath{\hat{d}_{#1 #2} ( #3 \| #4 ) }} % {s}{a}{M1}{M2}
+\newcommand{\mdppm}[4]{\ensuremath{\Delta_{#1 #2} ( #3, #4 ) }} % {s}{a}{M1}{M2}
+
+% additional notations for a policy pi
+\newcommand{\mdpdivpi}[5]{\ensuremath{d_{#1 #2}^{#3} ( #4 \| #5 ) }} % {s}{a}{pi}{M1}{M2}
+\newcommand{\mdppmpi}[5]{\ensuremath{\Delta_{#1 #2}^{#3} ( #4, #5 ) }} % {s}{a}{pi}{M1}{M2}
+
+% additional notations for DP sequences
+\newcommand{\mdpdivn}[5]{\ensuremath{d_{#1 #2}^{#3} ( #4 \| #5 ) }} % {s}{a}{n}{M1}{M2}
+\newcommand{\mdpdivhatn}[5]{\ensuremath{\hat{d}_{#1 #2}^{#3} ( #4 \| #5 ) }} % {s}{a}{n}{M1}{M2}
+
+%& Definitions / allocation
+\newcommand{\receives}{\ensuremath{\leftarrow}}
+\newcommand{\eqdef}{\ensuremath{\triangleq}}
+%\newcommand{\indef}{\ensuremath{\stackrel{\mathclap{\normalfont\mbox{\footnotesize def}}}{\in}}}
+\newcommand{\indef}{\ensuremath{\stackrel{\mathclap{\scriptscriptstyle \bigtriangleup}}{\in}}}
+\newcommand*{\qm}[1]{``#1''}
+
+%& Rename natbib commands
+%\newcommand{\citet}[1]{\citeauthor{#1} \shortcite{#1}}
+%\newcommand{\citet}[1]{\cite{#1}} % TODO retablir
+%\newcommand{\citep}[1]{(\cite{#1})}
+
+%& Theorems definition
+%\newtheoremstyle{stylename}% name of the style to be used
+%	{spaceabove}% measure of space to leave above the theorem. E.g.: 3pt
+%	{spacebelow}% measure of space to leave below the theorem. E.g.: 3pt
+%	{bodyfont}% name of font to use in the body of the theorem
+%	{indent}% measure of space to indent
+%	{headfont}% name of head font
+%	{headpunctuation}% punctuation between head and body
+%	{headspace}% space after theorem head; " " = normal interword space
+%	{headspec}% Manually specify head
+
+\newtheoremstyle{break}
+	{11pt}{11pt}%
+	{\itshape}{}%
+	{\bfseries}{}%
+	{\newline}{}%
+\theoremstyle{break}
+
+\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}[chapter]
+%\newtheorem{property}{Property}[chapter]
+%\newtheorem{proposition}{Proposition}[chapter]
+%\newtheorem{lemma}{Lemma}[chapter]
+%\newtheorem{corollary}{Corollary}[chapter]
+
+%\newtheorem*{theorem*}{Theorem}[chapter]
+%\newtheorem*{property*}{Property}[chapter]
+%\newtheorem*{proposition*}{Proposition}[chapter]
+%\newtheorem*{lemma*}{Lemma}[chapter]
+%\newtheorem*{corollary*}{Corollary}[chapter]
+
+\theoremstyle{definition}
+%\newtheorem{definition}{Definition}[chapter]
+%\newtheorem{example}{Example}[chapter]
+%\newtheorem*{definition*}{Definition}[chapter]
+%\newtheorem*{example*}{Example}[chapter]
+
+\theoremstyle{remark}
+%\newtheorem{remark}{Remark}[chapter]
+%\newtheorem{notation}{Notation}[chapter]
+
+%& Example of background tag
+% \AddToShipoutPicture{%
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node [rotate=60,scale=10,text opacity=0.1] at (current page.center) {Brouillon};
+% \end{tikzpicture}}
+
+%& Example of header tag
+% \AddToShipoutPicture{%
+% \tikzstyle{block} = [draw, thick, color=blue, scale=1.5,rectangle, minimum height=3em, minimum width=6em]
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node [coordinate] at (current page.north) (accroche) {};
+%   \node [block, below of=accroche] {Diffusion restreinte};
+% \end{tikzpicture}}
+
+%& Another example of header tag
+% \AddToShipoutPicture{%
+% \tikzstyle{block} = [draw, thick, color=red, scale=1.5,rectangle, minimum height=3em, minimum width=6em]
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node [coordinate] at (current page.north) (accroche) {};
+%   \node [block, below of=accroche] {Confidentiel Défense};
+% \end{tikzpicture}}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../phdthesis"
+%%% End:
