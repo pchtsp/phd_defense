@@ -90,20 +90,31 @@
       C(x,\hat{y}^{*}(x)) \approx  C(x,y^{*}(x))
     \end{equation*}
   \end{columns}
+  \only<1>{
+   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
+      \DrawSolution{blue}{north west lines}
+   \end{adjustbox}
+   }
+  \only<2->{
+   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
+      \DrawSolution{blue}{north west lines}
+   \end{adjustbox}
+   }
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Maintenances patterns}}
 
-  \begin{tabular}{p{15mm}p{110mm}}
-    $a_{ijtt'}$ & : =1 if aircraft $i$ starts an assignment to mission $j$ at the beginning of period $t$ and finishes at the end of period $t'$, zero otherwise.  \\
-    $m_{ip}$ &: =1 if aircraft $i$ uses check pattern $p$, zero otherwise.
-   each pattern $p$ has a single feasible combination of check starts for an aircraft during the whole planning (usually only 1-2 checks per aircraft). \\
+  \begin{tabular}{p{5mm}p{90mm}}
+    $a_{ijtt'}$ & : aircraft $i$ starts an assignment to mission $j$ at $t$ and ends at $t'$.  \\
+    $m_{ip}$ &: aircraft $i$ uses check pattern $p$. \\
   \end{tabular}
+
+  \input{graphs/gantt_example_check}
 
   \begin{align}
     & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^{M} + M (1 - m_{ip}) & \notag \\
-    & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \label{eq:cycle_hours2}\\
+    & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \label{eq:cycle_hours2} \notag
   \end{align}
 
 \end{frame}

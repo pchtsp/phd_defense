@@ -4,7 +4,7 @@
 % \tikzstyle{NAME}=[PROPERTY LIST]
 
 % Node styles
-\tikzstyle{new style 0}=[fill=white, draw=black, shape=circle, tikzit draw=black]
+\tikzstyle{optimum}=[fill=yellow, draw={rgb,255: red,65; green,65; blue,0}, shape=circle, tikzit draw={rgb,255: red,65; green,65; blue,0}]
 
 % Edge styles
 \tikzstyle{optimal}=[draw=black, -, tikzit draw=black, fill={rgb,255: red,199; green,255; blue,211}, dashed, tikzit fill={rgb,255: red,199; green,255; blue,211}]

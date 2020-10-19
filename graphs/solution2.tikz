@@ -23,6 +23,8 @@
 		\node [style=none] (20) at (-3.75, -3.25) {};
 		\node [style=none] (21) at (2.5, -3.25) {};
 		\node [style=none] (24) at (2.5, 0.25) {};
+		\node [style=optimum] (25) at (-1.25, -1.75) {optimum};
+		\node [style=optimum] (26) at (1, 1.25) {optimum};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=optimal] (8.center)
@@ -42,8 +44,8 @@
 			 to (12.center)
 			 to (13.center)
 			 to cycle;
-		\draw [style=axis] (17.center) to (18.center);
-		\draw [style=axis] (16.center) to (15.center);
+		\draw [style=axis] (17.center) to (18.center) {label1};
+		\draw [style=axis] (16.center) to (15.center) {label2};
 		\draw [style=pseudocut] (19.center)
 			 to (20.center)
 			 to (21.center)
