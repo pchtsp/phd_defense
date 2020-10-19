@@ -2,17 +2,27 @@
 
 \include{configuration}
 \include{macros}
+\input{graphs/sample.tikzstyles}
 
 \title{PhD Title}
-\author{Franco Peschiera}
-\date{}
-
-\setbeamerfont{frametitle}{size=\large}
+\author{
+  \\ 
+  \centering
+{ \large Franco Peschiera}\\ 
+\medskip
+\medskip
+\medskip
+Supervisors:\\
+Alain Haït, Olga Battaïa, Nicolas Dupin. \\ 
+\medskip
+}
+\date[Thesis defense 19/11/2020  ~~~~ Franco Peschiera]{November 19th, 2020}
 
 \begin{document}
 {
   \setbeamertemplate{footline}{} 
-  \begin{frame}{}%
+  \addtobeamertemplate{frametitle}{\vspace*{-\baselineskip}}{}
+  \begin{frame}[noframenumbering, plain]
     \begin{picture}(0,0)%
       %\makebox(600,-40)[]{\includegraphics[width=2cm]{images/logos/universite}}
     \end{picture}
@@ -54,83 +64,79 @@
 
 \end{frame}
 
-\include{introduction}
+% \include{introduction}
+
+% \miniframesoff
+%   \begin{frame}[noframenumbering, plain]
+%     \frametitle{\textbf{ Outline}}
+%     \setbeamercovered{transparent}
+%   \begin{enumerate}
+%     \transparent{0.3}
+%     \item \introtitle
+%     \transparent{1}
+%     \item \textbf{\firsttitle}
+%     \item \secondtitle
+%     \item \thirdtitle
+%     \item \conclusiontitle
+%   \end{enumerate}
+%   \end{frame}
+% \miniframeson
+
+% \include{first}
 
 \miniframesoff
-\begin{frame}[noframenumbering, plain]
-  \frametitle{\textbf{ Outline}}
-  \setbeamercovered{transparent}
-\begin{enumerate}
-  \transparent{0.3}
-  \item \introtitle
-  \transparent{1}
-  \item \textbf{\firsttitle}
-  \item \secondtitle
-  \item \thirdtitle
-  \item \conclusiontitle
-\end{enumerate}
-\end{frame}
-\miniframeson
-
-\include{first}
-
-\miniframesoff
-\begin{frame}[noframenumbering, plain]
-  \frametitle{\textbf{ Outline}}
-  \setbeamercovered{transparent}
-\begin{enumerate}
-  \transparent{0.3}
-  \item \introtitle
-  \item \firsttitle
-  \transparent{1}
-  \item \textbf{\secondtitle}
-  \item \thirdtitle
-  \item \conclusiontitle
-\end{enumerate}
-\end{frame}
+  \begin{frame}[noframenumbering, plain]
+    \frametitle{\textbf{ Outline}}
+    \setbeamercovered{transparent}
+  \begin{enumerate}
+    \transparent{0.3}
+    \item \introtitle
+    \item \firsttitle
+    \transparent{1}
+    \item \textbf{\secondtitle}
+    \item \thirdtitle
+    \item \conclusiontitle
+  \end{enumerate}
+  \end{frame}
 \miniframeson
 
 \include{second}
 
-\miniframesoff
-\begin{frame}[noframenumbering, plain]
-  \frametitle{\textbf{ Outline}}
-  \setbeamercovered{transparent}
-\begin{enumerate}
-  \transparent{0.3}
-  \item \introtitle
-  \item \firsttitle
-  \item \secondtitle
-  \transparent{1}
-  \item \textbf{\thirdtitle}
-  \item \conclusiontitle
-\end{enumerate}
-\end{frame}
-\miniframeson
+% \miniframesoff
+%   \begin{frame}[noframenumbering, plain]
+%     \frametitle{\textbf{ Outline}}
+%     \setbeamercovered{transparent}
+%   \begin{enumerate}
+%     \transparent{0.3}
+%     \item \introtitle
+%     \item \firsttitle
+%     \item \secondtitle
+%     \transparent{1}
+%     \item \textbf{\thirdtitle}
+%     \item \conclusiontitle
+%   \end{enumerate}
+%   \end{frame}
+% \miniframeson
 
-\include{third}
-
-\miniframesoff
-\begin{frame}[noframenumbering, plain]
-  \frametitle{\textbf{ Outline}}
-  \setbeamercovered{transparent}
-\begin{enumerate}
-  \transparent{0.3}
-  \item \introtitle
-  \item \firsttitle
-  \item \secondtitle
-  \item \thirdtitle
-  \transparent{1}
-  \item \textbf{\conclusiontitle}
-\end{enumerate}
-\end{frame}
-\miniframeson
-
-
+% \include{third}
+  
+% \miniframesoff
+%   \begin{frame}[noframenumbering, plain]
+%     \frametitle{\textbf{ Outline}}
+%     \setbeamercovered{transparent}
+%   \begin{enumerate}
+%     \transparent{0.3}
+%     \item \introtitle
+%     \item \firsttitle
+%     \item \secondtitle
+%     \item \thirdtitle
+%     \transparent{1}
+%     \item \textbf{\conclusiontitle}
+%   \end{enumerate}
+%   \end{frame}
+% \miniframeson
 
 \hypertarget{references}{%
 \section{References}\label{references}}
-
-NULL
 
 \end{document}

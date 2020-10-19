@@ -1,197 +1,242 @@
 \section{\secondtitle}
 
 \begin{frame}
+  % \scriptsize
+\frametitle{\textbf{Predicting pseudo-cuts}}
 
-\begin{block}{New formulation}
+  \onslide<2->{
+  % \begin{block}{Given an optimization problem}
+  %   \begin{equation*}
+  %     y^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}(x)} C(x,y)
+  %   \end{equation*}
+  % \end{block}
+  \begin{columns}[c]
+    \column{0.6\linewidth}
+    \textbf{Given an optimization problem :}
+    \column{0.4\linewidth}
+    \begin{equation*}
+      y^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}(x)} C(x,y)
+    \end{equation*}
+  \end{columns}
+  }
+  \onslide<3->{
+  % \begin{block}{We obtain solution features}
+    % \begin{equation*}
+    %   g_n(y) \,\, \forall n \in \{1, .., N\}
+    % \end{equation*}
+  % \end{block}
+  \begin{columns}[c]
+    \column{0.6\linewidth}
+    \textbf{We obtain solution features :}
+    \column{0.4\linewidth}
+    \begin{equation*}
+      g_n(y) \,\, \forall n \in \{1, .., N\}
+    \end{equation*}
+  \end{columns}
+  }
+  \onslide<4->{
+  % \begin{block}{We predict them from input data}
+  %   \begin{equation*}
+  %     \hat{g}_n(x) \approx g_n(y^{*}) \,\, \forall n \in \{1, .., N\}
+  %   \end{equation*}
+  % \end{block}
+  \begin{columns}[c]
+    \column{0.6\linewidth}
+    \textbf{We predict the optimal features :}
+    \column{0.4\linewidth}
+    \begin{equation*}
+      \hat{g}_n(x) \approx g_n(y^{*}) \,\, \forall n \in \{1, .., N\}
+    \end{equation*}
+  \end{columns}
+  }
+  \onslide<5->{
+  % \begin{block}{We use those features to produce and solve a smaller problem}
+  %   \begin{align*}
+  %     & \mathcal{Y}^\prime(x) = \{y \in \mathcal{Y} \mid \hat{g}_n(x) = g_n(y)\} \\
+  %     & \hat{y}^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}^\prime(x)} C(x,y)      
+  %   \end{align*}
+  % \end{block}
+  \begin{columns}[c]
+    \column{0.6\linewidth}
+    \textbf{We solve the predicted model :}
+    \column{0.4\linewidth}
+    \begin{align*}
+      & \mathcal{Y}^\prime(x) = \{y \in \mathcal{Y} \mid \hat{g}_n(x) = g_n(y)\} \\
+      & \hat{y}^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}^\prime(x)} C(x,y)      
+    \end{align*}
+  \end{columns}
+  }
+  \onslide<6->{
+  % \begin{block}{While keeping an acceptable loss of optimality}
+  %   \begin{equation*}
+  %     C(x,\hat{y}^{*}(x)) \approx  C(x,y^{*}(x))
+  %   \end{equation*}
+  % \end{block}
+  \begin{columns}[c]
+    \column{0.6\linewidth}
+    \textbf{With some (hopefully small) loss :}
+    \column{0.4\linewidth}
+    \begin{equation*}
+      C(x,\hat{y}^{*}(x)) \approx  C(x,y^{*}(x))
+    \end{equation*}
+  \end{columns}
+  }
+\end{frame}
 
-\begin{tabular}{p{15mm}p{110mm}}
-  $a_{ijtt'}$ & : =1 if aircraft $i$ starts an assignment to mission $j$ at the beginning of period $t$ and finishes at the end of period $t'$, zero otherwise.  \\
-  $m_{ip}$ &: =1 if aircraft $i$ uses check pattern $p$, zero otherwise.
- each pattern $p$ has a single feasible combination of check starts for an aircraft during the whole planning (usually only 1-2 checks per aircraft). \\
-\end{tabular}
+\begin{frame}
+ \input{graphs/solution2.tikz}
+\end{frame}
 
-\begin{align}
-  & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^{M} + M (1 - m_{ip}) & \notag \\
-  & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \label{eq:cycle_hours2}\\
-\end{align}
+\begin{frame}
+\frametitle{\textbf{Maintenances patterns}}
 
-\end{block}
+  \begin{tabular}{p{15mm}p{110mm}}
+    $a_{ijtt'}$ & : =1 if aircraft $i$ starts an assignment to mission $j$ at the beginning of period $t$ and finishes at the end of period $t'$, zero otherwise.  \\
+    $m_{ip}$ &: =1 if aircraft $i$ uses check pattern $p$, zero otherwise.
+   each pattern $p$ has a single feasible combination of check starts for an aircraft during the whole planning (usually only 1-2 checks per aircraft). \\
+  \end{tabular}
+
+  \begin{align}
+    & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^{M} + M (1 - m_{ip}) & \notag \\
+    & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \label{eq:cycle_hours2}\\
+  \end{align}
 
 \end{frame}
 
 \begin{frame}
 
-\begin{block}{Formulation}
+  \begin{block}{Formulation}
 
-\begin{align}
-  & \text{Max}\;
-  \sum_{i \in \mathcal{I}, p \in \mathcal{P}} m_{ip} \times W_p \\
-  & \sum_{i \in \mathcal{I}, p \in \mathcal{P}_{t}} m_{ip} \leq C^{max} 
-          & t \in \mathcal{T} \label{eq:capacity1}\\
-  & \sum_{i \in \mathcal{I}_j, (t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \geq R_j
-          & j \in \mathcal{J}, t \in \mathcal{TJ}_j  \label{eq:missionres}\\
-  & \sum_{p \in \mathcal{P}_{t}} m_{ip} + \sum_{j \in \mathcal{J}_t \cap \mathcal{J}_i} \sum_{(t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \leq 1 
-          & t \in \mathcal{T}, i \in \mathcal{I} \label{eq:state}\\
-  & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^M + M (1 - m_{ip}) & \notag \\
-    & & i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \\
-\end{align}
+  \begin{align}
+    & \text{Max}\;
+    \sum_{i \in \mathcal{I}, p \in \mathcal{P}} m_{ip} \times W_p \\
+    & \sum_{i \in \mathcal{I}, p \in \mathcal{P}_{t}} m_{ip} \leq C^{max} 
+            & t \in \mathcal{T} \label{eq:capacity1}\\
+    & \sum_{i \in \mathcal{I}_j, (t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \geq R_j
+            & j \in \mathcal{J}, t \in \mathcal{TJ}_j  \label{eq:missionres}\\
+    & \sum_{p \in \mathcal{P}_{t}} m_{ip} + \sum_{j \in \mathcal{J}_t \cap \mathcal{J}_i} \sum_{(t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \leq 1 
+            & t \in \mathcal{T}, i \in \mathcal{I} \label{eq:state}\\
+    & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^M + M (1 - m_{ip}) & \notag \\
+      & & i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \\
+  \end{align}
 
-\end{block}
-
-\end{frame}
-
-\begin{frame}
-
-\begin{block}{New vs old formulation}
-
-\begin{enumerate}[<+->]
-
-\item
-  It uses 3 times the number of constraints and 3 times the number of
-  variables.
-\end{enumerate}
-
-\begin{itemize}[<+->]
-
-\item
-  variables: 11000 =\textgreater{} 28000.
-\item
-  constraints: 13000 =\textgreater{} 48000.
-\end{itemize}
-
-\begin{enumerate}[<+->]
-
-\item
-  It is still better. Better lineal relaxation, better performance.
-\item
-  Can we reduce intelligently the number of variables?
-\end{enumerate}
-
-\begin{itemize}[<+->]
-
-\item
-  we can.
-\end{itemize}
-
-\end{block}
+  \end{block}
 
 \end{frame}
 
 \begin{frame}
+  \begin{block}{New vs old formulation}
 
-\begin{block}{Predicting pseudo-cuts}
+  \begin{enumerate}[<+->]
 
-Let an optimization problem with input data \(x\) and solution space
-\(y \in \mathcal{Y}(x)\). We want to find the optimal solution given a
-cost function \(C(x,y)\):
+  \item
+    It uses 3 times the number of constraints and 3 times the number of
+    variables.
+  \end{enumerate}
 
-\[
-y^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}(x)} C(x,y)
-\]
+  \begin{itemize}[<+->]
 
-For any solution \(y\), we can calculate \(N\) several features
-\(g_n(y) \,\, \forall n \in \{1, .., N\}\).
+  \item
+    variables: 11000 =\textgreater{} 28000.
+  \item
+    constraints: 13000 =\textgreater{} 48000.
+  \end{itemize}
 
-\[
-\hat{g}_n(x) \approx g_n(y^{*}) \,\, \forall n \in \{1, .., N\}
-\]
+  \begin{enumerate}[<+->]
 
-We then use that information to reduce the solution space
-\(\mathcal{Y}^\prime(x) \subset \mathcal{Y}(x)\) and solve it:
+  \item
+    It is still better. Better lineal relaxation, better performance.
+  \item
+    Can we reduce intelligently the number of variables?
+  \end{enumerate}
 
-\[\hat{y}^{*}(x) = arg \,\,\min_{y \in \mathcal{Y}^\prime(x)} C(x,y)\]
+  \begin{itemize}[<+->]
 
-The trick is doing so without losing optimality:
+  \item
+    we can.
+  \end{itemize}
 
-\begin{align}
-    C(x,\hat{y}^{*}(x)) \approx  C(x,y^{*}(x) ) \notag
-\end{align}
-
-\end{block}
+  \end{block}
 
 \end{frame}
 
 \begin{frame}
+\frametitle{\textbf{Distance between maintenances}}
 
-\begin{block}{Distance between maintenances}
-
-.pull-left{[} * The distance between maintenance has a maximum of
-\(E^{M}\) periods. * Depending on the instance, the optimal distance can
-be shorter. * This distance conditions the total number of patterns to
-create.{]}
-
-.pull-right{[}
+% $g_1(y)$
+* The distance between maintenance has a maximum of
+\(E^{M}\) periods. 
+* Depending on the instance, the optimal distance can
+be shorter. 
+* This distance conditions the total number of patterns to
+create.
 
 \includegraphics[width=1\linewidth]{hist_mean_dist_complete_IT000125_20190716}
-{]}
-
-\end{block}
 
 \end{frame}
 
 \begin{frame}
+  \frametitle{\textbf{Pattern prediction}}
 
-\begin{block}{Forecasting + Optimization}
-
-\textbf{We want to}:
-
-\begin{enumerate}[<+->]
-
-\item
-  Train a statistical model to predict the mean distance between
-  maintenances for any given instance.
-\item
-  Use this information to limit all possible combinations of patterns to
-  generate.
-\end{enumerate}
-
---
-
-\textbf{Benefits}:
-
-\begin{enumerate}[<+->]
-
-\item
-  \textbf{Performance}: a smaller model is easier to solve.
-\item
-  \textbf{User feedback}: direct feedback about the solution without
-  needing to solve any model.
-\item
-  \textbf{More stable solutions}: Every aircraft flies an amount that is
-  closest to the mean of the fleet.
-\end{enumerate}
-
---
-
-\textbf{The better we're able to predict the optimal distance between
-maintenances for the whole fleet, the less optimality we will lose}
-
-\end{block}
-
+  \emph{Quantile regressions} to estimate upper and lower bounds. 
+  * \textbf{Training}: 5000 small instances. 
+  * \textbf{Input features}: 
+    * mean flight demand per period, 
+    * total remaining flight hours at start (init), 
+    * variance of flight demand, 
+    * demand of special missions, 
+    * number of period where flight demand is cut in two. 
+  * \textbf{Output features}: mean distance between maintenances.
+  % TODO: add prediction results
+  % TODO: add prediction example
 \end{frame}
 
 \begin{frame}
+\frametitle{\textbf{Pattern filtering}}
 
-\begin{block}{Prediction model}
+  % TODO: add picture to explain how we filter the maintenances
 
-.pull-left{[} * \textbf{Technique}: \emph{Quantile regressions} to
-estimate upper and lower bounds. * \textbf{Training}: 5000 small
-instances. * \textbf{Input features}: * mean flight demand per period, *
-total remaining flight hours at start (init), * variance of flight
-demand, * demand of special missions, * number of period where flight
-demand is cut in two. * \textbf{Output features}: mean distance between
-maintenances.{]}
+  \textbf{We want to}:
 
---
+  \begin{enumerate}[<+->]
 
-.pull-right{[}
+  \item
+    Train a statistical model to predict the mean distance between
+    maintenances for any given instance.
+  \item
+    Use this information to limit all possible combinations of patterns to
+    generate.
+  \end{enumerate}
 
-\includegraphics[width=1\linewidth]{QuantReg_mean_consum_upper_mean_dist_complete_IT000125_20190716}
-{]}
+  --
 
-\end{block}
+  \textbf{Benefits}:
+
+  \begin{enumerate}[<+->]
+
+  \item
+    \textbf{Performance}: a smaller model is easier to solve.
+  \item
+    \textbf{User feedback}: direct feedback about the solution without
+    needing to solve any model.
+  \item
+    \textbf{More stable solutions}: Every aircraft flies an amount that is
+    closest to the mean of the fleet.
+  \end{enumerate}
+
+  --
+
+  \textbf{The better we're able to predict the optimal distance between
+  maintenances for the whole fleet, the less optimality we will lose}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Pattern recycling}}
+
+  % TODO: add picture to explain how we keep some
 
 \end{frame}
+
 
 \begin{frame}
 
