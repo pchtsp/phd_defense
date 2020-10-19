@@ -9,4 +9,4 @@
 % Edge styles
 \tikzstyle{optimal}=[draw=black, -, tikzit draw=black, fill={rgb,255: red,199; green,255; blue,211}, dashed, tikzit fill={rgb,255: red,199; green,255; blue,211}]
 \tikzstyle{axis}=[draw=blue, tikzit draw=blue, fill=none, {|-|}]
-\tikzstyle{pseudocut}=[-, pattern=north west lines, pattern color=blue, draw=blue, tikzit draw=blue]
+\tikzstyle{pseudocut}=[-, pattern=north west lines, pattern color=blue, draw=none, tikzit draw=blue]

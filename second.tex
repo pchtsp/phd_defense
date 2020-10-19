@@ -1,9 +1,10 @@
 \section{\secondtitle}
+\input{graphs/solution_func.tikz}
 
 \begin{frame}
   % \scriptsize
 \frametitle{\textbf{Predicting pseudo-cuts}}
-
+ 
   \onslide<2->{
   % \begin{block}{Given an optimization problem}
   %   \begin{equation*}
@@ -11,67 +12,76 @@
   %   \end{equation*}
   % \end{block}
   \begin{columns}[c]
-    \column{0.6\linewidth}
-    \textbf{Given an optimization problem :}
-    \column{0.4\linewidth}
+    \column{0.5\linewidth}
+    \textbf{An optimization problem}
+    \column{0.5\linewidth}
     \begin{equation*}
       y^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}(x)} C(x,y)
     \end{equation*}
   \end{columns}
   }
   \onslide<3->{
-  % \begin{block}{We obtain solution features}
-    % \begin{equation*}
-    %   g_n(y) \,\, \forall n \in \{1, .., N\}
-    % \end{equation*}
-  % \end{block}
   \begin{columns}[c]
-    \column{0.6\linewidth}
-    \textbf{We obtain solution features :}
-    \column{0.4\linewidth}
+    \column{0.5\linewidth}
+    \textbf{We obtain $\mathcal{N}$ solution features}
+    \column{0.5\linewidth}
     \begin{equation*}
-      g_n(y) \,\, \forall n \in \{1, .., N\}
+      g_n(y) \,\, \forall n \in \mathcal{N}
     \end{equation*}
   \end{columns}
   }
   \onslide<4->{
-  % \begin{block}{We predict them from input data}
-  %   \begin{equation*}
-  %     \hat{g}_n(x) \approx g_n(y^{*}) \,\, \forall n \in \{1, .., N\}
-  %   \end{equation*}
-  % \end{block}
   \begin{columns}[c]
     \column{0.6\linewidth}
-    \textbf{We predict the optimal features :}
+    \textbf{We predict the optimal features}
     \column{0.4\linewidth}
     \begin{equation*}
-      \hat{g}_n(x) \approx g_n(y^{*}) \,\, \forall n \in \{1, .., N\}
+      \hat{g}_n(x) \approx g_n(y^{*}) \,\, \forall n \in \mathcal{N}
     \end{equation*}
   \end{columns}
   }
   \onslide<5->{
-  % \begin{block}{We use those features to produce and solve a smaller problem}
-  %   \begin{align*}
-  %     & \mathcal{Y}^\prime(x) = \{y \in \mathcal{Y} \mid \hat{g}_n(x) = g_n(y)\} \\
-  %     & \hat{y}^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}^\prime(x)} C(x,y)      
-  %   \end{align*}
-  % \end{block}
   \begin{columns}[c]
     \column{0.6\linewidth}
-    \textbf{We solve the predicted model :}
+    \textbf{We predict the optimal "zone"}
     \column{0.4\linewidth}
     \begin{align*}
-      & \mathcal{Y}^\prime(x) = \{y \in \mathcal{Y} \mid \hat{g}_n(x) = g_n(y)\} \\
-      & \hat{y}^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}^\prime(x)} C(x,y)      
+      & \mathcal{Y}^\prime(x) = \{y \in \mathcal{Y} \mid  \\
+      & \hspace{0.5cm} \hat{g}_n(x) = g_n(y) \,\, \forall n \in \mathcal{N}
+      \}
     \end{align*}
   \end{columns}
   }
   \onslide<6->{
-  % \begin{block}{While keeping an acceptable loss of optimality}
-  %   \begin{equation*}
-  %     C(x,\hat{y}^{*}(x)) \approx  C(x,y^{*}(x))
-  %   \end{equation*}
-  % \end{block}
+  \begin{columns}[c]
+    \column{0.6\linewidth}
+    \textbf{We solve the predicted model}
+    \column{0.4\linewidth}
+    \begin{equation*}
+      \hat{y}^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}^\prime(x)} C(x,y)          
+    \end{equation*}
+  \end{columns}
+  }
+  \only<2-3>{
+   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
+      \DrawSolution{none}{none}
+   \end{adjustbox}
+  }
+  \only<4>{
+   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
+      \DrawSolution{blue}{none}
+   \end{adjustbox}
+  }
+  \onslide<5->{
+   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
+      \DrawSolution{blue}{north west lines}
+   \end{adjustbox}
+   }
+\end{frame}
+
+\begin{frame}
+  \frametitle{\textbf{Optimality}}
+
   \begin{columns}[c]
     \column{0.6\linewidth}
     \textbf{With some (hopefully small) loss :}
@@ -80,11 +90,6 @@
       C(x,\hat{y}^{*}(x)) \approx  C(x,y^{*}(x))
     \end{equation*}
   \end{columns}
-  }
-\end{frame}
-
-\begin{frame}
- \input{graphs/solution2.tikz}
 \end{frame}
 
 \begin{frame}
