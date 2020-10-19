@@ -3,9 +3,9 @@
 
 \begin{frame}
   % \scriptsize
-\frametitle{\textbf{Predicting pseudo-cuts}}
+\frametitle{\textbf{Predicting learned-cuts}}
  
-  \onslide<2->{
+  \onslide<1->{
   % \begin{block}{Given an optimization problem}
   %   \begin{equation*}
   %     y^{*}(x) :\equiv arg \,\,\min_{y \in \mathcal{Y}(x)} C(x,y)
@@ -20,7 +20,7 @@
     \end{equation*}
   \end{columns}
   }
-  \onslide<3->{
+  \onslide<2->{
   \begin{columns}[c]
     \column{0.5\linewidth}
     \textbf{We obtain $\mathcal{N}$ solution features}
@@ -30,7 +30,16 @@
     \end{equation*}
   \end{columns}
   }
-  \onslide<4->{
+  \only<1->{
+   \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
+      \DrawSolution{none}{none}{0}
+   \end{adjustbox}
+  }
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Applying learned-cuts}}
+  \onslide<1->{
   \begin{columns}[c]
     \column{0.6\linewidth}
     \textbf{We predict the optimal features}
@@ -40,7 +49,7 @@
     \end{equation*}
   \end{columns}
   }
-  \onslide<5->{
+  \onslide<2->{
   \begin{columns}[c]
     \column{0.6\linewidth}
     \textbf{We predict the optimal "zone"}
@@ -52,7 +61,7 @@
     \end{align*}
   \end{columns}
   }
-  \onslide<6->{
+  \onslide<3->{
   \begin{columns}[c]
     \column{0.6\linewidth}
     \textbf{We solve the predicted model}
@@ -62,25 +71,25 @@
     \end{equation*}
   \end{columns}
   }
-  \only<2-3>{
-   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
-      \DrawSolution{none}{none}
+  \only<1>{
+   \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
+      \DrawSolution{blue}{none}{0}
    \end{adjustbox}
   }
-  \only<4>{
-   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
-      \DrawSolution{blue}{none}
+  \only<2>{
+   \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
+      \DrawSolution{blue}{north west lines}{0}
    \end{adjustbox}
-  }
-  \onslide<5->{
-   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
-      \DrawSolution{blue}{north west lines}
+   }
+  \onslide<3->{
+   \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
+      \DrawSolution{blue}{north west lines}{1}
    \end{adjustbox}
    }
 \end{frame}
 
 \begin{frame}
-  \frametitle{\textbf{Optimality}}
+\frametitle{\textbf{Optimality of learned-cuts}}
 
   \begin{columns}[c]
     \column{0.6\linewidth}
@@ -91,142 +100,19 @@
     \end{equation*}
   \end{columns}
   \only<1>{
-   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
-      \DrawSolution{blue}{north west lines}
+   \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
+      \DrawSolution{blue}{north west lines}{1}
    \end{adjustbox}
    }
   \only<2->{
-   \begin{adjustbox}{max totalsize={.3\textwidth}{.3\textheight},center}
-      \DrawSolution{blue}{north west lines}
+   \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
+      \DrawSolution{blue}{north west lines}{2}
    \end{adjustbox}
    }
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Maintenances patterns}}
-
-  \begin{tabular}{p{5mm}p{90mm}}
-    $a_{ijtt'}$ & : aircraft $i$ starts an assignment to mission $j$ at $t$ and ends at $t'$.  \\
-    $m_{ip}$ &: aircraft $i$ uses check pattern $p$. \\
-  \end{tabular}
-
-  \input{graphs/gantt_example_check}
-
-  \begin{align}
-    & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^{M} + M (1 - m_{ip}) & \notag \\
-    & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \label{eq:cycle_hours2} \notag
-  \end{align}
-
-\end{frame}
-
-\begin{frame}
-
-  \begin{block}{Formulation}
-
-  \begin{align}
-    & \text{Max}\;
-    \sum_{i \in \mathcal{I}, p \in \mathcal{P}} m_{ip} \times W_p \\
-    & \sum_{i \in \mathcal{I}, p \in \mathcal{P}_{t}} m_{ip} \leq C^{max} 
-            & t \in \mathcal{T} \label{eq:capacity1}\\
-    & \sum_{i \in \mathcal{I}_j, (t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \geq R_j
-            & j \in \mathcal{J}, t \in \mathcal{TJ}_j  \label{eq:missionres}\\
-    & \sum_{p \in \mathcal{P}_{t}} m_{ip} + \sum_{j \in \mathcal{J}_t \cap \mathcal{J}_i} \sum_{(t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \leq 1 
-            & t \in \mathcal{T}, i \in \mathcal{I} \label{eq:state}\\
-    & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^M + M (1 - m_{ip}) & \notag \\
-      & & i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \\
-  \end{align}
-
-  \end{block}
-
-\end{frame}
-
-\begin{frame}
-  \begin{block}{New vs old formulation}
-
-  \begin{enumerate}[<+->]
-
-  \item
-    It uses 3 times the number of constraints and 3 times the number of
-    variables.
-  \end{enumerate}
-
-  \begin{itemize}[<+->]
-
-  \item
-    variables: 11000 =\textgreater{} 28000.
-  \item
-    constraints: 13000 =\textgreater{} 48000.
-  \end{itemize}
-
-  \begin{enumerate}[<+->]
-
-  \item
-    It is still better. Better lineal relaxation, better performance.
-  \item
-    Can we reduce intelligently the number of variables?
-  \end{enumerate}
-
-  \begin{itemize}[<+->]
-
-  \item
-    we can.
-  \end{itemize}
-
-  \end{block}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{\textbf{Distance between maintenances}}
-
-% $g_1(y)$
-* The distance between maintenance has a maximum of
-\(E^{M}\) periods. 
-* Depending on the instance, the optimal distance can
-be shorter. 
-* This distance conditions the total number of patterns to
-create.
-
-\includegraphics[width=1\linewidth]{hist_mean_dist_complete_IT000125_20190716}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{\textbf{Pattern prediction}}
-
-  \emph{Quantile regressions} to estimate upper and lower bounds. 
-  * \textbf{Training}: 5000 small instances. 
-  * \textbf{Input features}: 
-    * mean flight demand per period, 
-    * total remaining flight hours at start (init), 
-    * variance of flight demand, 
-    * demand of special missions, 
-    * number of period where flight demand is cut in two. 
-  * \textbf{Output features}: mean distance between maintenances.
-  % TODO: add prediction results
-  % TODO: add prediction example
-\end{frame}
-
-\begin{frame}
-\frametitle{\textbf{Pattern filtering}}
-
-  % TODO: add picture to explain how we filter the maintenances
-
-  \textbf{We want to}:
-
-  \begin{enumerate}[<+->]
-
-  \item
-    Train a statistical model to predict the mean distance between
-    maintenances for any given instance.
-  \item
-    Use this information to limit all possible combinations of patterns to
-    generate.
-  \end{enumerate}
-
-  --
-
-  \textbf{Benefits}:
+\frametitle{\textbf{Why learned-cuts}}
 
   \begin{enumerate}[<+->]
 
@@ -239,20 +125,156 @@ create.
     \textbf{More stable solutions}: Every aircraft flies an amount that is
     closest to the mean of the fleet.
   \end{enumerate}
-
-  --
-
-  \textbf{The better we're able to predict the optimal distance between
-  maintenances for the whole fleet, the less optimality we will lose}
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Pattern recycling}}
+\frametitle{\textbf{New formulation}}
 
-  % TODO: add picture to explain how we keep some
+  \begin{tabular}{p{5mm}p{90mm}}
+    $a_{ijtt'}$ & : aircraft $i$ is in mission $j$ between $t$ and $t'$.  \\
+    $m_{ip}$ &: aircraft $i$ uses check pattern $p$. \\
+  \end{tabular}
+
+  \onslide<1->{
+    \input{graphs/gantt_example_check}
+  }
+
+  \onslide<2->{
+    \begin{align}
+      & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^{M} + bigM (1 - m_{ip}) & \notag \\
+      & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \notag
+    \end{align}
+  }
 
 \end{frame}
 
+% \begin{frame}
+
+%   \begin{block}{Formulation}
+
+%   \begin{align}
+%     & \text{Max}\;
+%     \sum_{i \in \mathcal{I}, p \in \mathcal{P}} m_{ip} \times W_p \\
+%     & \sum_{i \in \mathcal{I}, p \in \mathcal{P}_{t}} m_{ip} \leq C^{max} 
+%             & t \in \mathcal{T} \label{eq:capacity1}\\
+%     & \sum_{i \in \mathcal{I}_j, (t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \geq R_j
+%             & j \in \mathcal{J}, t \in \mathcal{TJ}_j  \label{eq:missionres}\\
+%     & \sum_{p \in \mathcal{P}_{t}} m_{ip} + \sum_{j \in \mathcal{J}_t \cap \mathcal{J}_i} \sum_{(t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \leq 1 
+%             & t \in \mathcal{T}, i \in \mathcal{I} \label{eq:state}\\
+%     & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^M + M (1 - m_{ip}) & \notag \\
+%       & & i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \\
+%   \end{align}
+
+%   \end{block}
+
+% \end{frame}
+
+% \begin{frame}
+%   \begin{block}{New vs old formulation}
+
+%   \begin{enumerate}[<+->]
+
+%   \item
+%     It uses 3 times the number of constraints and 3 times the number of
+%     variables.
+%   \end{enumerate}
+
+%   \begin{itemize}[<+->]
+
+%   \item
+%     variables: 11000 =\textgreater{} 28000.
+%   \item
+%     constraints: 13000 =\textgreater{} 48000.
+%   \end{itemize}
+
+%   \begin{enumerate}[<+->]
+
+%   \item
+%     It is still better. Better lineal relaxation, better performance.
+%   \item
+%     Can we reduce intelligently the number of variables?
+%   \end{enumerate}
+
+%   \begin{itemize}[<+->]
+
+%   \item
+%     we can.
+%   \end{itemize}
+
+%   \end{block}
+
+% \end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Distance between maintenances}}
+
+  For each aircraft $i$: $D_i(y) \in [E^{min},E^{max}] \,\, \forall y \in \mathcal{Y}(x)$. \\
+  \only<2>{
+  \input{graphs/gantt_example_distance}
+  }
+  % \only<2>{
+  % \input{graphs/gantt_example_distance}
+  % }
+  \only<3->{
+  Solution feature: $g_1(y) = \mu_{t'-t} = \frac {\sum_{i \in \mathcal{I}} D_i(y)}{I}$. \\
+  }
+  \only<4->{
+  Distribution of $\mu^*_{t'-t}$: \\
+  \includegraphics[height=0.4\linewidth]{hist_mean_dist_complete_IT000125_20190716}
+  }
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Solution feature prediction}}
+
+  \begin{block}{\textbf{Technique}}
+    Quantile regressions: upper bound and lower bound.
+  \end{block}
+
+  \begin{block}{\textbf{Training set}}
+    of 5000 small instances solved to optimal.
+  \end{block}
+
+  \begin{block}{\textbf{Input features}}
+    ...
+  \end{block}
+
+  \begin{block}{\textbf{Solution features}}
+    \begin{equation*}
+      \mu_{t'-t} \to [\hat{\mu}_{t'-t}^{lb}, \hat{\mu}_{t'-t}^{ub}]
+   \end{equation*}
+  \end{block}
+
+  % \emph{} to estimate upper and lower bounds. 
+  % * \textbf{Training}: 5000 small instances. 
+  % * \textbf{Input features}: 
+  %   * mean flight demand per period, 
+  %   * total remaining flight hours at start (init), 
+  %   * variance of flight demand, 
+  %   * demand of special missions, 
+  %   * number of period where flight demand is cut in two. 
+  % TODO: add prediction results
+  % TODO: add prediction example
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Applying learned-cuts}}
+
+  \begin{block}{\textbf{Pattern filtering:}}
+    \begin{equation*}
+      D_{ip} \in [\hat{\mu}_{t'-t}^{lb} - tol, \hat{\mu}_{t'-t}^{ub} + tol] \rightarrow p \in \mathcal{P}_i 
+    \end{equation*}
+  \end{block}
+
+  \begin{block}{\textbf{Pattern recycling:} with probabiliy $\alpha$}
+    \begin{equation*}
+      D_{ip} \notin [\hat{\mu}_{t'-t}^{lb} - tol, \hat{\mu}_{t'-t}^{ub} + tol] \land P(\alpha)  \rightarrow p \in \mathcal{P}_i 
+    \end{equation*}
+  \end{block}
+
+
+\end{frame}
 
 \begin{frame}
 
@@ -263,41 +285,18 @@ create.
 \item
   Number of instances: medium (1000), large (1000) and very large
   (1000).
-\item
-  Time limit at 3600 seconds.
-\item
-  We seeded instance generation for better comparison.
-\item
-  CPLEX running 1 thread.
+\item Time limit at 3600 seconds.
+\item We seeded instance generation for better comparison.
+\item CPLEX running 1 thread.
 \end{itemize}
 
---
-
-Largest instances have 60 aircraft, 90 periods, \textasciitilde{}30
-missions (4 active missions at any given time).
+Largest instances have 60 aircraft, 90 periods.
 
 \begin{enumerate}[<+->]
 
-\item
-  Create forecasting model based in 5000 small instances.
-\item
-  Use forecasting model to predict bounds on distance between
+\item Create forecasting model based in 5000 small instances.
+\item Use forecasting model to predict bounds on distance between
   maintenances: \(\hat{\mu}_{t'-t}^{lb}\), \(\hat{\mu}_{t'-t}^{ub}\).
-\item
-  Implement the pseudo-cut:
-\end{enumerate}
-
-\begin{align}
-    & m_{ip} = 0 & p_{t'} - p_t < \hat{\mu}_{t'-t}^{lb} - tol \label{eq:dist_lb} \\
-    & m_{ip} = 0  &  p_{t'} - p_t > \hat{\mu}_{t'-t}^{ub} + tol \label{eq:dist_ub}
-\end{align}
-
-\begin{enumerate}[<+->]
-\setcounter{enumi}{3}
-
-\item
-  Recycling.
-\end{enumerate}
 
 \end{block}
 
@@ -311,10 +310,7 @@ Faster solutions, more solutions.
 
 --
 
-.center{[}
-
 \includegraphics[width=0.8\linewidth]{time_performance_ordered_2tasks}
-{]}
 
 \end{block}
 
@@ -327,9 +323,7 @@ Faster solutions, more solutions.
 For instances were an optimal solution was found (optimum degradation):
 * 95\% of instances had less than 4\% gap with real optimal.
 
-.center{[}
-
-\includegraphics[width=0.8\linewidth]{quality_degradation_2tasks} {]}
+\includegraphics[width=0.8\linewidth]{quality_degradation_2tasks}
 
 \end{block}
 

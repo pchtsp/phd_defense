@@ -1,4 +1,4 @@
-\newcommand{\DrawSolution}[2]{% drawcolor, pattern
+\newcommand{\DrawSolution}[3]{% drawcolor, pattern, optimal
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (-3.5, 2) {};
@@ -24,8 +24,12 @@
 		\node [style=none] (20) at (-3.75, -3.25) {};
 		\node [style=none] (21) at (2.5, -3.25) {};
 		\node [style=none] (24) at (2.5, 0.25) {};
-		\node [style=optimum] (25) at (-1.25, -1.75) {};
-		\node [style=optimum] (26) at (1, 1.25) {};
+		\ifstrequal{#3}{1}
+		{\node [style=optimum] (25) at (-1.25, -1.75) {};}
+		{}
+		\ifstrequal{#3}{2}
+		{\node [style=optimum] (26) at (1, 1.25) {};}
+		{}		
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=optimal] (8.center)
@@ -45,8 +49,12 @@
 			 to (12.center)
 			 to (13.center)
 			 to cycle;
-		\draw [style=axis, draw=#1] (17.center) to node [auto] {$\hat{g}_2(x)$} (18.center);
-		\draw [style=axis, draw=#1] (16.center) to node [auto] {$\hat{g}_(x)$} (15.center);
+		  \ifstrequal{#1}{none}
+		    {}
+		    {
+		\draw [style=axis, draw=#1] (17.center) to node [auto, scale=3, yshift=-5ex] {$\hat{g}_2(x)$} (18.center);
+		\draw [style=axis, draw=#1] (16.center) to node [auto, scale=3] {$\hat{g}_1(x)$} (15.center);
+		    }
 		\draw [style=pseudocut, pattern=#2] (19.center)
 			 to (20.center)
 			 to (21.center)
