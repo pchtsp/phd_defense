@@ -1,8 +1,6 @@
 \section{\secondtitle}
-\input{graphs/solution_func.tikz}
 
 \begin{frame}
-  % \scriptsize
 \frametitle{\textbf{Predicting learned-cuts}}
  
   \onslide<1->{
@@ -112,7 +110,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Why learned-cuts}}
+\frametitle{\textbf{Motivation}}
 
   \begin{enumerate}[<+->]
 
@@ -130,87 +128,49 @@
 \begin{frame}
 \frametitle{\textbf{New formulation}}
 
+  \only<2>{
+  \begin{tabular}{p{5mm}p{90mm}}
+    $a_{ijtt'}$ & : aircraft $i$ is in mission $j$ between $t$ and $t'$.  \\
+  \end{tabular}
+  }
+  \onslide<3->{
   \begin{tabular}{p{5mm}p{90mm}}
     $a_{ijtt'}$ & : aircraft $i$ is in mission $j$ between $t$ and $t'$.  \\
     $m_{ip}$ &: aircraft $i$ uses check pattern $p$. \\
   \end{tabular}
-
-  \onslide<1->{
-    \input{graphs/gantt_example_check}
   }
 
-  \onslide<2->{
+  \onslide<5->{
     \begin{align}
       & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^{M} + bigM (1 - m_{ip}) & \notag \\
       & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \notag
     \end{align}
   }
 
+  \only<1>{
+    \DrawGantt{0}{0}{0}
+  }
+  \only<2>{
+    % missions
+    \DrawGantt{0}{1}{0}
+  }
+  \only<3>{
+    % maintenances and missions
+    \DrawGantt{2}{1}{0}
+  }
+  \only<4->{
+    % maints, missions and cycles
+    \DrawGantt{2}{1}{cycle}
+  }
 \end{frame}
-
-% \begin{frame}
-
-%   \begin{block}{Formulation}
-
-%   \begin{align}
-%     & \text{Max}\;
-%     \sum_{i \in \mathcal{I}, p \in \mathcal{P}} m_{ip} \times W_p \\
-%     & \sum_{i \in \mathcal{I}, p \in \mathcal{P}_{t}} m_{ip} \leq C^{max} 
-%             & t \in \mathcal{T} \label{eq:capacity1}\\
-%     & \sum_{i \in \mathcal{I}_j, (t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \geq R_j
-%             & j \in \mathcal{J}, t \in \mathcal{TJ}_j  \label{eq:missionres}\\
-%     & \sum_{p \in \mathcal{P}_{t}} m_{ip} + \sum_{j \in \mathcal{J}_t \cap \mathcal{J}_i} \sum_{(t_1, t_2) \in \mathcal{T}_{jt}} a_{ijt_1t_2} \leq 1 
-%             & t \in \mathcal{T}, i \in \mathcal{I} \label{eq:state}\\
-%     & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^M + M (1 - m_{ip}) & \notag \\
-%       & & i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \\
-%   \end{align}
-
-%   \end{block}
-
-% \end{frame}
-
-% \begin{frame}
-%   \begin{block}{New vs old formulation}
-
-%   \begin{enumerate}[<+->]
-
-%   \item
-%     It uses 3 times the number of constraints and 3 times the number of
-%     variables.
-%   \end{enumerate}
-
-%   \begin{itemize}[<+->]
-
-%   \item
-%     variables: 11000 =\textgreater{} 28000.
-%   \item
-%     constraints: 13000 =\textgreater{} 48000.
-%   \end{itemize}
-
-%   \begin{enumerate}[<+->]
-
-%   \item
-%     It is still better. Better lineal relaxation, better performance.
-%   \item
-%     Can we reduce intelligently the number of variables?
-%   \end{enumerate}
-
-%   \begin{itemize}[<+->]
-
-%   \item
-%     we can.
-%   \end{itemize}
-
-%   \end{block}
-
-% \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Distance between maintenances}}
 
   For each aircraft $i$: $D_i(y) \in [E^{min},E^{max}] \,\, \forall y \in \mathcal{Y}(x)$. \\
   \only<2>{
-  \input{graphs/gantt_example_distance}
+  \DrawGantt{2}{0}{distance}
+  % \input{graphs/gantt_example_distance}
   }
   % \only<2>{
   % \input{graphs/gantt_example_distance}
@@ -218,11 +178,10 @@
   \only<3->{
   Solution feature: $g_1(y) = \mu_{t'-t} = \frac {\sum_{i \in \mathcal{I}} D_i(y)}{I}$. \\
   }
-  \only<4->{
+  \onslide<4->{
   Distribution of $\mu^*_{t'-t}$: \\
-  \includegraphics[height=0.4\linewidth]{hist_mean_dist_complete_IT000125_20190716}
+  \includegraphics[height=0.4\linewidth]{images/distribution_mean_distances_IT000125_20190716}
   }
-
 \end{frame}
 
 \begin{frame}
@@ -232,8 +191,8 @@
     Quantile regressions: upper bound and lower bound.
   \end{block}
 
-  \begin{block}{\textbf{Training set}}
-    of 5000 small instances solved to optimal.
+  \begin{block}{\textbf{Training / test set}}
+    of 5000 small instances solved to optimal and splitted: 70/30.
   \end{block}
 
   \begin{block}{\textbf{Input features}}
@@ -266,86 +225,72 @@
       D_{ip} \in [\hat{\mu}_{t'-t}^{lb} - tol, \hat{\mu}_{t'-t}^{ub} + tol] \rightarrow p \in \mathcal{P}_i 
     \end{equation*}
   \end{block}
+  % TODO: add example
 
   \begin{block}{\textbf{Pattern recycling:} with probabiliy $\alpha$}
     \begin{equation*}
       D_{ip} \notin [\hat{\mu}_{t'-t}^{lb} - tol, \hat{\mu}_{t'-t}^{ub} + tol] \land P(\alpha)  \rightarrow p \in \mathcal{P}_i 
     \end{equation*}
   \end{block}
+\end{frame}
 
+\begin{frame}
+\frametitle{\textbf{Experiments}}
+
+  \begin{itemize}[<+->]
+
+  \item Number of instances: medium (1000), large (1000) and very large
+    (1000).
+  \item Time limit at 3600 seconds.
+  \item We seeded instance generation for better comparison.
+  \item CPLEX running 1 thread.
+  \end{itemize}
+
+  Largest instances have 60 aircraft, 90 periods.
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Results: performance}}
+
+  \begin{itemize}[<+->]
+    \item More solutions.
+    \item Better solutions.
+  \end{itemize}
+
+  \only<1>{
+    \includegraphics[width=0.8\linewidth]{images/transitions_base_2tasks.png}
+  }
+  \only<2>{
+    \includegraphics[width=0.8\linewidth]{images/time_performance_ordered_2tasks.png}
+  }
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Results: optimality}}
+
+  \begin{itemize}[<+->]
+    \item a < 4\% loss of optimality.
+    \item better predictions can improve this.
+  \end{itemize}
+
+  \includegraphics[width=0.8\linewidth]{images/quality_degradation_2tasks}
 
 \end{frame}
 
 \begin{frame}
-
-\begin{block}{Experiments}
-
-\begin{itemize}[<+->]
-
-\item
-  Number of instances: medium (1000), large (1000) and very large
-  (1000).
-\item Time limit at 3600 seconds.
-\item We seeded instance generation for better comparison.
-\item CPLEX running 1 thread.
-\end{itemize}
-
-Largest instances have 60 aircraft, 90 periods.
-
-\begin{enumerate}[<+->]
-
-\item Create forecasting model based in 5000 small instances.
-\item Use forecasting model to predict bounds on distance between
-  maintenances: \(\hat{\mu}_{t'-t}^{lb}\), \(\hat{\mu}_{t'-t}^{ub}\).
-
-\end{block}
-
-\end{frame}
-
-\begin{frame}
-
-\begin{block}{How good is it (performance)}
-
-Faster solutions, more solutions.
-
---
-
-\includegraphics[width=0.8\linewidth]{time_performance_ordered_2tasks}
-
-\end{block}
-
-\end{frame}
-
-\begin{frame}
-
-\begin{block}{How good is it (optimality)}
-
-For instances were an optimal solution was found (optimum degradation):
-* 95\% of instances had less than 4\% gap with real optimal.
-
-\includegraphics[width=0.8\linewidth]{quality_degradation_2tasks}
-
-\end{block}
-
-\end{frame}
-
-\begin{frame}{Further steps}
-\protect\hypertarget{further-steps}{}
-
-\begin{itemize}[<+->]
-
-\item
-  \textbf{Better predictions} with better features, or predicting
-  several characteristics of optimal solutions.
-\item
-  \textbf{Predict a distribution} and sample patterns from the
-  distribution instead of predicting patterns.
-\item
-  \textbf{Warm-start Column Generation} with a selected subset of
-  potentially good patterns.
-\item
-  \textbf{Automatize prediction} so it can be easily integrated in other
-  problems.
-\end{itemize}
-
+\frametitle{\textbf{Conclusions}}
+  \begin{itemize}[<+->]
+  \item
+    \textbf{Better predictions} with better features, or predicting
+    several characteristics of optimal solutions.
+  \item
+    \textbf{Predict a distribution} and sample patterns from the
+    distribution instead of predicting patterns.
+  \item
+    \textbf{Warm-start Column Generation} with a selected subset of
+    potentially good patterns.
+  \item
+    \textbf{Automatize prediction} so it can be easily integrated in other
+    problems.
+  \end{itemize}
 \end{frame}

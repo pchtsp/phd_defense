@@ -1,6 +1,68 @@
 \section{\thirdtitle}
 
 \begin{frame}
+\frametitle{\textbf{Patterns}}
+  \begin{tabular}{p{5mm}p{90mm}}
+    $b_{ip}$ &: aircraft $i$ uses check pattern $p$. \\
+  \end{tabular}
 
+  % TODO: this image
+  \DrawGantt{1}{1}{0}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Pattern generation}}
+  % \input{graphs/graph_example2.tikz}
+  \only<1>{
+   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
+      \DrawGraph{0}
+   \end{adjustbox}  
+  }
+  \only<2>{
+   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
+      \DrawGraph{1}
+   \end{adjustbox}  
+  }
+  \only<3>{
+   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
+      \DrawGraph{2}
+   \end{adjustbox}  
+  }
+  \only<4>{
+   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
+      \DrawGraph{3}
+   \end{adjustbox}  
+  }
+  \only<5>{
+   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
+      \DrawGraph{4}
+   \end{adjustbox}  
+  }
+  \only<6>{
+   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
+      \DrawGraph{5}
+   \end{adjustbox}  
+  }
+  \only<7>{
+   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
+      \DrawGraph{6}
+   \end{adjustbox}  
+  }
+  \only<1>{
+  \DrawGantt{0}{0}{0}
+  }
+  \only<2>{
+  \DrawGantt{1}{0}{0}
+  }
+  \only<4>{
+  \DrawGantt{1}{0}{0}
+  }
+  \only<5>{
+  \DrawGantt{1}{1}{0}
+  }
+  \only<6->{
+  \DrawGantt{2}{1}{1}
+  }
+\end{frame}
+
