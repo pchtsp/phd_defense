@@ -1,4 +1,6 @@
 %& BEAMER
+\definecolor{maintColor}{HTML}{878787}
+\definecolor{missionColor}{HTML}{00ff00}
 
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{footline}[frame number]
@@ -62,10 +64,6 @@
 	\tikzfillbetween[of = A and B]{#1, opacity=0.2};
 }
 
-
-%\begin{tcolorbox}[title=Planification]
-%	TODO
-%\end{tcolorbox}
 
 \newtcolorbox{mdpbox}[1][]{
 	notitle,
@@ -301,7 +299,6 @@
 	 %\hfill
 	 \texttt{\footnotesize \color{\algocommentcolor}\# #1}
 }
-% TODO Check whether algorithms names are included in list of acronyms
 
 %& Trees (MCTS UCT OLUCT OLTA Minimax and so on)
 \newcommand{\budget}{\ensuremath{B}} % tree budget
@@ -364,7 +361,6 @@
 
 %& Rename natbib commands
 %\newcommand{\citet}[1]{\citeauthor{#1} \shortcite{#1}}
-%\newcommand{\citet}[1]{\cite{#1}} % TODO retablir
 %\newcommand{\citep}[1]{(\cite{#1})}
 
 %& Theorems definition

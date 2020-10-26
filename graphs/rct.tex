@@ -1,0 +1,63 @@
+\begin{axis}[
+    name=rct,
+    at={(start.south)},anchor=north west, 
+    yshift=-0.3cm,
+    xshift=0.2cm,
+    axis lines=center,
+    xmax = 15,
+    ymin = 0,
+    ymax = 6,
+    ylabel=$rct$,
+    xlabel=$t$,
+    % ylabel=Remaining \\calendar \\time ($rct$),
+    % xlabel=Periods ($t$),
+    y label style={
+      at={(axis description cs:-0.1,.5)},
+      % align=left,
+      % rotate=90,   
+      anchor=south,
+    },
+    x label style={
+      at={(axis description cs:0.5,-0.1)},
+      anchor=north,
+    },
+    width=\textwidth,
+    height=0.5\textwidth
+    ]
+  \addplot[color=blue] coordinates {
+    (0,2)
+    (1,1)
+    (2,0)
+  };
+  \addplot[color=maintColor, ultra thick] coordinates {
+    (2,0)
+    (2,6)
+    (3,6)
+  };
+  \addplot[color=blue] coordinates {
+    (3,6)
+    (4,5)
+    (5,4)
+    (6,3)
+    (7,2)
+    (8,1)
+    (9,0)
+  };
+  \addplot[color=maintColor, ultra thick] coordinates {
+    (9,0)
+    (9,6)
+    (10,6) 
+  };
+  \addplot[color=blue] coordinates {
+    (10,6)
+    (11,5)
+    (12,4)
+    (13,3)
+    (14,2)
+    (15,1)
+  };
+
+
+
+
+\end{axis}

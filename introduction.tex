@@ -36,6 +36,13 @@
 \end{frame}
 
 \begin{frame}
+\frametitle{\textbf{The maintenance of a military aircraft}}
+  \begin{tikzpicture}
+    \input{graphs/gantt_example_anim.tex}
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
 \frametitle{\textbf{An Military Flight and Maintenance Planning (MFMP) problem}}
 
   \begin{columns}[c]
@@ -66,6 +73,7 @@
       \end{small}
     }
     \only<4>{
+      \\
       Frequency (in time, in flight hours).\\
       Duration.\\
       Capacity.\\
@@ -74,17 +82,20 @@
 
   \onslide<5->{
     \begin{block}{\textbf{Objective}}
-      Use the least maintenances / delay them as much as possible.
+      Use the least number of checks / plan checks as late as possible.
     \end{block}  
   }
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{An MFMP solution}}
-  % TODO: legend with flight hours. 
-  % TODO: animation with aircraft, periods, maintenances, missions
+\frametitle{\textbf{An example MFMP solution}}
   % TODO: justify different ways of understanding a solution
   \input{graphs/gantt_5aircraft.tex}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{An example MFMP solution}}
+  \input{graphs/gantt_5aircraft_exp.tex}
 \end{frame}
 
 \begin{frame}

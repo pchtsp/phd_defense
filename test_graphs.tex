@@ -3,17 +3,21 @@
 \usepackage{tikz}
 \usepackage{tikzit}
 \usepackage{pgfgantt}
+\usepackage{pgfplots}
+
 \input{graphs/sample.tikzstyles}
+\input{graphs/graph_example_func.tikz}
 \begin{document}
   \begin{figure}
           \centering
           \begin{tikzpicture}
+            % \input{graphs/rft.tex}
               % \input{graphs/gantt_example.tex}
-              % \input{graphs/gantt_example_check.tex}
+              % \input{graphs/gantt_example_anim.tex}
               % \input{graphs/graph_example2.tikz}
-              \input{graphs/graph_example_func.tikz}
-              \DrawGraph{6}
-              % \DrawGraph{2}
+              % \input{graphs/graph_example_func.tikz}
+              \DrawGraph{6} 
+              % % \DrawGraph{2}
           \end{tikzpicture}
   \end{figure}
 \end{document}
