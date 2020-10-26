@@ -1,5 +1,28 @@
 \section{\secondtitle}
 
+\def\secondtitleF{Predicting learned-cuts}
+\def\secondtitleS{Applying learned-cuts to the MFMP}
+
+
+\begin{frame}
+\frametitle{\textbf{Contents}}
+  \setbeamercovered{transparent}
+  \begin{block}{\textbf{\secondtitleF}}
+  \end{block}  
+
+  \only<1>{
+    \begin{block}{\textbf{\secondtitleS}}
+    \end{block}  
+  }
+  \only<2->{
+    \transparent{0.3}
+    \begin{block}{\textbf{\secondtitleS}}
+    \end{block}  
+    \transparent{1}
+  }
+
+\end{frame}
+
 \begin{frame}
 \frametitle{\textbf{Predicting learned-cuts}}
  
@@ -28,6 +51,7 @@
     \end{equation*}
   \end{columns}
   }
+  % TODO: example.
   \only<1->{
    \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
       \DrawSolution{none}{none}{0}
@@ -107,11 +131,25 @@
       \DrawSolution{blue}{north west lines}{2}
    \end{adjustbox}
    }
+   % TODO: legend
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Contents}}
+  \setbeamercovered{transparent}
+  \transparent{0.3}
+  \begin{block}{\textbf{\secondtitleF}}
+  \end{block}  
+  \transparent{1}
+
+  \begin{block}{\textbf{\secondtitleS}}
+  \end{block}  
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Motivation}}
-
+  
+  \pause
   \begin{enumerate}[<+->]
 
   \item
@@ -120,14 +158,14 @@
     \textbf{User feedback}: direct feedback about the solution without
     needing to solve any model.
   \item
-    \textbf{More stable solutions}: Every aircraft flies an amount that is
-    closest to the mean of the fleet.
+    \textbf{Apply secondary objectives}: Filter solutions taking into account other more intractable criteria.
   \end{enumerate}
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{New formulation}}
 
+% TODO: legend, aircraft i, period t, M= check
   \only<2>{
   \begin{tabular}{p{5mm}p{90mm}}
     $a_{ijtt'}$ & : aircraft $i$ is in mission $j$ between $t$ and $t'$.  \\
@@ -168,25 +206,23 @@
 \frametitle{\textbf{Distance between maintenances}}
 
   For each aircraft $i$: $D_i(y) \in [E^{min},E^{max}] \,\, \forall y \in \mathcal{Y}(x)$. \\
-  \only<2>{
-  \DrawGantt{2}{0}{distance}
-  % \input{graphs/gantt_example_distance}
+  \onslide<3->{
+    Solution feature: $g_1(y) = \mu_{t'-t} = \frac {\sum_{i \in \mathcal{I}} D_i(y)}{I}$. \\
   }
-  % \only<2>{
-  % \input{graphs/gantt_example_distance}
-  % }
-  \only<3->{
-  Solution feature: $g_1(y) = \mu_{t'-t} = \frac {\sum_{i \in \mathcal{I}} D_i(y)}{I}$. \\
+  \only<2-3>{
+    \DrawGantt{2}{0}{distance}
   }
-  \onslide<4->{
-  Distribution of $\mu^*_{t'-t}$: \\
-  \includegraphics[height=0.4\linewidth]{images/distribution_mean_distances_IT000125_20190716}
+  \only<4->{
+    Distribution of $\mu^*_{t'-t}$: \\
+  \includegraphics[height=0.3\linewidth]{images/distribution_mean_distances_IT000125_20190716}
   }
+
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Solution feature prediction}}
-
+  
+  % TODO: animation
   \begin{block}{\textbf{Technique}}
     Quantile regressions: upper bound and lower bound.
   \end{block}
@@ -196,6 +232,7 @@
   \end{block}
 
   \begin{block}{\textbf{Input features}}
+  % TODO
     ...
   \end{block}
 
@@ -237,6 +274,8 @@
 \begin{frame}
 \frametitle{\textbf{Experiments}}
 
+% TODO: re-do
+
   \begin{itemize}[<+->]
 
   \item Number of instances: medium (1000), large (1000) and very large
@@ -252,6 +291,8 @@
 \begin{frame}
 \frametitle{\textbf{Results: performance}}
 
+  % TODO: change colors
+  % TODO: bigger picture
   \begin{itemize}[<+->]
     \item More solutions.
     \item Better solutions.
@@ -261,6 +302,9 @@
     \includegraphics[width=0.8\linewidth]{images/transitions_base_2tasks.png}
   }
   \only<2>{
+  % TODO: add one line at a time.
+  % TODO: lines thicker and lines, not points
+  % TODO: Time to solve instance (seconds)
     \includegraphics[width=0.8\linewidth]{images/time_performance_ordered_2tasks.png}
   }
 \end{frame}
@@ -269,7 +313,7 @@
 \frametitle{\textbf{Results: optimality}}
 
   \begin{itemize}[<+->]
-    \item a < 4\% loss of optimality.
+    \item $\le$ 4\% loss of optimality.
     \item better predictions can improve this.
   \end{itemize}
 
@@ -278,19 +322,24 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Conclusions}}
-  \begin{itemize}[<+->]
-  \item
-    \textbf{Better predictions} with better features, or predicting
-    several characteristics of optimal solutions.
-  \item
-    \textbf{Predict a distribution} and sample patterns from the
-    distribution instead of predicting patterns.
-  \item
-    \textbf{Warm-start Column Generation} with a selected subset of
-    potentially good patterns.
-  \item
-    \textbf{Automatize prediction} so it can be easily integrated in other
-    problems.
-  \end{itemize}
+\frametitle{\textbf{Preliminary conclusions}}
+  \pause
+  % TODO: check phrases
+  \begin{block}{\textbf{Conclusions}}
+    \begin{itemize}[<+->]
+    \item \textbf{Supervised learning} 
+      applied in combination with combinatorial optimization.
+    \item \textbf{MFMP example} 
+      that shows the benefits of such an approach.
+    \end{itemize}
+  \end{block}  
+  \pause
+  \begin{block}{\textbf{Perspectives}}
+    \begin{itemize}[<+->]
+      \item \textbf{Generalize methodology} 
+        obtain a probability distribution for patterns, automatize feature extraction.
+      \item \textbf{Combine it with other techniques} 
+        e.g., warm-start Column Generation, graph-based pattern generation.
+    \end{itemize}
+  \end{block}  
 \end{frame}

@@ -1,0 +1,27 @@
+      \begin{tikzpicture}[node distance=1.6cm,
+      every node/.style={fill=white, font=\sffamily}, align=left]
+     % Specification of nodes (position, etc.)
+      \node (start)             [activityStarts]              {Start};
+      \node (initSol)     [startstop, below of=start]          {$x = getInitialSolution()$\\$z^* = \infty$\\$t = clock()$};
+      \node (objFunc)      [master, below of=initSol]   {$err= getErrors(x)$\\$z=getObjective(x,err)$};
+     \node (maybeBest)      [master, below of=objFunc]   {$z < z^*$};
+      \node (updateBest)      [master, right of=maybeBest, xshift=3cm]   {$x^* = x$\\$z^* = z$};
+      \node (maybeStop)      [master, below of=maybeBest, yshift=-0.5cm]   {$clock() -t > t_{max}$};
+      \node (Stop)      [activityStarts, right of=maybeStop, xshift=3cm]   {End};
+      \node (chooseNeighborFunc)     [master, below of=maybeStop, yshift=-0.5cm]   {$move = choose\{S\hspace{-0.5mm}P\hspace{-0.5mm}A, RH\}$\\$\mathcal{T}_{c}, \mathcal{I}_{c} = getCandidate(err, move)$\\$x = move(x, \mathcal{T}_{c}, \mathcal{I}_{c})$};
+      % \node (chooseCandidate)     [master, below of=chooseNeighborFunc]   {};
+      % \node (applyMove)       [master, below of=chooseCandidate]
+          {};
+      \draw[->]             (start) -- (initSol);
+      \draw[->]     (initSol) -- (objFunc);
+      \draw[->]     (objFunc) -- (maybeBest);
+      \draw[->]      (maybeBest) -- node {Yes} (updateBest);
+      \draw[->]      (updateBest.south) -- ++(0,-.7) -- ++(-4.5,0)  -- (maybeStop.north);
+      \draw[->]     (maybeStop) -- node {Yes}  (Stop);
+      \draw[->]     (maybeStop) -- node {No} (chooseNeighborFunc);
+      \draw[->]      (maybeBest) -- node {No} (maybeStop);
+      % \draw[->]     (chooseNeighborFunc) -- (chooseCandidate);
+      % \draw[->]      (chooseCandidate) -- (applyMove);
+      \draw[->] (chooseNeighborFunc.west) -- ++(-0.5,0) -- ++(0,3.8) -- ++(0,2) --
+       (objFunc.west);
+      \end{tikzpicture}

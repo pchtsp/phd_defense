@@ -1,15 +1,21 @@
 Hello,
 
-I'm going to discuss the results of my PhD thesis that is titled: "". This will be the structure of the talk. An introduction and some context, my contributions, and some conclusions.
+I'm going to discuss the results of my PhD thesis titled: "Exact and Heuristic Methods to Optimize Maintenances and Flight Schedules of Military Aircraft". This thesis was carried out under the supervision of Alain Hait, Olga Battaia and Nicolas Dupin. 
 
-Given the title, one would think that this thesis has a very narrow subject. It does not. As we will see later, the planning of maintenances for aircraft is not so different from other, more earthly decision problems. Efficiently maintaining systems is a challenge. As we produce a greater number of more complex things that need to be maintained for longer, this challenge grows. As an example, we're now planning to build in France nuclear waste storage facilities that are supposed to work for 100 years. (https://fr.wikipedia.org/wiki/Cig%C3%A9o#Description_g%C3%A9n%C3%A9rale)
-This is longer than most countries in the world have existed (https://docs.google.com/spreadsheets/d/1rfIzSh5fZ-lwqOlGCPWuKYZA-hAAg01K9VzIOSbolpA/edit#gid=0). Another example: most renewable projects involve building infrastructure (solar, wind, batteries) that is both complex and needs to last for a long time in order to make it economically and environmentally viable.
+This will be the structure of the talk. The context, my contributions, and the conclusions.
 
-The Military Flight and Maintenance Planning problem consists on assigning missions to a fleet of military aircraft, while scheduling the necessary usage-based maintenances to keep the fleet in good operational status. This problem can be abstracted into three main concepts: resources, tasks and usage-based recovery tasks. These three concepts relate the problem to a series of alternative planning problems. Resources can be aircraft, machines, nuclear plants, trains or people. Tasks can be missions, actual tasks, energy production or shifts. Recovery tasks can be maintenances, setups, refueling or days off.
+Maintenance is an often overlooked but important part, in terms of the overall cost, of the operations in most large systems. 
+Efficiently maintaining systems is nowadays a challenge. As we produce a greater number of more complex things that need to be maintained for longer, this challenge grows. As an example, we're now planning to build in France nuclear waste storage facilities that are supposed to work for 100 years. (https://fr.wikipedia.org/wiki/Cig%C3%A9o#Description_g%C3%A9n%C3%A9rale). This is longer than most countries in the world have existed (https://docs.google.com/spreadsheets/d/1rfIzSh5fZ-lwqOlGCPWuKYZA-hAAg01K9VzIOSbolpA/edit#gid=0). Also, most renewable projects involve building infrastructure (solar, wind) that is both complex and needs to last for a long time in order to make it economically and environmentally viable.
 
-Each problem can then, of course have specific characteristics that differentiate it from the other. In our case, I will present the specifics of our problem. We have a set of schedules missions. Each mission lasts of several periods and demands...
+<!-- Given the title for this thesis, one would think that this thesis has a very narrow scope. It does not.  -->
+<!-- The planning of maintenances for aircraft is actually not so different from other, more earthly decision problems.  -->
+A maintenance planning problem can be abstracted into three main concepts: resources, tasks and usage-based recovery tasks. Resources can be aircraft, machines, nuclear plants, trains or people. Tasks can be missions, production jobs, an amount of energy production or rostering shifts. Recovery tasks can be maintenances, setup operations, refueling schedules or days off.
 
-Some additional vocabulary that may be useful for the rest of the talk. This is what a solution looks like: a calendar table with aircraft in rows and periods in columns. In each cell, imagine there can be a maintenance, a mission or nothing. Of course, it's the contents of the table that we need to fill with a valid solution. Another way of thinking of a solution is in terms of patterns and aircraft. We call a pattern to a possible row of the solution. In particular, each aircraft has its own set of possible patterns. A solution consists of assigning one pattern to each aircraft. 
+The Military Flight and Maintenance Planning problem consists on assigning missions to a fleet of military aircraft, while scheduling the necessary usage-based maintenances to keep the fleet in good operational conditions at every period. 
+
+More formally, we have a set of aircraft, each with some initial conditions and capabilities. We have a set of missions, each with start and end dates, a demand of aircraft and a demand in flight hours. We also have maintenances with a range of possible frequencies (in terms of calendar periods and flight hours), a fixed duration and a capacity per calendar period.
+
+This is what a solution looks like: a calendar table with aircraft in rows and periods in columns. In each cell, imagine there can be a maintenance, a mission or nothing. Of course, it's the contents of the table that we need to fill with a valid solution. Another way of thinking of a solution is in terms of patterns and aircraft. We call a pattern to a possible row of the solution. In particular, each aircraft has its own set of possible patterns. A solution consists of assigning one pattern to each aircraft. 
 
 Two additional ways of encoding a solution come from lineal programming: we have a binary variable that has value 1 if the aircraft is doing mission in a period and another binary variable that has value 1 if aircraft starts a maintenance in a period. The second
 
@@ -27,15 +33,55 @@ The first model is a classic NRP formulation where we assign missions to aircraf
 
 Experiments show that this model performs well in small and medium sized-instances. We tested several configurations and particular issues were encountered when changing the default flight hours and...
 
-The second contribution of this thesis consists on a Machine Learning application to predict good solutions.
+The second contribution of this thesis consists on a Machine Learning application to predict good solutions for large planning problems, and in particular the Military Flight and Maintenance Planning problem. 
 
-If we remember the pattern-like idea, imagine we only think of maintenance patterns. That is, we now choose what maintenance pattern to assign to an aircraft and it includes all the maintenances it will have. This change can be incorporated to our previous MIP model and it offers interesting insights. It generates a lot more variables than the previous one but also offers a better lineal relaxation.
+We will first explain the way learned-cuts work in general and then apply it to our problem.
 
-If we have patterns, then we can make use of pattern predicting techniques, such as those in the ML world. 
-The idea is the following, we take the input data of an instance, we apply several functions to aggregate that data. We then predict some characteristics of the optimal solution based on that input data. We use that predicted information to reduce the solution space.
+In a very general way optimization problem can be understood as the optimal solution y* that minimizes a cost function C, given input data x and a solution space Y(x). Here represented as this multidimensional figure. We define g(y) as a function applied to a solution y and that returns a scalar value. We call each function g(y) a solution feature.
 
-In this case, we predicted an aggregate function on these patterns: the average distance between maintenances. 
-We can, for example, predict the likelihood that one of these patterns ends up in our optimal solution. In our case, what we predicted was 
+By solving to optimality enough problems of similar structure, we are able to train a function ghat(x) as an estimator of the optimal solution feature g(y). This implies predicting, based on previous cases, certain characteristics of the optimal solution without having actually solved the problem. We then use those predictions to reduce the original solution space so it only contains the parts where we think the optimal solution will be. We finally solve this reduced problem and return the optimal solution to it.
 
+Of course nothing guarantees that the global optimal solution is to fall in this "predicted solution space". In case the global optimal is not found, we hope that the difference in cost between the optimal and our solution will be small.
 
-The techniques that have been conceived are generic approaches that have been adapted
+We will now present an application of these learned cuts to our flight and planning problem.
+
+Why would anyone do this? We are first interested in performance. A smaller space is faster to scan and then, to solve. In addition to using this information to constraint the solution space, we can use it to take decisions without solving the problem. We can, for example, know some probable bounds for certain solution values and have an estimate of the objective function value. Finally, we can control for secondary objectives in case there are solutions with similar quality with respect to the main objective.
+
+As a first step to apply these learned-cuts, we need a compatible MIP formulation. We adapt the previous model by changing the two main decision variables. For mission assignments, we now represent each combination of start-stop assignments. For checks, we now model represent each possible combination of checks as patterns. This has many advantages, such as be able to define each segment c between maintenances and generate these types of constraints that limit the total flight hours inside each segment c, when the pattern p is assigned to aircraft i. As a brief summary, this formulation generates a lot more variables than the previous one but also offers a better lineal relaxation. The insight here is that the inconvenience of having an excess of variables may not become a problem if we can reduce the solution space intelligently.
+
+As a second step, we need to define our solution features to predict. After some heavy data wrangling, we arrive at the distance between maintenances. This distance consists of the length of time between the maintenances for each aircraft and is already limited by the input data. But not enough. We calculate the average for all aircraft. The distribution of the average among a thousand instances can vary significantly, of course always between the limits of 30 and 60.
+
+Finally, we need a prediction technique. We used quantile regressions in order to predict reasonable lower and upper bounds. We used five thousand small instances solved to optimality or close to optimality and splitted the set into a training and test datasets. As input features we used a combination of five: the sum the total required flight hours, the period that splitted the demand in two, the presence of special missions, and the overall initial status of the fleet.
+
+The application of the learned-cuts with the defined MIP formulation is straightforward: we only keep the patterns that are withing a given tolerance from the predicted average distance between maintenances. As a second step, we do recycle a certain percentage of the rejected patterns by sampling them with a uniform distribution.
+
+We tested our new learned-cuts on medium and large instances and we compared them with the same instances without using the learned-cuts.
+
+The first result was obtaining a lot more feasible solutions (orange to green). We also found the optimal (of the reduced solution space) a lot more often. In part because of this, we reduced the solving times a great way. Green shows our combination of MIP+learned cuts. We also tested the previous MIP with the learned-cuts and the two MIPs without learned-cuts.
+
+All this with a relatively low loss of optimality of less than 5\% when both models reported an optimal solution. Of course, this can be improved if we manage to improve the prediction of the solution features.
+
+We proposed a general supervised learning approach to help solve combinatorial optimization problems. We then showed how it can be applied successfully to solve large instances of the Military Flight and Maintenance Planning problem. Further steps are to generalize this methodology so it can be easily applied to other combinatorial problems where a pattern representation is possible by obtaining a probability distribution for patterns and automatizing the feature extraction procedure. Finally, the technique can be employed in combination with compatible techniques. For example, in column generation it can be used to warm-start the process with a potentially good set of patterns. Another example is combining it with a fast technique to generate good patterns to iteratively used the prediction during the solving process.
+
+The third contribution follows this last insight of fast pattern creation.
+
+Taking the check pattern definition we used previously and let's take it to the general case of a complete pattern of missions and maintenances. We will create a graph that generates these patterns. Let's start with the initial status for an aircraft. The two numbers inside the node represent the remaining flight time and the remaining calendar time. In other words: the state of the aircraft at the end of that period. The first period we do nothing. The second we have the option of doing a check or nothing again. We choose a check. Likewise we continue and generate at each step all possible nodes, exploring them if they are possible. In period five we do an assignment that almost depletes the remaining flight hours. We do another check, and so forth. Here, we stop at period 9. The sink node corresponds to the next to last period in the planning and has no state (since it gathers all possible end states). Of course we have a lot more nodes we're not showing. These are but a few. Any pattern corresponds to a single unique path in the graph, like the shown with arrows. 
+
+Pattern extraction. and SPA neighborhood.
+
+The solution approach designed is a Variable Neighborhood Descent that follows a classical path: we initialize a solution and then we apply a series of neighborhoods at each step in order to explore the solution space and improve the objective. To achieve this, we randomly choose one neighborhood at each iteration from one of two types: SPA and RH, which we will discuss in the next slides.
+
+The first neighborhood, Shortest Path Algorithm (or SPA), replaces a partial or complete row of the matrix of assignments, exploiting the graph shown previously. This move is optimal with respect to the current solution.
+
+The second neighborhood, Rolling Horizon (or RH), replaces a square of the matrix of assignments, by using the MIP model from the previous topic, while using the current solution as a warm-start.
+
+For the initial solution, we tested several options. First, we use shortest path for each aircraft iteratively. Second, we use the rolling horizon for the whole dataset, which is equivalent to solving the complete problem with MIP. Finally, we used the previous presented simulated annealing algorithm to obtain an initial solution.
+
+The experiments included very very very large instances of up to several hundreds of aircraft. These last instances may not be realistic in terms of military fleets but they may be so for worker scheduling problems that may profit from this kind of approach.
+
+We compared the impact of each neighborhood independently to measure the capacity to fall into local minima. Here we show one instance with several seeds for random number generation, although several instances were tested with similar results. It's interesting to see that the Shortest path neighborhood is very fast at the beginning, while the Rolling horizon one is slower but usually is better at avoiding local minima. It can be seen that the combination of the two, which we name VND, out performs each of the two, in general.
+
+In large instances (here, the 250 aircraft), we see that in all instances VND (dashed lines) outperforms the direct MIP formulation in terms of optimality gap in 20 minute solving time. For the optimality gap, we used the best available lower bound from the MIP. The large jumps are usually done as a result of a Rolling horizon move, while several consecutive small ones usually imply the shortest path one.
+
+As conclusions, we have presented a powerful graph representation of the solution space for each aircraft that can be used to obtain very good initial solutions, fast. When combining this technique with a complementary rolling horizon one, we obtain a fast but also effective matheuristic that can quickly solve very large instances of the Military Flight and Maintenance Planning problem. Next steps involve changing the MIP model in the rolling horizon for something more general, like a generic set-covering formulation of patterns. Alternatively, the shortest path approach can be incorporated in a GRASP metaheuristic to sample good paths during the construction phase. Finally, any of these improvements can lead to a competitive approach to solve the civil FMP or related problems such as the NRP.
+

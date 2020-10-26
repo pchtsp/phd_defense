@@ -7,62 +7,290 @@
   \end{tabular}
 
   % TODO: this image
-  \DrawGantt{1}{1}{0}
+  % j and M => legend
+  \DrawGantt{2}{2}{0}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Pattern generation}}
-  % \input{graphs/graph_example2.tikz}
-  \only<1>{
-   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
-      \DrawGraph{0}
-   \end{adjustbox}  
-  }
-  \only<2>{
-   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
-      \DrawGraph{1}
-   \end{adjustbox}  
-  }
-  \only<3>{
-   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
-      \DrawGraph{2}
-   \end{adjustbox}  
-  }
-  \only<4>{
-   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
-      \DrawGraph{3}
-   \end{adjustbox}  
-  }
-  \only<5>{
-   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
-      \DrawGraph{4}
-   \end{adjustbox}  
-  }
-  \only<6>{
-   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
-      \DrawGraph{5}
-   \end{adjustbox}  
-  }
-  \only<7>{
-   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
-      \DrawGraph{6}
-   \end{adjustbox}  
-  }
-  \only<1>{
+\frametitle{\textbf{Pattern representation}}
+  % TODO: legend aircraft i, t, etc.
+  % TODO: animation to explain a node, legend
+  % TOOD: redo a simpler graph
+
+
+\def\mydata{1, 2, 3, 4, 5, 6, 7, 8}
+
+\foreach \x in \mydata
+{
+\pgfmathtruncatemacro\z{\x-1}
+% \z{}
+ \only<\x>{
+    \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
+      \DrawGraph{\z}
+   \end{adjustbox}
+ }
+}
+  \only<1-2>{
   \DrawGantt{0}{0}{0}
   }
-  \only<2>{
+  \only<3>{
   \DrawGantt{1}{0}{0}
   }
   \only<4>{
   \DrawGantt{1}{0}{0}
   }
   \only<5>{
-  \DrawGantt{1}{1}{0}
+  \DrawGantt{1}{2}{0}
   }
   \only<6->{
-  \DrawGantt{2}{1}{1}
+  \DrawGantt{2}{2}{1}
   }
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Pattern extraction}}
+  % TODO: this
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Solution approach}}
+% TODO: animation
+% TODO: size of End.
+% TODO: arrows
+\begin{adjustbox}{max totalsize={0.8\textwidth}{0.8\textheight},center}
+  \input{graphs/diagram_method2}
+\end{adjustbox}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Neighborhood 1: Shortest Path Algorithm (SPA)}}
+% TODO: explain matrix, legend?
+
+  \onslide<2->{
+    $SPA(x, \mathcal{I}_c, \mathcal{T}_c)$
+  }
+
+  \onslide<3->{
+    \begin{align*}
+      A_{c} = \left(
+      \begin{array}{*6{c}}
+    1 & 1 & 1 & 1 & 0 & 0 \\
+    \tikzmark{left}{0} & {\text -}1 & {\text -}1 & {\text -}1 & {\text -}1 & \tikzmark{right}{0} \\
+    0 & 0 & 0 & 0 & 2 & 2 \\
+    0 & 0 & 0 & 0 & 0 & 0
+      \end{array}
+      \right)
+      \Highlight[first]
+    \end{align*}
+  }
+  \onslide<4->{
+    \begin{align*}
+      A_{c+1} = \left(
+      \begin{array}{*6{c}}
+    1 & 1 & 1 & 1 & 0 & 0 \\
+    \tikzmark{left}{0} & 1 & 1 & 1 & 2 & \tikzmark{right}{-1} \\
+    0 & 0 & 0 & 0 & 2 & 2 \\
+    0 & 0 & 0 & 0 & 0 & 0
+      \end{array}
+      \right)
+    \Highlight[second]
+  \end{align*}
+  }
+  \onslide<5->{
+    \tikz[overlay,remember picture] {
+      \draw[->,thick,red,dashed] (first.east) -- ++(2, -2)  node [right] {SPA} -- (second.east);
+    }
+  }
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Neighborhood 2: Rolling Horizon (RH)}}
+  
+  \onslide<2->{
+    $RH(x, \mathcal{I}_c, \mathcal{T}_c)$
+  }
+  \onslide<3->{
+    \begin{align*}
+      A_{c} = \left(
+      \begin{array}{*6{c}}
+        1 & \tikzmark{left}{1} & 1 & 1 & 0 & 0 \\
+        {\text -}1 & 0 & 0 & 0 & 0 & {\text -}1 \\
+        0 & 0 & 0 & \tikzmark{right}{0} & 2 & 2 \\
+        0 & 0 & 0 & 0 & 0 & 0
+      \end{array}
+      \right)
+      \Highlight[first]
+    \end{align*}  
+  }
+  \onslide<4->{
+    \begin{align*}
+      A_{c+1} = \left(
+      \begin{array}{*6{c}}
+        1 & \tikzmark{left}{0} & 0 & 0 & 0 & 0 \\
+        {\text -}1 & 0 & 0 & 0 & 0 & {\text -}1 \\
+        0 & 1 & 1 & \tikzmark{right}{1} & 2 & 2 \\
+        0 & 0 & 0 & 0 & 0 & 0
+      \end{array}
+      \right)
+    \Highlight[second]
+    \end{align*}
+  }
+  \onslide<5->{
+    \tikz[overlay,remember picture] {
+      \draw[->,thick,red,dashed] (first.east) -- ++(4, -2) node [right] {RH} -- (second.east);
+    }
+  }
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Initial solution}}
+
+  Three ways.\\
+  $SPA(\varnothing, \mathcal{I}, \mathcal{T})$
+
+    \only<2>{
+      \begin{align*}
+        \left(
+        \begin{array}{*6{c}}
+          0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0
+        \end{array}
+        \right)
+    \end{align*}
+    }
+    \only<3>{
+      \begin{align*}
+        \left(
+        \begin{array}{*6{c}}
+          0 & 0 & 0 & 0 & 0 & 0 \\
+          \tikzmark{left}{0} & 1 & 1 & 1 & 2 & \tikzmark{right}{-1} \\
+          0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0
+        \end{array}
+        \right)
+      \Highlight[second]
+    \end{align*}
+    }
+    \only<4>{
+      \begin{align*}
+        \left(
+        \begin{array}{*6{c}}
+          \tikzmark{left}{1} & 1 & 1 & 1 & 0 & \tikzmark{right}{0} \\
+          0 & 1 & 1 & 1 & 2 & {\text -}1 \\
+          0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0
+        \end{array}
+        \right)
+      \Highlight[second]
+    \end{align*}
+    }
+    \only<5>{
+      \begin{align*}
+       \left(
+        \begin{array}{*6{c}}
+          1 & 1 & 1 & 1 & 0 & 0 \\
+          0 & 1 & 1 & 1 & 2 & {\text -}1 \\
+          \tikzmark{left}{0} & 0 & 0 & 0 & 2 & \tikzmark{right}{2} \\
+          0 & 0 & 0 & 0 & 0 & 0
+        \end{array}
+        \right)
+      \Highlight[second]
+    \end{align*}
+    }
+
+  $RH(\varnothing, \mathcal{I}, \mathcal{T})$ \\
+  \only<6>{
+      \begin{align*}
+        \left(
+        \begin{array}{*6{c}}
+          \tikzmark{left}{0} & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & \tikzmark{right}{0}
+        \end{array}
+        \right)
+        \Highlight[first]
+      \end{align*}
+  }
+
+    \only<7>{
+      \begin{align*}
+        \left(
+        \begin{array}{*6{c}}
+          \tikzmark{left}{1} & 1 & 1 & 1 & 0 & 0 \\
+          0 & 1 & 1 & 1 & 2 & {\text -}1 \\
+          0 & 0 & 0 & 0 & 2 & 2 \\
+          0 & 0 & 0 & 0 & 0 & \tikzmark{right}{0}
+        \end{array}
+        \right)
+      \Highlight[second]
+    \end{align*}
+    }
+  maintFirst()
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Experiments}}
+  
+  \begin{itemize}[<+->]
+
+  \item Instance sizes: large ($I$=60), very large ($I$=100) and very-very large ($I$=255).
+  \item CPLEX running 1 thread.
+  \item Time limit at 20 minutes.
+  \item 1 graph per cluster of aircraft and node aggregation with respect to remaining flight time1.
+  \end{itemize}
+
+  \pause
+
+  All instances have 90 periods.
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Results: comparing neighborhoods}}
+  % TODO: VND = RH + SPA
+  % TODO: Time in units
+  \includegraphics[width=\linewidth]{images/compare_neighbors.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Results: large instances}}
+  % TODO: Time in units
+  % TODO: size of police
+  % TODO: rename instances
+  \includegraphics[width=\linewidth]{images/progress_gaps_very_large_255.png}  
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Preliminary conclusions}}
+  % TODO: check phrases
+  % TODO: FMP and NRP: long?
+  \pause
+  \begin{block}{\textbf{Conclusions}}
+    \begin{itemize}[<+->]
+    \item \textbf{Graph representation} 
+      built to efficiently explore the solution space of an aircraft.
+    \item \textbf{Complementary neighborhoods} 
+      are combined to efficiently explore the solution space.
+    \end{itemize}
+  \end{block}  
+  \pause
+  \begin{block}{\textbf{Perspectives}}
+    \begin{itemize}[<+->]
+      \item \textbf{Replace ad-hoc RH}
+        e.g., by predicting / sampling promising patterns and running a set-covering model.
+      \item \textbf{Apply graph in GRASP}
+        by sampling paths in graph to quickly build solutions.
+      \item \textbf{Generalize methodology}
+        use it for the civil FMP problem or NRP.
+    \end{itemize}
+  \end{block}  
+  
 \end{frame}
 

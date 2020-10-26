@@ -1,4 +1,4 @@
-\definecolor{color1}{HTML}{FFFFCC}
+\definecolor{color1}{HTML}{878787}
 \definecolor{color2}{HTML}{FFEDA0}
 \definecolor{color3}{HTML}{ff0000}
 \definecolor{color4}{HTML}{00ff00}
@@ -36,6 +36,9 @@
     milestone/.append style={fill=none, yshift=-6pt, draw=none}
 ]{1}{15}
     \gantttitlelist{1,...,15}{1} \\
+    \ifnum0#1=0
+        \ganttmilestone[milestone/.append]{$i$}{0}
+    \fi
     \ifnum0#1>0
         \Dganttbar{$i$}{$M$}{2}{3}{bar/.append style={fill=color1}}
     \fi
@@ -56,11 +59,12 @@
     \ganttlink[link type=drur3]{elem1}{elem3}
     }
     {}
-    \ifstrequal{#2}{1}
-    {
-    \Dganttbar{$i$}{$a_{ij58}=1$}{5}{8}{bar/.append style={fill=color3}}
-    }
-    {}
+    \ifnum0#2=1
+        \Dganttbar{$i$}{$a_{ij58}=1$}{5}{8}{bar/.append style={fill=color3}}
+    \fi
+    \ifnum0#2=2
+        \Dganttbar{$i$}{$j$}{5}{8}{bar/.append style={fill=color3}}
+    \fi
 
 \end{ganttchart}
 }

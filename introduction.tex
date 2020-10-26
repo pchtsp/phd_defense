@@ -1,91 +1,111 @@
 \section{Introduction}
 
-\begin{itemize}[<+->]
-\item
-  Maintenance planning is more important.
-\item
-  Complexity and durability are growing with time.
+\begin{frame}
+\frametitle{\textbf{Maintenance planning}}
 
   \begin{itemize}[<+->]
-  
   \item
-    buildings that need to last 100 years.
+    Maintenance is costly.
   \item
-    green energy needs lasting infrastructure.
+    Complexity and durability needs are growing with time.
+
+    \begin{itemize}[<+->]
+    
+    \item
+      buildings that need to last 100 years.
+    \item
+      green energy needs lasting infrastructure.
+    \end{itemize}
   \end{itemize}
-\end{itemize}
-
-\begin{frame}{The maintenance planning problem}
-\protect\hypertarget{the-maintenance-planning-problem}{}
-
-Three main concepts in all maintenance planning:
-
-\begin{itemize}[<+->]
-
-\item
-  Resources.
-\item
-  Tasks.
-\item
-  Recovery tasks.
-\end{itemize}
-
-\emph{time}
-
-Examples: industrial production, nurse rostering, aircraft.
-
-\end{frame}
-
-\begin{frame}{An MFMP problem}
-\protect\hypertarget{an-mfmp-problem}{}
-
-\begin{itemize}[<+->]
-
-\item
-  Aircraft.
-\item
-  Missions.
-\item
-  Maintenances.
-\end{itemize}
-
-Objective:
-
 \end{frame}
 
 \begin{frame}
+\frametitle{\textbf{The maintenance planning problem}}
 
-\begin{block}{An MFMP solution}
+  \pause
 
-\includegraphics[width=0.7\linewidth]{calendar3}
+  \begin{itemize}[<+->]
 
-\end{block}
-
+  \item Resources.
+  \item Tasks (planned over time).
+  \item Recovery tasks (checks).
+  \end{itemize}
+  
+  \pause
+  Examples: industrial production, nurse rostering, aircraft.
 \end{frame}
 
 \begin{frame}
+\frametitle{\textbf{An Military Flight and Maintenance Planning (MFMP) problem}}
 
-\begin{block}{Encoding of an MFMP solution}
+  \begin{columns}[c]
+    \column{0.4\linewidth}
 
-\begin{align}
- a_{it} = 
-  \begin{cases} 
-   -1 & check \\
-   0 & no\,\,assignment \\
-   j & mission\,\, j \\
-  \end{cases}\notag
-\end{align}
+    \pause
+    \begin{itemize}[<+->]
+      \item $i \in \mathcal{I}$ aircraft.
+      \item $j \in \mathcal{J}$ missions.
+      \item Maintenances.
+    \end{itemize}
 
-Table format: a solution \(x\) is represented by a matrix
-\(A = \mathbb{Z}^{I \times T}\).
+    \column{0.6\linewidth}
+    \only<2>{
+      \begin{small}
+      \begin{table}
+        \centering
+        \input{tables/5aircraft.tex}
+      \end{table}
+      \end{small}
+    }
+    \only<3>{
+      \begin{small}
+      \begin{table}
+        \centering
+        \input{tables/6tasks.tex}
+      \end{table}
+      \end{small}
+    }
+    \only<4>{
+      Frequency (in time, in flight hours).\\
+      Duration.\\
+      Capacity.\\
+    }
+  \end{columns}
 
-Patterns: \(p \in \mathcal{P}\)
+  \onslide<5->{
+    \begin{block}{\textbf{Objective}}
+      Use the least maintenances / delay them as much as possible.
+    \end{block}  
+  }
+\end{frame}
 
-\(p = \{a_{i0}, a_{it}, a_{it+1}, ..., a_{iT}\}\)
+\begin{frame}
+\frametitle{\textbf{An MFMP solution}}
+  % TODO: legend with flight hours. 
+  % TODO: animation with aircraft, periods, maintenances, missions
+  % TODO: justify different ways of understanding a solution
+  \input{graphs/gantt_5aircraft.tex}
+\end{frame}
 
-Pattern format: a solution \(x\) is represented by a mapping
-\(f: \mathcal{I} \to \mathcal{P}\).
+\begin{frame}
+\frametitle{\textbf{Encoding of an MFMP solution}}
 
-\end{block}
+  \begin{align}
+   a_{it} = 
+    \begin{cases} 
+     -1 & check \\
+     0 & no\,\,assignment \\
+     j & mission\,\, j \\
+    \end{cases}\notag
+  \end{align}
 
+  Table format: a solution \(x\) is represented by a matrix
+  \(A = \mathbb{Z}^{I \times T}\).
+
+  Patterns: \(p \in \mathcal{P}\)
+
+  \(p = \{a_{i0}, a_{it}, a_{it+1}, ..., a_{iT}\}\)
+
+  Pattern format: a solution \(x\) is represented by a mapping
+  \(f: \mathcal{I} \to \mathcal{P}\).
 \end{frame}

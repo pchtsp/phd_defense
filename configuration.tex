@@ -21,24 +21,50 @@
 \usepackage[absolute,overlay]{textpos}
 \usepackage[utf8]{inputenc}
 %\usepackage[texcoord, grid, gridcolor=red!10, subgridcolor=green!10, gridunit=cm]{eso-pic}
+\usepackage{tikz}
 \usepackage{tikzit}
 \usepackage{adjustbox}
 \usepackage{pgfgantt}
-\usepackage{tikz}
 \usepackage{pgfplots}
-\usepackage{tikz-network}
-\usetikzlibrary{shapes,fit,arrows,backgrounds,positioning,fadings,shadows,intersections, pgfplots.fillbetween,shapes.misc,automata,patterns}
+\usepackage{booktabs}
+\usetikzlibrary{shapes,fit,arrows,backgrounds,positioning,fadings,shadows,intersections, pgfplots.fillbetween,shapes.misc,automata,patterns,decorations.pathmorphing,arrows.meta}
+% \usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit}
+\tikzset{%
+  >={Latex[width=2mm,length=2mm]},
+  % Specifications for style of nodes:
+            base/.style = {rectangle, rounded corners, draw=black,
+                           minimum width=4cm, minimum height=1cm,
+                           text centered, font=\sffamily},
+  activityStarts/.style = {base, fill=white},
+       startstop/.style = {base, fill=white},
+    subproblem/.style = {base, fill=green!30},
+         master/.style = {base, minimum width=2.5cm, fill=white,
+                           font=\ttfamily},
+}
+
+\tikzset{%fill=red!15,
+  highlight/.style={rectangle,rounded corners,draw,
+    fill opacity=0.5,thick,inner sep=0pt}
+}
 
 \tikzset{
-	cross/.style={
-		cross out,
-		draw=black,
-		minimum size=2*(#1-\pgflinewidth),
-		inner sep=0mm,
-		outer sep=0mm
-	},
-	cross/.default={1mm} % default radius
+  cross/.style={
+    cross out,
+    draw=black,
+    minimum size=2*(#1-\pgflinewidth),
+    inner sep=0mm,
+    outer sep=0mm
+  },
+  cross/.default={1mm} % default radius
 }
+
+\tikzset{
+    invisible/.style={opacity=0},
+    visible on/.style={alt={#1{}{invisible}}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+  }
 
 \hypersetup{
 	colorlinks=false,

@@ -3,6 +3,14 @@
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{footline}[frame number]
 
+\newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,
+  baseline=(#1.base)] \node (#1) {#2};}
+%
+\newcommand{\Highlight}[1][submatrix]{%
+    \tikz[overlay,remember picture]{
+    \node[highlight,fit=(left.north west) (right.south east)] (#1) {};}
+}
+
 \newcommand{\sectiontitle}{}
 %\newcommand{\sectionnumber}{}
 \newcommand{\newsection}[1]{\section{#1}\renewcommand{\sectiontitle}{#1}}
