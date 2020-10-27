@@ -25,19 +25,33 @@
 		\node [style=none] (21) at (2.5, -3.25) {};
 		\node [style=none] (24) at (2.5, 0.25) {};
 		\ifstrequal{#3}{1}
-		{\node [style=optimum] (25) at (-1.25, -1.75) {};}
+		{
+		\node [style=optimum, label=left:{\huge $\hat{y}^*$}] (yhatoptim) at (-1.25, -1.75) {};
+		}
 		{}
 		\ifstrequal{#3}{2}
-		{\node [style=optimum] (26) at (1, 1.25) {};}
-		{}		
+		{
+		\node [style=optimum, label=left:{\huge $\hat{y}^*$}] (yhatoptim) at (-1.25, -1.75) {};
+		\node [style=optimum, label=left:{\huge $y^*$}] (yoptim) at (1, 1.25) {};
+		}
+		{}
+		\node [style=solution, anchor=north, label=left:{\huge $y$}] (y) at ([xshift=10pt, yshift=-20pt]0.south) {};
+		\node [anchor=north west] (Y) at ([yshift=-20pt]3.south east) {\huge $\mathcal{Y}(x)$};
+		\ifstrequal{#1}{gy}
+		{
+			\node [label=left:{\huge ${g}_2(y)$}] (gy2) at (y.center-|16.center) {};
+			\node [label=below:{\huge ${g}_1(y)$}] (gy1) at (17.center-|y.center) {};
+		}
+		{}
+		\ifstrequal{#1}{gyoptim}
+		{
+			\node [style=optimum, label=left:{\huge $y^*$}] (yhatoptim) at (-1.25, -1.75) {};
+			\node [label=left:{\huge ${g}_2(y^*)$}] (gy2) at (yhatoptim.center-|16.center) {};
+			\node [label=below:{\huge ${g}_1(y^*)$}] (gy1) at (17.center-|yhatoptim.center) {};
+		}
+		{}
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=optimal] (8.center)
-			 to [bend left=15, looseness=2.50] (7.center)
-			 to [in=165, out=-15] (11.center)
-			 to [bend left=15, looseness=2.25] (10.center)
-			 to (9.center)
-			 to [bend left=15, looseness=2.00] cycle;
 		\draw (0.center) to (1.center);
 		\draw (1.center) to (2.center);
 		\draw (2.center) to (3.center);
@@ -45,16 +59,35 @@
 		\draw (4.center) to (5.center);
 		\draw (5.center) to (6.center);
 		\draw (6.center) to (0.center);
-		\draw [style=optimal] (14.center)
-			 to (12.center)
-			 to (13.center)
-			 to cycle;
-		  \ifstrequal{#1}{none}
-		    {}
-		    {
-		\draw [style=axis, draw=#1] (17.center) to node [auto, scale=3, yshift=-5ex] {$\hat{g}_2(x)$} (18.center);
-		\draw [style=axis, draw=#1] (16.center) to node [auto, scale=3] {$\hat{g}_1(x)$} (15.center);
-		    }
+
+		\ifstrequal{#1}{gy}
+		{
+			\draw (gy1.center) to (y.center);
+			\draw (gy2.center) to (y.center);
+		}
+		{}
+		\ifstrequal{#1}{gyoptim}
+		{
+			\draw (gy1.center) to (yhatoptim.center);
+			\draw (gy2.center) to (yhatoptim.center);
+		}
+		{}
+		\ifstrequal{#1}{ghat}
+		{
+			\draw [style=optimal] (8.center)
+				 to [bend left=15, looseness=2.50] (7.center)
+				 to [in=165, out=-15] (11.center)
+				 to [bend left=15, looseness=2.25] (10.center)
+				 to (9.center)
+				 to [bend left=15, looseness=2.00] cycle;
+			\draw [style=optimal] (14.center)
+				 to (12.center)
+				 to (13.center)
+				 to cycle;
+			\draw [style=axis, draw=blue] (17.center) to node [auto, scale=3, yshift=-5ex] {$\hat{g}_2(x)$} (18.center);
+			\draw [style=axis, draw=blue] (16.center) to node [auto, scale=3] {$\hat{g}_1(x)$} (15.center);
+		}
+		{}
 		\draw [style=pseudocut, pattern=#2] (19.center)
 			 to (20.center)
 			 to (21.center)

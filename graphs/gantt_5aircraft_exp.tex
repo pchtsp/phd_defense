@@ -1,4 +1,3 @@
-\definecolor{color1}{HTML}{878787}
 \definecolor{color2}{HTML}{D7191C}
 \definecolor{color3}{HTML}{1A9641}
 \definecolor{color4}{HTML}{FDAE61}
@@ -8,16 +7,16 @@
 %     }
     \begin{ganttchart}[
     expand chart=\textwidth,
-y unit chart=1cm,
+y unit chart=0.7cm,
     hgrid,
     vgrid,
     time slot format=simple
     ]{1}{20}
-    % \ganttset{bar height=0.7}
-    % \ganttset{bar top shift=0.15}
+    \ganttset{bar height=0.6}
+    \ganttset{bar top shift=0.15}
     \gantttitlelist{1,...,20}{1} \\
-\Dganttbar{0}{-1}{3}{3}{bar/.append style={fill=color1,draw=none}}
-\Dganttbar{0}{-1}{4}{4}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{0}{-1}{3}{3}{bar/.append style={fill=maintColor,draw=none}}
+\Dganttbar{0}{-1}{4}{4}{bar/.append style={fill=maintColor,draw=none}}
 \Dganttbar{0}{2}{6}{6}{bar/.append style={fill=color2,draw=none}}
 \Dganttbar{0}{2}{7}{7}{bar/.append style={fill=color2,draw=none}}
 \Dganttbar{0}{3}{8}{8}{bar/.append style={fill=color3,draw=none}}
@@ -28,8 +27,8 @@ y unit chart=1cm,
 \Dganttbar{0}{4}{13}{13}{bar/.append style={fill=color4,draw=none}}
 \Dganttbar{0}{4}{14}{14}{bar/.append style={fill=color4,draw=none}}
 \Dganttbar{0}{4}{15}{15}{bar/.append style={fill=color4,draw=none}}
-\Dganttbar{0}{-1}{17}{17}{bar/.append style={fill=color1,draw=none}}
-\Dganttbar{0}{-1}{18}{18}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{0}{-1}{17}{17}{bar/.append style={fill=maintColor,draw=none}}
+\Dganttbar{0}{-1}{18}{18}{bar/.append style={fill=maintColor,draw=none}}
 \Dganttbar{0}{0}{1}{1}{bar/.append style={fill=none,draw=none}}
 \Dganttbar{0}{0}{2}{2}{bar/.append style={fill=none,draw=none}}
 \Dganttbar{0}{0}{5}{5}{bar/.append style={fill=none,draw=none}}
@@ -43,8 +42,8 @@ y unit chart=1cm,
 \Dganttbar{1}{3}{9}{9}{bar/.append style={fill=color3,draw=none}}
 \Dganttbar{1}{3}{10}{10}{bar/.append style={fill=color3,draw=none}}
 \Dganttbar{1}{3}{11}{11}{bar/.append style={fill=color3,draw=none}}
-\Dganttbar{1}{-1}{12}{12}{bar/.append style={fill=color1,draw=none}}
-\Dganttbar{1}{-1}{13}{13}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{1}{-1}{12}{12}{bar/.append style={fill=maintColor,draw=none}}
+\Dganttbar{1}{-1}{13}{13}{bar/.append style={fill=maintColor,draw=none}}
 \Dganttbar{1}{5}{16}{16}{bar/.append style={fill=color2,draw=none}}
 \Dganttbar{1}{5}{17}{17}{bar/.append style={fill=color2,draw=none}}
 \Dganttbar{1}{5}{18}{18}{bar/.append style={fill=color2,draw=none}}
@@ -58,8 +57,8 @@ y unit chart=1cm,
 \Dganttbar{1}{0}{15}{15}{bar/.append style={fill=none,draw=none}}\ganttnewline
 \Dganttbar{2}{2}{5}{5}{bar/.append style={fill=color2,draw=none}}
 \Dganttbar{2}{2}{6}{6}{bar/.append style={fill=color2,draw=none}}
-\Dganttbar{2}{-1}{7}{7}{bar/.append style={fill=color1,draw=none}}
-\Dganttbar{2}{-1}{8}{8}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{2}{-1}{7}{7}{bar/.append style={fill=maintColor,draw=none}}
+\Dganttbar{2}{-1}{8}{8}{bar/.append style={fill=maintColor,draw=none}}
 \Dganttbar{2}{4}{12}{12}{bar/.append style={fill=color4,draw=none}}
 \Dganttbar{2}{4}{13}{13}{bar/.append style={fill=color4,draw=none}}
 \Dganttbar{2}{4}{14}{14}{bar/.append style={fill=color4,draw=none}}
@@ -80,8 +79,8 @@ y unit chart=1cm,
 \Dganttbar{3}{1}{2}{2}{bar/.append style={fill=color5,draw=none}}
 \Dganttbar{3}{1}{3}{3}{bar/.append style={fill=color5,draw=none}}
 \Dganttbar{3}{1}{4}{4}{bar/.append style={fill=color5,draw=none}}
-\Dganttbar{3}{-1}{5}{5}{bar/.append style={fill=color1,draw=none}}
-\Dganttbar{3}{-1}{6}{6}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{3}{-1}{5}{5}{bar/.append style={fill=maintColor,draw=none}}
+\Dganttbar{3}{-1}{6}{6}{bar/.append style={fill=maintColor,draw=none}}
 \Dganttbar{3}{3}{8}{8}{bar/.append style={fill=color3,draw=none}}
 \Dganttbar{3}{3}{9}{9}{bar/.append style={fill=color3,draw=none}}
 \Dganttbar{3}{3}{10}{10}{bar/.append style={fill=color3,draw=none}}
@@ -90,19 +89,19 @@ y unit chart=1cm,
 \Dganttbar{3}{4}{13}{13}{bar/.append style={fill=color4,draw=none}}
 \Dganttbar{3}{4}{14}{14}{bar/.append style={fill=color4,draw=none}}
 \Dganttbar{3}{4}{15}{15}{bar/.append style={fill=color4,draw=none}}
-\Dganttbar{3}{-1}{19}{19}{bar/.append style={fill=color1,draw=none}}
-\Dganttbar{3}{-1}{20}{20}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{3}{-1}{19}{19}{bar/.append style={fill=maintColor,draw=none}}
+\Dganttbar{3}{-1}{20}{20}{bar/.append style={fill=maintColor,draw=none}}
 \Dganttbar{3}{0}{7}{7}{bar/.append style={fill=none,draw=none}}
 \Dganttbar{3}{0}{16}{16}{bar/.append style={fill=none,draw=none}}
 \Dganttbar{3}{0}{17}{17}{bar/.append style={fill=none,draw=none}}
 \Dganttbar{3}{0}{18}{18}{bar/.append style={fill=none,draw=none}}\ganttnewline
-\Dganttbar{4}{-1}{1}{1}{bar/.append style={fill=color1,draw=none}}
-\Dganttbar{4}{-1}{2}{2}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{4}{-1}{1}{1}{bar/.append style={fill=maintColor,draw=none}}
+\Dganttbar{4}{-1}{2}{2}{bar/.append style={fill=maintColor,draw=none}}
 \Dganttbar{4}{2}{5}{5}{bar/.append style={fill=color2,draw=none}}
 \Dganttbar{4}{2}{6}{6}{bar/.append style={fill=color2,draw=none}}
 \Dganttbar{4}{2}{7}{7}{bar/.append style={fill=color2,draw=none}}
-\Dganttbar{4}{-1}{14}{14}{bar/.append style={fill=color1,draw=none}}
-\Dganttbar{4}{-1}{15}{15}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{4}{-1}{14}{14}{bar/.append style={fill=maintColor,draw=none}}
+\Dganttbar{4}{-1}{15}{15}{bar/.append style={fill=maintColor,draw=none}}
 \Dganttbar{4}{5}{16}{16}{bar/.append style={fill=color2,draw=none}}
 \Dganttbar{4}{5}{17}{17}{bar/.append style={fill=color2,draw=none}}
 \Dganttbar{4}{5}{18}{18}{bar/.append style={fill=color2,draw=none}}
@@ -116,4 +115,30 @@ y unit chart=1cm,
 \Dganttbar{4}{0}{13}{13}{bar/.append style={fill=none,draw=none}}
 \Dganttbar{4}{0}{19}{19}{bar/.append style={fill=none,draw=none}}
 \Dganttbar{4}{0}{20}{20}{bar/.append style={fill=none,draw=none}}
+
+% \ganttmilestone[name=start, milestone/.append style={anchor=east}]{}{0}
+\node (se) [anchor=north] at (current bounding box.south east){};
+\node (sw) [anchor=north] at (current bounding box.south west){};
+\node (per) [anchor=south] at ([yshift=5pt]current bounding box.north){$t$};
+\node (air) [anchor=north east] at ([xshift=-5pt, yshift=-12pt]current bounding box.west){$i$};
+% \onslide<2->{
+  \node (maint) [fill=maintColor,draw, label=left:{\tiny Check}, minimum width=0.5cm, minimum height=0.3cm, anchor=north east] at ([yshift=5pt]se.south west){\tiny\bfseries $M$};
+% }
+% \onslide<3->{
+  \node (miss) [draw, label=left:{\tiny Mission assignment}, minimum width=0.5cm, minimum height=0.3cm, pattern=north west lines, pattern color=missionColor] at ([yshift=-12pt]maint.south){\tiny\bfseries 80h};
+  \node[label=left:{\tiny Flight hours}, minimum width=0.5cm, minimum height=0.5cm] at ([yshift=-12pt]miss.south){\tiny\bfseries 80h};
+% }
+
+\onslide<2->{  
+  \node[anchor=north west] at (sw.south east) {
+  $\begin{aligned}
+     A = \mathbb{Z}^{I \times T} = a_{it} = 
+      \begin{cases} 
+       -1 & check \\
+       0 & no\,\,assignment \\
+       j & mission\,\, j \\
+      \end{cases}\notag
+    \end{aligned}$
+    };
+}
 \end{ganttchart}

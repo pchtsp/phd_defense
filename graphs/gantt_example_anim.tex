@@ -14,22 +14,21 @@
     % \ganttset{alt/.code args={<#1>#2#3}{\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}
     \gantttitlelist{1,...,15}{1} \\
     \onslide<2->{
-      \ganttbar[bar/.append style={fill=maintColor}, inline]{}{2}{3}
-      \ganttbar[bar/.append style={fill=maintColor}, inline]{}{9}{10}
+      \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline]{\tiny\bfseries $M$}{2}{3}
+      \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline]{\tiny\bfseries $M$}{9}{10}
     }
     % \ganttbar[bar/.append style={fill=maintColor, opacity=0, fill opacity=0}, inline, bar label font=\tiny\bfseries]{$M$}{2}{3}
     % \Dganttbar{$i=1$}{$M$}{2}{3}{bar/.append style={fill=maintColor}}
     \onslide<3->{
-      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor}, inline, bar label font=\tiny\bfseries]{80h}{5}{8}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{80h}{5}{8}
     }
-    % pattern=north west lines, pattern color=blue
     \ganttmilestone[name=start, milestone/.append style={anchor=east}]{}{0}
     \ganttmilestone[name=end, milestone/.append style={anchor=east}]{}{15}
     \node (a) [anchor=north] at (current bounding box.south east){};
     \node (per) [anchor=south] at ([yshift=5pt]current bounding box.north){$t$};
     \node (air) [anchor=north east] at ([xshift=-5pt, yshift=-12pt]current bounding box.west){$i$};
     \onslide<2->{
-      \node (maint) [fill=maintColor,draw, label=left:{\tiny Check}, minimum width=0.5cm, minimum height=0.3cm, anchor=north] at ([yshift=-12pt]a.south east){};
+      \node (maint) [fill=maintColor,draw, label=left:{\tiny Check}, minimum width=0.5cm, minimum height=0.3cm, anchor=north east] at ([yshift=1pt]a.south east){\tiny\bfseries $M$};
     }
     \onslide<3->{
       \node (miss) [draw, label=left:{\tiny Mission assignment}, minimum width=0.5cm, minimum height=0.3cm, pattern=north west lines, pattern color=missionColor] at ([yshift=-12pt]maint.south){\tiny\bfseries 80h};

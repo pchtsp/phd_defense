@@ -4,25 +4,19 @@ I'm going to discuss the results of my PhD thesis titled: "Exact and Heuristic M
 
 This will be the structure of the talk. The context, my contributions, and the conclusions.
 
-Maintenance is an often overlooked but important part, in terms of the overall cost, of the operations in most large systems. 
-Efficiently maintaining systems is nowadays a challenge. As we produce a greater number of more complex things that need to be maintained for longer, this challenge grows. As an example, we're now planning to build in France nuclear waste storage facilities that are supposed to work for 100 years. (https://fr.wikipedia.org/wiki/Cig%C3%A9o#Description_g%C3%A9n%C3%A9rale). This is longer than most countries in the world have existed (https://docs.google.com/spreadsheets/d/1rfIzSh5fZ-lwqOlGCPWuKYZA-hAAg01K9VzIOSbolpA/edit#gid=0). Also, most renewable projects involve building infrastructure (solar, wind) that is both complex and needs to last for a long time in order to make it economically and environmentally viable.
+Maintenance is an often overlooked but important part of the operations in most large systems. Efficiently maintaining those systems with low cost is nowadays a challenge. As we produce a greater number of more complex things that need to be maintained for longer, this challenge grows. As an example, we're now planning to build in France nuclear waste storage facilities that are supposed to work for 100 years. (https://fr.wikipedia.org/wiki/Cig%C3%A9o#Description_g%C3%A9n%C3%A9rale). This is longer than most countries in the world have existed (https://docs.google.com/spreadsheets/d/1rfIzSh5fZ-lwqOlGCPWuKYZA-hAAg01K9VzIOSbolpA/edit#gid=0). Also, most renewable projects involve building infrastructure (solar, wind) that is both complex and that needs to last for a long time in order to make it economically and environmentally viable.
 
 <!-- Given the title for this thesis, one would think that this thesis has a very narrow scope. It does not.  -->
 <!-- The planning of maintenances for aircraft is actually not so different from other, more earthly decision problems.  -->
 A maintenance planning problem can be abstracted into three main concepts: resources, tasks and usage-based recovery tasks. Resources can be aircraft, machines, nuclear plants, trains or people. Tasks can be missions, production jobs, an amount of energy production or rostering shifts. Recovery tasks can be maintenances, setup operations, refueling schedules or days off.
 
+The maintenance of aircraft works as follows. We have an aircraft i, visualized as a row from now on. And several periods t, 15 in this case, represented by columns. We assign maintenance operations, or checks. We also assign missions, that require certain flight hours. In the case of civil aviation, this corresponds to a leg or a flight between two airports. The checks recover the flight potential (we call it remaining flight time) of the aircraft and the flight assignments reduce it. Regardless of flight hours, the calendar potential (or remaining calendar time) is used and recovered too.
+
 The Military Flight and Maintenance Planning problem consists on assigning missions to a fleet of military aircraft, while scheduling the necessary usage-based maintenances to keep the fleet in good operational conditions at every period. 
 
 More formally, we have a set of aircraft, each with some initial conditions and capabilities. We have a set of missions, each with start and end dates, a demand of aircraft and a demand in flight hours. We also have maintenances with a range of possible frequencies (in terms of calendar periods and flight hours), a fixed duration and a capacity per calendar period.
 
-This is what a solution looks like: a calendar table with aircraft in rows and periods in columns. In each cell, imagine there can be a maintenance, a mission or nothing. Of course, it's the contents of the table that we need to fill with a valid solution. Another way of thinking of a solution is in terms of patterns and aircraft. We call a pattern to a possible row of the solution. In particular, each aircraft has its own set of possible patterns. A solution consists of assigning one pattern to each aircraft. 
-
-Two additional ways of encoding a solution come from lineal programming: we have a binary variable that has value 1 if the aircraft is doing mission in a period and another binary variable that has value 1 if aircraft starts a maintenance in a period. The second
-
-
-<!-- These two are two classic ways of encoding a planning solution. -->
-
-<!-- We deal with the long term planning of maintenances and missions. -->
+A solution for a plan of 5 aircraft with 6 missions over 20 periods. A more manageable encoding of the solution is a matrix of assignments where we treat each check as a -1, a 0 to doing nothing and j to mission j. Another way of thinking of a solution is in terms of patterns and aircraft. We call a pattern to a possible row of the solution. In particular, each aircraft has its own set of possible patterns. A solution consists of assigning one pattern to each aircraft. 
 
 I will know present the three main contributions of this thesis.
 
