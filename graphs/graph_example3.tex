@@ -1,0 +1,89 @@
+\begin{tikzpicture}
+% \setbeamercovered{transparent}
+  \transparent{0.3}
+    \node [style=blank] (0) at (-5, 0) {50/2};
+    \node [style=blank] (8) at (-4, 0) {50/1};
+    \draw [] (0) to (8);
+    \node [style=maint] (14) at (-3, 2.75) {100/6};
+    \node [style=blank] (2) at (-3, 0) {50/0};
+    \draw (8) to (2);
+    \node [style=maint] (13) at (-2, 2.75) {100/6};
+    \draw (2) to (13);  
+    \draw[] (8) to (14);
+    \draw [bend left, looseness=1.25] (14) to (24);
+  \transparent{1}
+
+  \node [style=example] (exa) at (9.5, 3) {$rft$/$rct$};
+   \node [style=source] (24) at (-1, 2.75) {100/5};
+   \node [style=mission] (31) at (0, 0.75) {60/4};
+  \node [style=blank] (36) at (0, 2.75) {100/4};
+  \node [style=mission] (37) at (0, -0.5) {40/3};
+  \node [style=mission] (50) at (0, -1.5) {20/2};
+   \node [style=maint] (17) at (4, 2.75) {100/6};
+
+  \only<2>{
+    \node [style=blank] (51) at (4, -1.5) {20/1};
+    \draw (50) to (51);
+    \draw (51) to (32);
+  }
+   \node [style=sink] (32) at (5, 0) {*/*};
+
+  \node [style=blank] (35) at (2, 0.75) {60/3};
+  \node [style=blank] (38) at (3, -0.5) {40/2};
+  \node [style=blank] (39) at (3, 0.75) {60/2};
+  \node [style=blank] (42) at (4, -0.5) {40/1};
+  \node [style=blank] (43) at (4, 0.75) {60/1};
+  \node [style=blank] (44) at (1, 2.75) {100/3};
+  \node [style=blank] (45) at (2, 2.75) {100/2};
+  \node [style=blank] (46) at (3, 2.75) {100/1};
+
+  \draw [bend right=15, looseness=0.75] (24) to (31);
+  \draw [bend right=15] (24) to (37);
+  \draw (24) to (36);
+  \draw [bend right=15] (24) to (50);
+
+  \draw [ in=-105, out=0, looseness=2.00] (50) to (17);
+  \draw [] (17) to (32);
+  \draw (37) to (38);
+  \draw (35) to (39);
+  \draw (31) to (35);
+  \draw (38) to (42);
+  \draw (39) to (43);
+  \draw (43) to (32);
+  \draw (42) to (32);
+  \draw (36) to (44);
+  \draw (44) to (45);
+  \draw (45) to (46);
+  \draw (39) to (17);
+  \draw (38) to (17);
+  \draw (46) to (17);
+
+  \onslide<4>{
+    \draw [bend right=15, looseness=0.75] (24) to node {$w_1$} (31);
+    \draw [bend right=15] (24) to node {$w_2$} (37);
+    \draw (24) to (36);
+    \draw [bend right=15] (24) to node {$w_3$} (50);
+    \draw [ in=-105, out=0, looseness=2.00] (50) to node {$w_4$} (17);
+    \draw [] (17) to (32);
+    \draw (37) to node {$w_6$} (38);
+    \draw (35) to (39);
+    \draw (31) to node {$w_5$} (35);
+    \draw (38) to (42);
+    \draw (39) to (43);
+    \draw (43) to (32);
+    \draw (42) to (32);
+    \draw (36) to (44);
+    \draw (44) to (45);
+    \draw (45) to (46);
+    \draw (39) to (17);
+    \draw (38) to (17);
+    \draw (46) to (17);
+  }
+  \onslide<5>{
+    \draw [bend right=15, style=arrow] (24) to node {$w_2$} (37);
+    \draw [style=arrow] (37) to node {$w_6$} (38);
+    \draw [style=arrow] (38) to (42);
+    \draw [style=arrow] (42) to (32);
+  }
+
+\end{tikzpicture}

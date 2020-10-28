@@ -29,7 +29,7 @@ Experiments show that this model performs well in small and medium sized-instanc
 
 The second contribution of this thesis consists on a Machine Learning application to predict good solutions for large planning problems, and in particular the Military Flight and Maintenance Planning problem. 
 
-We will first explain the way learned-cuts work in general and then apply it to our problem.
+We will first explain what are learned-cuts and how they can be applied to an optimization problem in general. Then, we will apply them to our problem and provide some results.
 
 In a very general way optimization problem can be understood as the optimal solution y* that minimizes a cost function C, given input data x and a solution space Y(x). Here represented as this multidimensional figure. We define g(y) as a function applied to a solution y and that returns a scalar value. We call each function g(y) a solution feature.
 

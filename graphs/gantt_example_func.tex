@@ -1,7 +1,3 @@
-\definecolor{color1}{HTML}{878787}
-\definecolor{color2}{HTML}{FFEDA0}
-\definecolor{color3}{HTML}{ff0000}
-\definecolor{color4}{HTML}{00ff00}
 \newganttlinktype{drur}{
   \ganttsetstartanchor{on bottom=1}
   \ganttsetendanchor{on bottom=0}
@@ -40,10 +36,10 @@
         \ganttmilestone[milestone/.append]{$i$}{0}
     \fi
     \ifnum0#1>0
-        \Dganttbar{$i$}{$M$}{2}{3}{bar/.append style={fill=color1}}
+        \Dganttbar{$i$}{$M$}{2}{3}{bar/.append style={fill=maintColor}}
     \fi
     \ifnum0#1>1
-        \Dganttbar{$i$}{$M$}{9}{10}{bar/.append style={fill=color1}}
+        \Dganttbar{$i$}{$M$}{9}{10}{bar/.append style={fill=maintColor}}
     \fi
     \ifstrequal{#3}{cycle}
     {
@@ -60,11 +56,17 @@
     }
     {}
     \ifnum0#2=1
-        \Dganttbar{$i$}{$a_{ij58}=1$}{5}{8}{bar/.append style={fill=color3}}
+        \Dganttbar{$i$}{$a_{ij58}=1$}{5}{8}{bar/.append style={fill=missionColor}}
     \fi
     \ifnum0#2=2
-        \Dganttbar{$i$}{$j$}{5}{8}{bar/.append style={fill=color3}}
+        \Dganttbar{$i$}{$j$}{5}{8}{bar/.append style={fill=missionColor}}
     \fi
+    
+    % \node (se) [anchor=north] at (current bounding box.south east){};
+
+    % \node (maint) [fill=maintColor,draw, label=left:{\tiny Check}, minimum width=0.5cm, minimum height=0.3cm, anchor=north east] at ([yshift=5pt]se.south west){\tiny\bfseries $M$};
+    % \node (miss) [draw, label=left:{\tiny Mission assignment}, minimum width=0.5cm, minimum height=0.3cm, fill=missionColor] at ([yshift=-12pt]maint.south){\tiny\bfseries 80h};
+    % \node[label=left:{\tiny Flight hours}, minimum width=0.5cm, minimum height=0.5cm] at ([yshift=-12pt]miss.south){\tiny\bfseries 80h};
 
 \end{ganttchart}
 }

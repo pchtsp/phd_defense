@@ -7,13 +7,16 @@
 \tikzstyle{optimum}=[fill=yellow, draw={rgb,255: red,65; green,65; blue,0}, shape=circle, tikzit draw={rgb,255: red,65; green,65; blue,0}]
 \tikzstyle{solution}=[fill=black, draw=black, shape=circle, scale=0.4]
 \tikzstyle{maint}=[fill={rgb,255: red,117; green,117; blue,117}, draw={rgb,255: red,143; green,143; blue,143}, shape=circle, tikzit draw={rgb,255: red,143; green,143; blue,143}, tikzit fill={rgb,255: red,117; green,117; blue,117}, scale=0.7]
-\tikzstyle{mission}=[fill={rgb,255: red,42; green,145; blue,58}, draw={rgb,255: red,41; green,150; blue,41}, shape=circle, tikzit fill={rgb,255: red,42; green,145; blue,58}, tikzit draw={rgb,255: red,41; green,150; blue,41}, scale=0.7]
+\tikzstyle{mission}=[fill=missionColor, draw={rgb,255: red,143; green,143; blue,143}, shape=circle, tikzit fill={rgb,255: red,42; green,145; blue,58}, tikzit draw={rgb,255: red,41; green,150; blue,41}, scale=0.7]
+
+\tikzstyle{example}=[fill=white, draw=red, shape=circle, scale=1, dashed]
+
 \tikzstyle{blank}=[fill=white, draw=black, shape=circle, scale=0.7]
-\tikzstyle{source}=[fill=white, draw=black, shape=circle, scale=0.7]
-\tikzstyle{sink}=[fill=white, draw=black, shape=circle, scale=0.7]
+\tikzstyle{source}=[fill=white, draw=blue, shape=circle, scale=0.7]
+\tikzstyle{sink}=[fill=white, draw=blue, shape=circle, scale=0.7]
 
 % Edge styles
 \tikzstyle{optimal}=[draw=black, -, tikzit draw=black, fill={rgb,255: red,199; green,255; blue,211}, dashed, tikzit fill={rgb,255: red,199; green,255; blue,211}]
 \tikzstyle{axis}=[draw=blue, tikzit draw=blue, fill=none, line width=1.2pt, {|-|}]
 \tikzstyle{pseudocut}=[-, pattern=north west lines, pattern color=blue, draw=none, tikzit draw=blue]
-\tikzstyle{arrow}=[->]
+\tikzstyle{arrow}=[->, draw=pathColor, line width=1mm]

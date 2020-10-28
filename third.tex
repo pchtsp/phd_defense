@@ -6,8 +6,6 @@
     $b_{ip}$ &: aircraft $i$ uses check pattern $p$. \\
   \end{tabular}
 
-  % TODO: this image
-  % j and M => legend
   \DrawGantt{2}{2}{0}
 
 \end{frame}
@@ -16,21 +14,11 @@
 \frametitle{\textbf{Pattern representation}}
   % TODO: legend aircraft i, t, etc.
   % TODO: animation to explain a node, legend
-  % TOOD: redo a simpler graph
+  \begin{adjustbox}{max totalsize={\textwidth}{\textheight},left, trim=15pt 0 0 0}
+    \input{graphs/graph_example2}
+  \end{adjustbox}
 
 
-\def\mydata{1, 2, 3, 4, 5, 6, 7, 8}
-
-\foreach \x in \mydata
-{
-\pgfmathtruncatemacro\z{\x-1}
-% \z{}
- \only<\x>{
-    \begin{adjustbox}{max totalsize={\textwidth}{\textheight},center}
-      \DrawGraph{\z}
-   \end{adjustbox}
- }
-}
   \only<1-2>{
   \DrawGantt{0}{0}{0}
   }
@@ -50,7 +38,12 @@
 
 \begin{frame}
 \frametitle{\textbf{Pattern extraction}}
-  % TODO: this
+  \DrawGantt{2}{2}{1}
+  \onslide<2->{  
+    \begin{adjustbox}{max totalsize={\textwidth}{\textheight},left, trim=15pt 0 0 0}
+      \input{graphs/graph_example3}
+    \end{adjustbox}
+  }
 
 \end{frame}
 
@@ -98,8 +91,6 @@
       \right)
     \Highlight[second]
   \end{align*}
-  }
-  \onslide<5->{
     \tikz[overlay,remember picture] {
       \draw[->,thick,red,dashed] (first.east) -- ++(2, -2)  node [right] {SPA} -- (second.east);
     }
@@ -138,8 +129,6 @@
       \right)
     \Highlight[second]
     \end{align*}
-  }
-  \onslide<5->{
     \tikz[overlay,remember picture] {
       \draw[->,thick,red,dashed] (first.east) -- ++(4, -2) node [right] {RH} -- (second.east);
     }
@@ -233,13 +222,14 @@
     \end{align*}
     }
   maintFirst()
+  \pause
 
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Experiments}}
   
-  \begin{itemize}[<+->]
+  \begin{itemize}
 
   \item Instance sizes: large ($I$=60), very large ($I$=100) and very-very large ($I$=255).
   \item CPLEX running 1 thread.

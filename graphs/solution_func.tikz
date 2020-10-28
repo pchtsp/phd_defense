@@ -74,16 +74,16 @@
 		{}
 		\ifstrequal{#1}{ghat}
 		{
-			\draw [style=optimal] (8.center)
-				 to [bend left=15, looseness=2.50] (7.center)
-				 to [in=165, out=-15] (11.center)
-				 to [bend left=15, looseness=2.25] (10.center)
-				 to (9.center)
-				 to [bend left=15, looseness=2.00] cycle;
-			\draw [style=optimal] (14.center)
-				 to (12.center)
-				 to (13.center)
-				 to cycle;
+      %   \draw [style=optimal] (8.center)
+      %    to [bend left=15, looseness=2.50] (7.center)
+      %    to [in=165, out=-15] (11.center)
+      %    to [bend left=15, looseness=2.25] (10.center)
+      %    to (9.center)
+      %    to [bend left=15, looseness=2.00] cycle;
+      % \draw [style=optimal] (14.center)
+      %    to (12.center)
+      %    to (13.center)
+      %    to cycle;
 			\draw [style=axis, draw=blue] (17.center) to node [auto, scale=3, yshift=-5ex] {$\hat{g}_2(x)$} (18.center);
 			\draw [style=axis, draw=blue] (16.center) to node [auto, scale=3] {$\hat{g}_1(x)$} (15.center);
 		}

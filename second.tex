@@ -47,16 +47,6 @@
   \onslide<3->{
   \begin{columns}[c]
     \column{0.5\linewidth}
-    \textbf{Solution features}
-    \column{0.5\linewidth}
-    \begin{equation*}
-      G(y) = g_n(y) \,\, \forall n \in \mathcal{N}
-    \end{equation*}
-  \end{columns}
-  }
-  \onslide<4->{
-  \begin{columns}[c]
-    \column{0.5\linewidth}
     \textbf{Input features}
     \column{0.5\linewidth}
     \begin{equation*}
@@ -64,7 +54,17 @@
     \end{equation*}
   \end{columns}
   }
-  \onslide<5->{
+  \onslide<4->{
+  \begin{columns}[c]
+    \column{0.5\linewidth}
+    \textbf{Solution features}
+    \column{0.5\linewidth}
+    \begin{equation*}
+      G(y) = g_n(y) \,\, \forall n \in \mathcal{N}
+    \end{equation*}
+  \end{columns}
+  }
+  \onslide<6->{
   \begin{columns}[c]
     \column{0.5\linewidth}
     \textbf{Training for optimal}
@@ -135,6 +135,12 @@
       \end{equation*}
     \end{columns}
     }
+
+  \only<1>{
+   \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
+      \DrawSolution{none}{none}{0}
+   \end{adjustbox}
+  }
   \only<2>{
    \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
       \DrawSolution{ghat}{none}{0}
@@ -250,7 +256,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Distance between maintenances}}
+\frametitle{\textbf{Solution feature: distance between maintenances}}
 
   For each aircraft $i$: $D_i(y) \in [E^{min},E^{max}] \,\, \forall y \in \mathcal{Y}(x)$. \\
   \onslide<3->{
@@ -267,27 +273,41 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Solution feature prediction}}
-  
-  % TODO: animation
-  \begin{block}{\textbf{Technique}}
-    Quantile regressions: upper bound and lower bound.
-  \end{block}
+\frametitle{\textbf{Input features}}
 
+  \onslide<1->{  
+    \begin{block}{\textbf{Mission related}}
+      Max, average, variance of flight hours per period. Median period.
+    \end{block}
+  }
+  \onslide<2->{  
+    \begin{block}{\textbf{Fleet related}}
+      Sum of initial status (rft).
+    \end{block}
+  }
+  \onslide<3->{  
+    \begin{block}{\textbf{Compatibility related}}
+      Sum of all special mission flight hours.
+    \end{block}
+  }
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Forecasting technique}}
+
+  \onslide<1->{  
+    \begin{block}{\textbf{Quantile regressions}}
+      Upper bound and lower bound at 10\% and 90\%.
+      \begin{equation*}
+        \mu_{t'-t} \to [\hat{\mu}_{t'-t}^{lb}, \hat{\mu}_{t'-t}^{ub}]
+     \end{equation*}
+    \end{block}
+  }
+  \onslide<2->{  
   \begin{block}{\textbf{Training / test set}}
     of 5000 small instances solved to optimal and splitted: 70/30.
   \end{block}
-
-  \begin{block}{\textbf{Input features}}
-  % TODO
-    ...
-  \end{block}
-
-  \begin{block}{\textbf{Solution features}}
-    \begin{equation*}
-      \mu_{t'-t} \to [\hat{\mu}_{t'-t}^{lb}, \hat{\mu}_{t'-t}^{ub}]
-   \end{equation*}
-  \end{block}
+  }
 
   % TODO: add prediction results
   % TODO: add prediction example
@@ -313,10 +333,7 @@
 
 \begin{frame}
 \frametitle{\textbf{Experiments}}
-
-% TODO: re-do
-
-  \begin{itemize}[<+->]
+  \begin{itemize}
 
   \item Number of instances: medium (1000), large (1000) and very large
     (1000).
@@ -367,19 +384,19 @@
   % TODO: check phrases
   \begin{block}{\textbf{Conclusions}}
     \begin{itemize}[<+->]
-    \item \textbf{Supervised learning} 
-      applied in combination with combinatorial optimization.
-    \item \textbf{MFMP example} 
-      that shows the benefits of such an approach.
+    \item \textbf{Supervised learning for optimization}
+      provides good heuristic solutions.
+    \item \textbf{MFMP application}
+      shows the benefits of such an approach.
     \end{itemize}
   \end{block}  
   \pause
   \begin{block}{\textbf{Perspectives}}
     \begin{itemize}[<+->]
       \item \textbf{Generalize methodology} 
-        obtain a probability distribution for patterns, automatize feature extraction.
+        to obtain a probability distribution for patterns, automatize feature extraction.
       \item \textbf{Combine it with other techniques} 
-        e.g., warm-start Column Generation, graph-based pattern generation.
+        to warm-start Column Generation, use a graph-based dynamic pattern generation.
     \end{itemize}
   \end{block}  
 \end{frame}
