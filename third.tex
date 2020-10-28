@@ -3,7 +3,7 @@
 \begin{frame}
 \frametitle{\textbf{Patterns}}
   \begin{tabular}{p{5mm}p{90mm}}
-    $b_{ip}$ &: aircraft $i$ uses check pattern $p$. \\
+    $b_{ip}$ &: aircraft $i$ uses pattern $p$. \\
   \end{tabular}
 
   \DrawGantt{2}{2}{0}
@@ -18,27 +18,37 @@
     \input{graphs/graph_example2}
   \end{adjustbox}
 
-
-  \only<1-2>{
+  \only<1-3>{
   \DrawGantt{0}{0}{0}
   }
-  \only<3>{
+  \only<4-5>{
   \DrawGantt{1}{0}{0}
   }
-  \only<4>{
-  \DrawGantt{1}{0}{0}
-  }
-  \only<5>{
+  \only<6>{
   \DrawGantt{1}{2}{0}
   }
-  \only<6->{
+  \only<7->{
   \DrawGantt{2}{2}{1}
   }
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Pattern extraction}}
+% \begin{tikzpicture}
+  \only<1>{
   \DrawGantt{2}{2}{1}
+  }
+  \only<2-5>{
+  \DrawGantt{2}{2}{milestones}
+  }
+  \only<6->{
+  \DrawGantt{1}{3}{milestones}
+  }
+  % \onslide<2->{
+  %   \ganttmilestone[milestone/.append style={anchor=west, fill=blue}]{}{4}
+  %   \ganttmilestone[milestone/.append style={anchor=east, fill=blue}]{}{10}
+  % }
+% \end{tikzpicture}
   \onslide<2->{  
     \begin{adjustbox}{max totalsize={\textwidth}{\textheight},left, trim=15pt 0 0 0}
       \input{graphs/graph_example3}
@@ -138,7 +148,7 @@
 \begin{frame}
 \frametitle{\textbf{Initial solution}}
 
-  Three ways.\\
+  Three ways.\\ 
   $SPA(\varnothing, \mathcal{I}, \mathcal{T})$
 
     \only<2>{
@@ -221,8 +231,9 @@
       \Highlight[second]
     \end{align*}
     }
+
   maintFirst()
-  \pause
+  \only<8->{}
 
 \end{frame}
 
@@ -234,7 +245,7 @@
   \item Instance sizes: large ($I$=60), very large ($I$=100) and very-very large ($I$=255).
   \item CPLEX running 1 thread.
   \item Time limit at 20 minutes.
-  \item 1 graph per cluster of aircraft and node aggregation with respect to remaining flight time1.
+  \item 1 graph per cluster of aircraft and node aggregation with respect to remaining flight time.
   \end{itemize}
 
   \pause
