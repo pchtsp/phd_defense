@@ -3,6 +3,58 @@
 \definecolor{missionColor}{HTML}{32CD32}
 \definecolor{pathColor}{HTML}{ffd700}
 
+\def\Put(#1,#2)#3{\leavevmode\makebox(0,0){\put(#1,#2){#3}}}
+
+\makeatletter
+\newcommand*\Alt{\alt{\Alt@branch0}{\Alt@branch1}}
+
+\newcommand\Alt@branch[3]{%
+  \begingroup
+  \ifbool{mmode}{%
+    \mathchoice{%
+      \Alt@math#1{\displaystyle}{#2}{#3}%
+    }{%
+      \Alt@math#1{\textstyle}{#2}{#3}%
+    }{%
+      \Alt@math#1{\scriptstyle}{#2}{#3}%
+    }{%
+      \Alt@math#1{\scriptscriptstyle}{#2}{#3}%
+    }%
+  }{%
+    \sbox0{#2}%
+    \sbox1{#3}%
+    \Alt@typeset#1%
+  }%
+  \endgroup
+}
+
+\newcommand\Alt@math[4]{%
+  \sbox0{$#2{#3}\m@th$}%
+  \sbox1{$#2{#4}\m@th$}%
+  \Alt@typeset#1%
+}
+
+\newcommand\Alt@typeset[1]{%
+  \ifnumcomp{\wd0}{>}{\wd1}{%
+    \def\setwider   ##1##2{##2##1##2 0}%
+    \def\setnarrower##1##2{##2##1##2 1}%
+  }{%
+    \def\setwider   ##1##2{##2##1##2 1}%
+    \def\setnarrower##1##2{##2##1##2 0}%
+  }%
+  \sbox2{}%
+  \sbox3{}%
+  \setwider2{\wd}%
+  \setwider2{\ht}%
+  \setwider2{\dp}%
+  \setnarrower3{\ht}%
+  \setnarrower3{\dp}%
+  \leavevmode
+  \rlap{\usebox#1}%
+  \usebox2%
+  \usebox3%
+}
+\makeatother
 
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{footline}[frame number]

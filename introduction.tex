@@ -1,7 +1,7 @@
 \section{\introtitle}
 
 \begin{frame}
-\frametitle{\textbf{Maintenance planning}}
+\frametitle{\textbf{Maintenance}}
 
   \begin{itemize}[<+->]
   \item
@@ -17,22 +17,65 @@
       green energy needs lasting infrastructure.
     \end{itemize}
   \end{itemize}
+
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{The maintenance planning problem}}
+\frametitle{\textbf{Maintenance planning}}
+
+  \begin{columns}[c]
+    \column{0.5\linewidth}
+    Three types:
+    \pause
+    \begin{itemize}[<+->]
+      \setbeamercolor{alerted text}{fg=black} %change the font color
+      \setbeamerfont{alerted text}{series=\bfseries} %make alerted text bold
+      \item Corrective.
+      \item \alert<5->{Preventive}.
+      \item Predictive.
+      % \only<1->{\item Corrective.}
+      % \only<2-4>{\item Preventive.}
+      % \onslide<5->{\item \textbf{Preventive}.}
+      % \onslide<4->{\item Predictive.}
+    \end{itemize} 
 
   \pause
+  \column{0.5\linewidth}
+  Three elements:
 
   \begin{itemize}[<+->]
-
-  \item Tasks (planned over time).
-  \item Resources (to do the tasks).
-  \item Recovery tasks (to care for resources).
+    \item Tasks (planned over time).
+    \item Resources (to do the tasks).
+    \item Recovery tasks (to care for resources).
   \end{itemize}
-  
+  \end{columns}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Maintenance planning applications}}
+
+  In production:
+  \begin{itemize}[<+->]
+    \item Tasks: scheduled jobs, product demand.
+    \item Resources: machines, factories.
+    \item Recovery tasks: setup times, refueling, maintenances.
+  \end{itemize}  
+  % \pause
+  \onslide<5->{In transport: }
   \pause
-  Examples: industrial production, nurse rostering, aircraft.
+  \begin{itemize}[<+->]
+    \item Tasks: flights, train schedules, routes.
+    \item Resources: aircraft, trains, vehicles.
+    \item Recovery tasks: checks.
+  \end{itemize}
+
+  \pause
+  Aircraft: Flight and Maintenance Planning (FMP) problem.
+
+  \pause
+  Military FMP.
+
 \end{frame}
 
 \begin{frame}
@@ -43,15 +86,15 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{An Military Flight and Maintenance Planning (MFMP) problem}}
+\frametitle{\textbf{A MFMP problem}}
 
   \begin{columns}[c]
     \column{0.4\linewidth}
 
     \pause
     \begin{itemize}[<+->]
-      \item $i \in \mathcal{I}$ aircraft.
       \item $j \in \mathcal{J}$ missions.
+      \item $i \in \mathcal{I}$ aircraft.
       \item Maintenances.
     \end{itemize}
 
@@ -60,7 +103,7 @@
       \begin{small}
       \begin{table}
         \centering
-        \input{tables/5aircraft.tex}
+        \input{tables/6tasks.tex}
       \end{table}
       \end{small}
     }
@@ -68,7 +111,7 @@
       \begin{small}
       \begin{table}
         \centering
-        \input{tables/6tasks.tex}
+        \input{tables/5aircraft.tex}
       \end{table}
       \end{small}
     }
@@ -80,14 +123,19 @@
     }
   \end{columns}
 
-  \onslide<5->{
-    \begin{block}{\textbf{Objective}}
-      Use the least number of checks / plan checks as late as possible.
+  \onslide<+->{
+    \begin{block}{\textbf{More constraints}}
+      Fleet-status, mission-aircraft compatibility.
+    \end{block}  
+  }
+  \onslide<+->{
+    \begin{block}{\textbf{Many objectives}}
+      Maximize the availability, minimize the number of checks, minimize maintenance capacity.
     \end{block}  
   }
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{\textbf{An example MFMP solution}}
   \input{graphs/gantt_5aircraft.tex}
 \end{frame}
@@ -97,13 +145,13 @@
   \input{graphs/gantt_5aircraft_exp.tex}
 \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Encoding of an MFMP solution}}
+% \begin{frame}
+% \frametitle{\textbf{Encoding of an MFMP solution}}
 
-  Patterns: \(p \in \mathcal{P}\)
+%   Patterns: \(p \in \mathcal{P}\)
 
-  \(p = \{a_{i0}, a_{it}, a_{it+1}, ..., a_{iT}\}\)
+%   \(p = \{a_{i0}, a_{it}, a_{it+1}, ..., a_{iT}\}\)
 
-  Pattern format: a solution \(x\) is represented by a mapping
-  \(f: \mathcal{I} \to \mathcal{P}\).
-\end{frame}
+%   Pattern format: a solution \(x\) is represented by a mapping
+%   \(f: \mathcal{I} \to \mathcal{P}\).
+% \end{frame}

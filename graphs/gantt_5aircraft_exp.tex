@@ -126,16 +126,14 @@ y unit chart=0.7cm,
   \node (miss) [draw, label=left:{\tiny Mission assignment}, minimum width=0.5cm, minimum height=0.3cm, pattern=north west lines, pattern color=missionColor] at ([yshift=-12pt]maint.south){\tiny\bfseries 80h};
   \node[label=left:{\tiny Flight hours}, minimum width=0.5cm, minimum height=0.5cm] at ([yshift=-12pt]miss.south){\tiny\bfseries 80h};
 
-\onslide<2->{  
-  \node[anchor=north west] at (sw.south east) {
-  $\begin{aligned}
-     A = \mathbb{Z}^{I \times T} = a_{it} = 
-      \begin{cases} 
-       -1 & check \\
-       0 & no\,\,assignment \\
-       j & mission\,\, j \\
-      \end{cases}\notag
-    \end{aligned}$
-    };
-}
+\node[anchor=north west] at (sw.south east) {
+$\begin{aligned}
+   A = \mathbb{Z}^{I \times T} = 
+    \begin{cases} 
+     -1 & check \\
+     0 & no\,\,assignment \\
+     j & mission\,\, j \\
+    \end{cases}\notag
+  \end{aligned}$
+  };
 \end{ganttchart}

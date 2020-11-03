@@ -1,0 +1,38 @@
+\definecolor{color2}{HTML}{FFEDA0}
+\definecolor{color3}{HTML}{ff0000}
+% \definecolor{missionColor}{HTML}{00ff00}
+\begin{ganttchart}[
+    name = sinax,
+    x unit= 0.61cm,
+    % expand chart=\textwidth,
+    hgrid,
+    vgrid,
+    milestone/.append style={fill=none, yshift=-6pt, draw=none}
+]{1}{15}
+    \gantttitlelist{1,...,15}{1} \\
+    % \onslide<3->{
+    \only<1>{
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{}{5}{8}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{1}{5}{5}
+    }
+    \only<2>{
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{}{5}{8}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{1}{5}{5}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{1}{6}{6}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{1}{7}{7}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{1}{8}{8}
+    }
+    \onslide<3->{
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{80h}{5}{8}
+    }
+    \only<4>{
+      \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline, bar label font=\tiny\bfseries]{}{2}{3}
+      \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline, bar label font=\tiny\bfseries]{1}{2}{2}
+    }
+    \onslide<5->{
+      \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline, bar label font=\tiny\bfseries]{$M$}{2}{3}
+    }
+    \ganttmilestone[name=start, milestone/.append style={anchor=east}]{}{0}
+    \ganttmilestone[name=end, milestone/.append style={anchor=east}]{}{15}
+    \node (a) [anchor=north] at (current bounding box.south east){};
+\end{ganttchart}

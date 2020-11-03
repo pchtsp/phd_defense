@@ -1,34 +1,97 @@
-\section{\firsttitle}
+% \section{\firsttitle}
+
+% \begin{frame}
+
+% \begin{block}{Complexity analysis}
+
+% safdasdf
+
+% \end{block}
+
+% \end{frame}
 
 \begin{frame}
+\frametitle{\textbf{MIP model}}
+  
+  \begin{tabular}{ll}
+    \onslide<+->{
+      $a^s_{ijt}$ &  :  mission $j$ assigned starts in period $t$ to aircraft $i$.
+    }  \\
+    \onslide<+->{
+      $a_{ijt}$ &  :  mission $j$ assigned in period $t$ to aircraft $i$.
+    }  \\
+    \onslide<4->{
+      $m_{it}$   & :  aircraft $i$ starts a check in period $t$.
+    }
+  \end{tabular}
 
-\begin{block}{Complexity analysis}
-
-safdasdf
-
-\end{block}
+  \onslide<1->{
+    \begin{adjustbox}{max totalsize={.7\textwidth}{.7\textheight},center}
+      \begin{tikzpicture}
+        \input{graphs/gantt_example_first.tex}
+      \end{tikzpicture}  
+    \end{adjustbox}
+  }
+  \begin{align*}
+    % maximum capacity1:
+    \onslide<6->{& \sum_{t' \in \mathcal{T}^s_t} \sum_{i \in \mathcal{I}} m_{it'} + N_t \leq C^{max}
+      & t \in \mathcal{T}\\}
+    % min assignments:
+    \onslide<7->{& \sum_{i \in \mathcal{I}_j} a_{ijt} \geq R_j
+            & j \in \mathcal{J}, t \in \mathcal{T}_j \\} 
+    % just doing one thing at any given time:
+    \onslide<8->{& \sum_{t' \in \mathcal{T}^s_t} m_{it'} + \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt} \leq 1 
+            & t \in \mathcal{T}, i \in \mathcal{I}}
+  \end{align*}
 
 \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Exact methods}}
+\begin{frame}[t]
+\frametitle{\textbf{Flight hours rule}}
 
-\begin{tabular}{p{15mm}p{110mm}}
-  $a_{jit}$ &  :  =1 if mission $j \in J$ in period $t \in \mathcal{T}_j$ is realized with aircraft $i \in \mathcal{I}_j$, 0 otherwise.  \\
-  $m_{it}$   & :  =1 if aircraft $i \in I$ starts a check in period $t \in \mathcal{T}$, 0 otherwise.  \\
-  $u_{it}$    &:  flown time (continuous) by aircraft $i \in I$ during period $t \in \mathcal{T}$. \\
-\end{tabular}
+  \begin{tabular}{ll}
+    \onslide<1->{
+      $u_{it}$ &:  hours flown by aircraft $i$ during period $t$.
+    }  \\
+    \onslide<3->{
+      $rft_{it}$ &: remaining flight hours for aircraft $i$ during period $t$.
+    }  \\
+  \end{tabular}
 
-\begin{align}
- & u_{it} \geq \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{jti} H_j 
-    & t =1, ..., \mathcal{T}, i \in \mathcal{I} \label{eq:flight1}\\
- & u_{it} \geq U^{min} (1 - \sum_{t' \in \mathcal{T}^s_t} m_{it'})
-    & t =1, ..., \mathcal{T}, i \in \mathcal{I} \label{eq:flight2}\\
- & rft_{it} \leq rft_{i(t-1)} - u_{it} + H^M m_{it}
-    & t =1, ..., \mathcal{T}, i \in \mathcal{I} \label{eq:first_rft_upper}\\
-& rft_{it} \in [0,H^M]
-      & t \in \mathcal{T}, i \in \mathcal{I} \label{eq:first-mu}
-\end{align}
+  \onslide<1->{
+    \begin{adjustbox}{max totalsize={.7\textwidth}{.7\textheight},center}
+      \begin{tikzpicture}
+        \input{graphs/gantt_example_first_2.tex}
+      \end{tikzpicture}  
+    \end{adjustbox}
+  }
+
+  \begin{align*}
+  % \onslide<2>{
+  %    & \sum_{t' \in \mathcal{T}^s_t} \sum_{i \in \mathcal{I}_k} m_{it'} + N^K_{kt} \leq A^K_{kt}
+  %     &k \in \mathcal{K}, t \in \mathcal{T}\\
+  %    & \sum_{i \in \mathcal{I}_k} rft_{it} \geq H^K_{kt}
+  %     &k \in \mathcal{K}, t \in \mathcal{T}
+  %   }
+    \only<2>{
+      & u_{it} \geq \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt} H_j 
+          & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
+      & u_{it} \geq U^{min} (1 - \sum_{t' \in \mathcal{T}^s_t} m_{it'})
+          & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
+      & u_{it} \in [0, \max_j{\{H_j\}}]
+            & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
+    }
+    \only<4->{
+      & rft_{i0} = Rft^{Init}_i
+             & i \in \mathcal{I}\\
+      & rft_{it} \leq rft_{i(t-1)} + H^M m_{it} - u_{it}
+          & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
+      & rft_{it} \geq H^M m_{it'}
+              & t \in \mathcal{T}, t' \in \mathcal{T}^s_t, i \in \mathcal{I}\\ 
+      & rft_{it} \in [0,H^M]
+              & t \in \mathcal{T}, i \in \mathcal{I}
+    }
+  \end{align*}
 
 \end{frame}
 
@@ -37,3 +100,6 @@ safdasdf
 
 
 \end{frame}
+
+
+
