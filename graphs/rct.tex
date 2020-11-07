@@ -1,14 +1,15 @@
 \begin{axis}[
     name=rct,
     at={(start.south)},anchor=north west, 
-    yshift=-0.3cm,
+    yshift=-0.8cm,
     xshift=0.2cm,
     axis lines=center,
     xmax = 15,
     ymin = 0,
     ymax = 6,
     ylabel=Periods,
-    xlabel=$t$,
+    % xlabel=$t$,
+    xmajorticks=false,
     % ylabel=Remaining \\calendar \\time ($rct$),
     % xlabel=Periods ($t$),
     y label style={
@@ -22,33 +23,53 @@
       anchor=north,
     },
     width=\textwidth,
-    height=0.5\textwidth
+    height=0.3\textwidth
     ]
-  \addplot[color=blue] coordinates {
+  \addplot[color=blue, thick] coordinates {
     (0,2)
     (1,1)
-    (2,0)
   };
-  \addplot[color=maintColor, ultra thick] coordinates {
-    (2,0)
-    (2,6)
+  \addplot[color=maintColor, ultra thick, name path=A] coordinates {
+    (1,0)
+    (1,6)
+  };
+  \addplot[color=maintColor, ultra thick, name path=B] coordinates {
+    (3,0)
     (3,6)
   };
-  \addplot[color=blue] coordinates {
+  % \addplot [fill=maintColor] fill between [of=A and B];
+  \addplot[color=blue, thick] coordinates {
     (3,6)
     (4,5)
     (5,4)
     (6,3)
     (7,2)
     (8,1)
-    (9,0)
   };
-  \addplot[color=maintColor, ultra thick] coordinates {
-    (9,0)
-    (9,6)
-    (10,6) 
+  \addplot[color=maintColor, ultra thick, name path=C] coordinates {
+    (8,0)
+    (8,6)
   };
-  \addplot[color=blue] coordinates {
+  \addplot[color=maintColor, ultra thick, name path=D] coordinates {
+    (10,0)
+    (10,6)
+  };
+    % \addplot [
+    %     thick,
+    %     color=blue,
+    %     fill=blue, 
+    %     fill opacity=0.05
+    % ]
+    % fill between[
+    %     of=C and D,
+    %     split,
+    %     every segment no 0/.style={
+    %         %fill=none,
+    %         yellow,
+    %     },
+    % ];
+
+  \addplot[color=blue, thick] coordinates {
     (10,6)
     (11,5)
     (12,4)

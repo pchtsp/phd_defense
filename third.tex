@@ -49,7 +49,7 @@
   %   \ganttmilestone[milestone/.append style={anchor=east, fill=blue}]{}{10}
   % }
 % \end{tikzpicture}
-  \onslide<2->{  
+  \onslide<3->{  
     \begin{adjustbox}{max totalsize={\textwidth}{\textheight},left, trim=15pt 0 0 0}
       \input{graphs/graph_example3}
     \end{adjustbox}
@@ -275,7 +275,7 @@
   % TODO: FMP and NRP: long?
   \pause
   \begin{block}{\textbf{Conclusions}}
-    \begin{itemize}[<+->]
+    \begin{itemize}
     \item \textbf{Graph representation} 
       built to efficiently explore the solution space of an aircraft.
     \item \textbf{Complementary neighborhoods} 
@@ -284,15 +284,14 @@
   \end{block}  
   \pause
   \begin{block}{\textbf{Perspectives}}
-    \begin{itemize}[<+->]
-      \item \textbf{Replace ad-hoc RH}
-        e.g., by predicting / sampling promising patterns and running a set-covering model.
+    \begin{itemize}
+      \item \textbf{Combine with pattern sampling}
+        e.g., by extracting promising patterns and running a set-covering model as neighborhood.
       \item \textbf{Apply graph in GRASP}
         by sampling paths in graph to quickly build solutions.
-      \item \textbf{Generalize methodology}
-        use it for the civil FMP problem or NRP.
     \end{itemize}
   \end{block}  
-  
+  \pause
+  \textbf{Submission:} Franco Peschiera, Alain Haït, Nicolas Dupin, Olga Battaïa. Novel Graph-based matheuristic to solve the Flight and Maintenance Planning problem.
 \end{frame}
 

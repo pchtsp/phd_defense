@@ -1,0 +1,78 @@
+\definecolor{color2}{HTML}{D7191C}
+\definecolor{color3}{HTML}{1A9641}
+\definecolor{color4}{HTML}{FDAE61}
+\definecolor{color5}{HTML}{A6D96A}
+    \begin{ganttchart}[
+    expand chart=\textwidth,
+    y unit chart=0.7cm,
+    hgrid,
+    vgrid,
+    time slot format=simple
+    ]{1}{20}
+    \ganttset{bar height=0.6}
+    \ganttset{bar top shift=0.15}
+    \gantttitlelist{1,...,20}{1} \\
+    \onslide<1->{
+      \Dganttbar{0}{M}{3}{4}{bar/.append style={fill=maintColor,draw=none}}
+      \Dganttbar{0}{M}{17}{18}{bar/.append style={fill=maintColor,draw=none}}
+    }
+    \onslide<2->{
+      \Dganttbar{0}{68h}{6}{7}{bar/.append style={fill=color2,draw=none}}
+      \Dganttbar{0}{72h}{8}{11}{bar/.append style={fill=color3,draw=none}}
+      \Dganttbar{0}{120h}{12}{15}{bar/.append style={fill=color4,draw=none}}
+    }
+    \ganttnewline
+    \onslide<1->{
+      \Dganttbar{1}{M}{12}{13}{bar/.append style={fill=maintColor,draw=none}}
+    }
+    \onslide<2->{
+      \Dganttbar{1}{102h}{5}{7}{bar/.append style={fill=color2,draw=none}}
+      \Dganttbar{1}{72h}{8}{11}{bar/.append style={fill=color3,draw=none}}
+      \Dganttbar{1}{105h}{16}{18}{bar/.append style={fill=color2,draw=none}}
+      \Dganttbar{1}{50h}{19}{20}{bar/.append style={fill=color5,draw=none}}
+    }
+    \ganttnewline
+    \onslide<1->{
+      \Dganttbar{2}{M}{7}{8}{bar/.append style={fill=maintColor,draw=none}}
+    }
+    \onslide<2->{
+    \Dganttbar{2}{68h}{5}{6}{bar/.append style={fill=color2,draw=none}}
+    \Dganttbar{2}{120h}{12}{15}{bar/.append style={fill=color4,draw=none}}
+    \Dganttbar{2}{105h}{16}{18}{bar/.append style={fill=color2,draw=none}}
+    }
+    \ganttnewline
+    \onslide<1-2,6>{
+    \Dganttbar{3}{M}{5}{6}{bar/.append style={fill=maintColor,draw=none}}
+    \Dganttbar{3}{M}{19}{20}{bar/.append style={fill=maintColor,draw=none}}
+    }
+    \onslide<2,6>{
+    \Dganttbar{3}{96h}{1}{4}{bar/.append style={fill=color5,draw=none}}
+    \Dganttbar{3}{72h}{8}{11}{bar/.append style={fill=color3,draw=none}}
+    \Dganttbar{3}{120h}{12}{15}{bar/.append style={fill=color4,draw=none}}
+    }
+    \onslide<4-5>{
+    \Dganttbar{3}{M}{9}{10}{bar/.append style={fill=maintColor,draw=none}}
+    }
+    \onslide<5>{
+    \Dganttbar{3}{96h}{1}{4}{bar/.append style={fill=color5,draw=none}}
+    \Dganttbar{3}{120h}{12}{15}{bar/.append style={fill=color4,draw=none}}
+    }
+    \ganttnewline
+    \onslide<1->{
+    \Dganttbar{4}{M}{1}{2}{bar/.append style={fill=maintColor,draw=none}}
+    \Dganttbar{4}{M}{14}{15}{bar/.append style={fill=maintColor,draw=none}}
+    }
+    \onslide<2->{
+    \Dganttbar{4}{102h}{5}{7}{bar/.append style={fill=color2,draw=none}}
+    \Dganttbar{4}{105h}{16}{18}{bar/.append style={fill=color2,draw=none}}
+    }
+
+    \node (per) [anchor=south] at ([yshift=5pt]current bounding box.north){$t$};
+    \node (air) [anchor=north east] at ([xshift=-5pt, yshift=-12pt]current bounding box.west){$i$};
+    \node (se) [anchor=north] at (current bounding box.south east){};
+
+    \node (maint) [fill=maintColor,draw, label=left:{\tiny Check}, minimum width=0.5cm, minimum height=0.3cm, anchor=north east] at ([yshift=5pt]se.south west){\tiny\bfseries $M$};
+    \node (miss) [draw, label=left:{\tiny Mission assignment}, minimum width=0.5cm, minimum height=0.3cm, fill=missionColor] at ([yshift=-12pt]maint.south){\tiny\bfseries 80h};
+    \node[label=left:{\tiny Flight hours}, minimum width=0.5cm, minimum height=0.5cm] at ([yshift=-12pt]miss.south){\tiny\bfseries 80h};
+
+\end{ganttchart}

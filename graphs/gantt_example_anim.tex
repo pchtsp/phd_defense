@@ -25,14 +25,15 @@
     \ganttmilestone[name=start, milestone/.append style={anchor=east}]{}{0}
     \ganttmilestone[name=end, milestone/.append style={anchor=east}]{}{15}
     \node (a) [anchor=north] at (current bounding box.south east){};
+    \node (b) [anchor=north] at (current bounding box.south west){};
     \node (per) [anchor=south] at ([yshift=5pt]current bounding box.north){$t$};
     \node (air) [anchor=north east] at ([xshift=-5pt, yshift=-12pt]current bounding box.west){$i$};
     \onslide<2->{
-      \node (maint) [fill=maintColor,draw, label=left:{\tiny Check}, minimum width=0.5cm, minimum height=0.3cm, anchor=north east] at ([yshift=1pt]a.south east){\tiny\bfseries $M$};
+      \node (maint) [fill=maintColor,draw, label=left:{\tiny Check}, minimum width=0.5cm, minimum height=0.15cm, anchor=west] at ([yshift=3pt,xshift=1cm]b.south){};
     }
     \onslide<3->{
-      \node (miss) [draw, label=left:{\tiny Mission assignment}, minimum width=0.5cm, minimum height=0.3cm, pattern=north west lines, pattern color=missionColor] at ([yshift=-12pt]maint.south){\tiny\bfseries 80h};
-      \node[label=left:{\tiny Flight hours}, minimum width=0.5cm, minimum height=0.5cm] at ([yshift=-12pt]miss.south){\tiny\bfseries 80h};
+      \node (miss) [draw, label=left:{\tiny Mission assignment}, minimum width=0.5cm, minimum height=0.15cm, pattern=north west lines, pattern color=missionColor, anchor=west] at ([xshift=3cm]maint.east){};
+      % \node[label=left:{\tiny Flight hours}, minimum width=0.5cm, minimum height=0.5cm, anchor=west] at ([xshift=2cm]miss.east){\tiny\bfseries 80h};
     }
     % \node (aaa) [anchor=east] at ([yshift=-12pt]miss.south west){Total flight hours};
     % \draw[->] (miss.south) -- ++(0,5pt) |- (aaa.east);
@@ -41,7 +42,9 @@
 \end{ganttchart}
 
 \only<4>{
-  \input{graphs/rft}
+  % \begin{adjustbox}{max totalsize={.7\textwidth}{.3\textheight},center}
+    \input{graphs/rft}
+  % \end{adjustbox}
 }
 
 \onslide<5->{

@@ -10,11 +10,52 @@
     milestone/.append style={fill=none, yshift=-6pt, draw=none}
 ]{1}{15}
     \gantttitlelist{1,...,15}{1} \\
-    % \onslide<3->{
+
+    \onslide<1,3>{
     \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{80h}{5}{8}
     \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline, bar label font=\tiny\bfseries]{$M$}{2}{3}
+    }
 
-    \ganttmilestone[name=start, milestone/.append style={anchor=east}]{}{0}
-    \ganttmilestone[name=end, milestone/.append style={anchor=east}]{}{15}
-    \node (a) [anchor=north] at (current bounding box.south east){};
+    \onslide<2>{
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{20h}{5}{5}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{20h}{6}{6}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{20h}{7}{7}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{20h}{8}{8}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$U^{min}$}{1}{1}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$U^{min}$}{4}{4}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$U^{min}$}{9}{9}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$U^{min}$}{10}{10}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$U^{min}$}{11}{11}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$U^{min}$}{12}{12}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$U^{min}$}{13}{13}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$U^{min}$}{14}{14}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$U^{min}$}{15}{15}
+      \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline, bar label font=\tiny\bfseries]{0h}{2}{2}
+      \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline, bar label font=\tiny\bfseries]{0h}{3}{3}
+    }
+    \onslide<4>{
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{80h}{5}{5}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{60h}{6}{6}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{40h}{7}{7}
+      \ganttbar[bar/.append style={pattern=north west lines, pattern color=missionColor,draw=none}, inline, bar label font=\tiny\bfseries]{20h}{8}{8}
+      % \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{$Rft^{Init}$}{1}{1}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{50h}{1}{1}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{100h}{4}{4}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{20h}{9}{9}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{20h}{10}{10}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{20h}{11}{11}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{20h}{12}{12}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{20h}{13}{13}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{20h}{14}{14}
+      \ganttbar[bar/.append style={draw=none}, inline, bar label font=\tiny\bfseries]{20h}{15}{15}
+      % \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline, bar label font=\tiny\bfseries]{$H^{max}$}{2}{2}
+      \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline, bar label font=\tiny\bfseries]{100h}{2}{2}
+      \ganttbar[bar/.append style={fill=maintColor,draw=none}, inline, bar label font=\tiny\bfseries]{100h}{3}{3}
+    }
+    \node (per) [anchor=south] at ([yshift=5pt]current bounding box.north){$t$};
+    \node (air) [anchor=north east] at ([xshift=-5pt, yshift=-12pt]current bounding box.west){$i$};
+
+    % \ganttmilestone[name=start, milestone/.append style={anchor=east}]{}{0}
+    % \ganttmilestone[name=end, milestone/.append style={anchor=east}]{}{15}
+    % \node (a) [anchor=north] at (current bounding box.south east){};
 \end{ganttchart}

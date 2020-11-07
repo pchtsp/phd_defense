@@ -70,80 +70,76 @@
     \item Recovery tasks: checks.
   \end{itemize}
 
-  \pause
-  Aircraft: Flight and Maintenance Planning (FMP) problem.
-
-  \pause
-  Military FMP.
-
-\end{frame}
-
-\begin{frame}
-\frametitle{\textbf{The maintenance of a military aircraft}}
-  \begin{tikzpicture}
-    \input{graphs/gantt_example_anim.tex}
-  \end{tikzpicture}
-\end{frame}
-
-\begin{frame}
-\frametitle{\textbf{A MFMP problem}}
-
-  \begin{columns}[c]
-    \column{0.4\linewidth}
-
-    \pause
-    \begin{itemize}[<+->]
-      \item $j \in \mathcal{J}$ missions.
-      \item $i \in \mathcal{I}$ aircraft.
-      \item Maintenances.
-    \end{itemize}
-
-    \column{0.6\linewidth}
-    \only<2>{
-      \begin{small}
-      \begin{table}
-        \centering
-        \input{tables/6tasks.tex}
-      \end{table}
-      \end{small}
-    }
-    \only<3>{
-      \begin{small}
-      \begin{table}
-        \centering
-        \input{tables/5aircraft.tex}
-      \end{table}
-      \end{small}
-    }
-    \only<4>{
-      \\
-      Frequency (in time, in flight hours).\\
-      Duration.\\
-      Capacity.\\
-    }
-  \end{columns}
-
-  \onslide<+->{
-    \begin{block}{\textbf{More constraints}}
-      Fleet-status, mission-aircraft compatibility.
-    \end{block}  
-  }
-  \onslide<+->{
-    \begin{block}{\textbf{Many objectives}}
-      Maximize the availability, minimize the number of checks, minimize maintenance capacity.
-    \end{block}  
-  }
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{\textbf{An example MFMP solution}}
-  \input{graphs/gantt_5aircraft.tex}
+\frametitle{\textbf{The Flight and Maintenance Planning problem}}
+  
+  \begin{adjustbox}{max totalsize={\textwidth}{.5\textheight},center}
+  \begin{tikzpicture}
+    \input{graphs/FMP_example.tex} 
+  \end{tikzpicture}
+  \end{adjustbox}
+
+  \begin{textblock*}{1.1\textwidth}(0.8cm, 7.5cm)
+    \textbf{State of the art :} FMP
+    \begin{flushleft}
+    % $\star$
+    \onslide<2->{
+      \citesize (1) C. Barnhart, N. L. Boland, L. W. Clarke, E. L. Johnson, G. L. Nemhauser, and R. G. Shenoi. Flight string models for aircraft fleeting and routing. Transportation Science, 1998.\\
+    }
+    \onslide<3->{
+      \citesize (2) A. Sarac, R. Batta, and C. M. Rump. A branch-and-price approach for operational aircraft maintenance routing. European Journal of Operational Research, 2006.
+    }
+    \end{flushleft}
+  \end{textblock*}
 \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{An example MFMP solution}}
-  \input{graphs/gantt_5aircraft_exp.tex}
+\begin{frame}[t]
+\frametitle{\textbf{The Military Flight and Maintenance Planning problem}}
+  \begin{tikzpicture}
+    \input{graphs/gantt_example_anim.tex}
+  \end{tikzpicture}
+
+  \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
+    \begin{flushleft}
+    % $\star$
+    \onslide<3->{
+      \citesize $\star$ R. A. Hahn and A. M. Newman. Scheduling United States Coast Guard helicopter deployment and maintenance at Clearwater Air Station, Florida. Computers and Operations Research, 2008. 
+    }
+    \end{flushleft}
+  \end{textblock*}
+  
 \end{frame}
+
+ 
+% \begin{frame}
+% \frametitle{\textbf{The Military Flight and Maintenance Planning problem}}
+  
+%   Check Flow Balance (CFB)
+%   \cite{Kozanidis2008}
+%   \cite{Verhoeff2015}
+%   \cite{Seif2018}  
+%   \cite{Marlow2017}
+
+%   Discrete Check and Mission (DCM)
+%   \cite{Cho2011}
+%   \cite{Li2016}
+%   \cite{Shah2017}
+
+
+%   \cite{Hahn2008}
+%   \cite{Winata2011}
+
+%   Calendar potential maintenances.
+
+%   Slot-based maintenance.
+
+%   The Greek: 
+%   The Dutch: 
+
+
+% \end{frame}
 
 % \begin{frame}
 % \frametitle{\textbf{Encoding of an MFMP solution}}

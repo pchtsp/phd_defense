@@ -1,14 +1,79 @@
-% \section{\firsttitle}
+\section{\firsttitle}
 
-% \begin{frame}
+\begin{frame}
+\frametitle{\textbf{The long term MFMP problem}}
 
-% \begin{block}{Complexity analysis}
+  \begin{columns}[c]
+    \column{0.4\linewidth}
 
-% safdasdf
+    \pause
+    \begin{itemize}[<+->]
+      \item $j \in \mathcal{J}$ missions.
+      \item $i \in \mathcal{I}$ aircraft.
+      \item Maintenances.
+    \end{itemize}
 
-% \end{block}
+    \column{0.6\linewidth}
+    \only<2>{
+      \begin{small}
+      \begin{table}
+        \centering
+        \input{tables/6tasks.tex}
+      \end{table}
+      \end{small}
+    }
+    \only<3>{
+      \begin{small}
+      \begin{table}
+        \centering
+        \input{tables/5aircraft.tex}
+      \end{table}
+      \end{small}
+    }
+    \only<4>{
+      \\
+      Frequency (in time, in flight hours).\\
+      Duration.\\
+      Capacity.\\
+    }
+  \end{columns}
 
-% \end{frame}
+  \onslide<+->{
+    \begin{block}{\textbf{More constraints}}
+      Fleet-status, mission-aircraft compatibility.
+    \end{block}  
+  }
+  \onslide<+->{
+    \begin{block}{\textbf{Many objectives}}
+      Maximize the availability, minimize the number of checks, minimize maintenance capacity.
+    \end{block}  
+  }
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{\textbf{An example MFMP solution}}
+  \input{graphs/gantt_5aircraft.tex}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{An example MFMP solution}}
+  \input{graphs/gantt_5aircraft_exp.tex}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Complexity analysis}}
+  
+  \begin{itemize}[<+->]
+    \item take out maintenances needs.
+    \item minimal assignment of mission = duration of mission.
+    \item only one aircraft per mission.
+    \item take out objective function: feasibility.
+  \end{itemize}
+
+  \onslide<+->{
+    Becomes the NP-Complete Shift Satisfaction Personnel Task Scheduling Problem first presented in \cite{Arkin1987}.
+  }    
+\end{frame}
 
 \begin{frame}
 \frametitle{\textbf{MIP model}}
@@ -43,7 +108,6 @@
     \onslide<8->{& \sum_{t' \in \mathcal{T}^s_t} m_{it'} + \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt} \leq 1 
             & t \in \mathcal{T}, i \in \mathcal{I}}
   \end{align*}
-
 \end{frame}
 
 \begin{frame}[t]
@@ -92,14 +156,69 @@
               & t \in \mathcal{T}, i \in \mathcal{I}
     }
   \end{align*}
-
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{}}
-
-
+\frametitle{\textbf{Simulated annealing}}
+  \input{graphs/gantt_5aircraft_sa}  
 \end{frame}
 
+\begin{frame}
+\frametitle{\textbf{Experiments}}
 
+  \textbf{Instance simulator}.
+  \pause
+  \begin{itemize}
+    \item Number of instances: 50.  
+    \item Time limit at 3600 seconds.
+    \item CPLEX.
+    \item Several parameters and configurations.
+    \begin{itemize}
+      \item Fleet sizes: 15 (base), 30, 45, 60.
+      \item Planning horizons: 90 (base), 120, 140.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
+\begin{frame}
+\frametitle{\textbf{Results}}
+
+  \begin{itemize}[<+->]
+    \item Small gaps.
+    \item Long times.
+  \end{itemize}
+  
+  \only<1>{
+    \includegraphics[width=0.8\linewidth]{images/clust_params2_cplex_gaps.png}
+  }
+  \only<2>{
+    \includegraphics[width=0.8\linewidth]{images/clust_params2_cplex_times.png}
+  }
+\end{frame}
+
+% TODO: results for simulated annealing.
+
+\begin{frame}
+\frametitle{\textbf{Preliminary conclusions}}
+  \begin{block}{\textbf{Conclusions}}
+    \begin{itemize}
+    \item \textbf{The long term MFMP problem is presented}
+      along with a complexity analysis and a configurable instance generator.
+      
+    \item \textbf{Two solving techniques are tested}
+      a MIP model and a Simulated Annealing approach.
+      
+    \end{itemize}
+  \end{block}  
+  \pause
+  \begin{block}{\textbf{Perspectives}}
+    \begin{itemize}
+      \item \textbf{Extend the problem} to include other real world constraints.
+        
+      \item \textbf{Benchmark} with other similar MFMP problems.
+        
+    \end{itemize}
+  \end{block}
+  \pause
+  \textbf{Submission:} Franco Peschiera, Olga Battaïa, Alain Haït, Nicolas Dupin. Long term planning of military aircraft flight and maintenance operations. Annals of Operations Research.
+\end{frame}
