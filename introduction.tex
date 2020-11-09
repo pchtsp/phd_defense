@@ -67,13 +67,13 @@
   \begin{itemize}[<+->]
     \item Tasks: flights, train schedules, routes.
     \item Resources: aircraft, trains, vehicles.
-    \item Recovery tasks: checks.
+    \item Recovery tasks: checks (=maintenances).
   \end{itemize}
 
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{\textbf{The Flight and Maintenance Planning problem}}
+\frametitle{\textbf{The Flight and Maintenance Planning (FMP) problem}}
   
   \begin{adjustbox}{max totalsize={\textwidth}{.5\textheight},center}
   \begin{tikzpicture}
@@ -82,7 +82,9 @@
   \end{adjustbox}
 
   \begin{textblock*}{1.1\textwidth}(0.8cm, 7.5cm)
-    \textbf{State of the art :} FMP
+    \onslide<2->{
+      \textbf{State of the art :} FMP
+    }
     \begin{flushleft}
     % $\star$
     \onslide<2->{
@@ -96,7 +98,7 @@
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{\textbf{The Military Flight and Maintenance Planning problem}}
+\frametitle{\textbf{The Military Flight and Maintenance Planning (MFMP) problem}}
   \begin{tikzpicture}
     \input{graphs/gantt_example_anim.tex}
   \end{tikzpicture}

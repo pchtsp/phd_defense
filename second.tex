@@ -56,23 +56,7 @@
       \DrawSolution{gyoptim}{none}{0}
    \end{adjustbox}
   }
-  % \only<6->{
-  %   \Put(0,20){
-  %    \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
-  %       \DrawSolution{none}{none}{0}
-  %    \end{adjustbox}
-  %   }
-  %   \Put(0,40){
-  %    \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
-  %       \DrawSolution{none}{none}{0}
-  %    \end{adjustbox}
-  %   }
-  %   \Put(0,60){
-  %    \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
-  %       \DrawSolution{none}{none}{0}
-  %    \end{adjustbox}
-  %   }
-  % }
+  % TODO: add citation of Bengio / Lodi
 
 \end{frame}
 
@@ -121,30 +105,6 @@
    }
 \end{frame}
 
-% \begin{frame}
-% \frametitle{\textbf{Optimality of learned-cuts}}
-
-%   \begin{columns}[c]
-%     \column{0.6\linewidth}
-%     \textbf{With some (hopefully small) loss :}
-%     \column{0.4\linewidth}
-%     \begin{equation*}
-%       C(x,\hat{y}^{*}(x)) \approx  C(x,y^{*}(x))
-%     \end{equation*}
-%   \end{columns}
-%   \only<1>{
-%    \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
-%       \DrawSolution{ghat}{north west lines}{1}
-%    \end{adjustbox}
-%    }
-%   \only<2->{
-%    \begin{adjustbox}{max totalsize={.5\textwidth}{.5\textheight},center}
-%       \DrawSolution{ghat}{north west lines}{2}
-%    \end{adjustbox}
-%    }
-%    % TODO: legend
-% \end{frame}
-
 \begin{frame}
 \frametitle{\textbf{Motivation}}
 
@@ -173,9 +133,7 @@
 
 \begin{frame}[t]
 \frametitle{\textbf{New formulation}}
-
-% TODO: legend, aircraft i, period t, M= check
-  
+ 
   \begin{tabular}{ll}
     \onslide<2->{$a_{ijtt'}$ & : aircraft $i$ is in mission $j$ between $t$ and $t'$.}  \\
     \onslide<3->{$m_{ip}$ &: aircraft $i$ uses check pattern $p$.} \\
@@ -207,6 +165,7 @@
 
 \begin{frame}
 \frametitle{\textbf{Solution feature: distance between maintenances}}
+  % TODO: add G, g()
 
   For each aircraft $i$: $D_i(y) \in [E^{min},E^{max}] \,\, \forall y \in \mathcal{Y}(x)$. \\
   \only<+->{
@@ -216,15 +175,11 @@
     Solution feature: $g_1(y) = \mu_{t'-t} = \frac {\sum_{i \in \mathcal{I}} D_i(y)}{I}$. \\
   }
 
-  % \only<4->{
-  %   Distribution of $\mu^*_{t'-t}$: \\
-  % \includegraphics[height=0.3\linewidth]{images/distribution_mean_distances_IT000125_20190716}
-  % }
-
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Input features}}
+  % TODO: add H
 
   \onslide<1->{  
     \begin{block}{\textbf{Mission related}}
@@ -260,8 +215,6 @@
   \end{block}
   }
 
-  % TODO: add prediction results
-  % TODO: add prediction example
 \end{frame}
 
 \begin{frame}
@@ -272,7 +225,6 @@
       D_{ip} \in [\hat{\mu}_{t'-t}^{lb} - tol, \hat{\mu}_{t'-t}^{ub} + tol] \rightarrow p \in \mathcal{P}_i 
     \end{equation*}
   \end{block}
-  % TODO: add example
   \pause
 
   \begin{block}{\textbf{Pattern recycling:} with probabiliy $\alpha$}
@@ -299,8 +251,6 @@
 \begin{frame}
 \frametitle{\textbf{Results: performance}}
 
-  % TODO: change colors
-  % TODO: bigger picture
   \begin{itemize}[<+->]
     \item More solutions.
     \item Faster solutions.
@@ -310,8 +260,7 @@
     \includegraphics[width=0.8\linewidth]{images/transitions_base_2tasks.png}
   }
   \only<2>{
-  % TODO: add one line at a time.
-  % TODO: lines thicker and lines, not points
+  % TODO: add one line at a time (add the rest of techniques).
   % TODO: Time to solve instance (seconds)
     \includegraphics[width=0.8\linewidth]{images/time_performance_ordered_2tasks.png}
   }
@@ -332,7 +281,6 @@
 \begin{frame}
 \frametitle{\textbf{Preliminary conclusions}}
   \pause
-  % TODO: check phrases
   \begin{block}{\textbf{Conclusions}}
     \begin{itemize}
     \item \textbf{Supervised learning for optimization}

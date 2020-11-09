@@ -36,9 +36,9 @@
             base/.style = {rectangle, rounded corners, draw=black,
                            minimum width=4cm, minimum height=1cm,
                            text centered, font=\sffamily},
-  activityStarts/.style = {base, fill=white},
+  activityStarts/.style = {base, fill=green!30, minimum width=2cm},
        startstop/.style = {base, fill=white},
-    subproblem/.style = {base, fill=green!30},
+    neighborhoods/.style = {base, draw=blue, very thick},
          master/.style = {base, minimum width=2.5cm, fill=white,
                            font=\ttfamily},
 }
@@ -67,6 +67,15 @@
     },
   }
 
+    \tikzset{
+        hatch distance/.store in=\hatchdistance,
+        hatch distance=10pt,
+        hatch thickness/.store in=\hatchthickness,
+        hatch thickness=2pt
+    }
+
+    \makeatother  
+
 \hypersetup{
 	colorlinks=false,
 	urlcolor=cyan,
@@ -92,7 +101,23 @@
 }
 \newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
 \newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+
+
+    \pgfdeclarepatternformonly[\hatchdistance,\hatchthickness]{flexible hatch}
+    {\pgfqpoint{0pt}{0pt}}
+    {\pgfqpoint{\hatchdistance}{\hatchdistance}}
+    {\pgfpoint{\hatchdistance-1pt}{\hatchdistance-1pt}}%
+    {
+        \pgfsetcolor{\tikz@pattern@color}
+        \pgfsetlinewidth{\hatchthickness}
+        \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+        \pgfpathlineto{\pgfqpoint{\hatchdistance}{\hatchdistance}}
+        \pgfusepath{stroke}
+    }
+
 \makeatother
 
 \setbeamerfont{footnote}{size=\tiny}
 \setbeamerfont{frametitle}{size=\large}
+
+

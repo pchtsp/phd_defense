@@ -1,0 +1,33 @@
+\begin{tikzpicture}[
+    % font=\myfontfamily\myfontsize,
+    % container/.style={
+    %     draw,
+    %     rectangle,
+    %     rounded corners,
+    %     minimum height = 2cm
+    % }
+    ]
+    % \def\xa{-3.8cm}
+    % \def\xb{0cm}
+    % \def\xc{3.8cm}
+    % CONTAINERS
+    % \draw (\xa, 0) node [container, minimum width = 4.4cm] {};
+    % \draw (\xb, 0) node [container, minimum width = 2.2cm] {};
+    % \draw (\xc, 0) node [container, minimum width = 4.4cm] {};
+    
+    % TEXT
+    % \draw (\xa, 1) node [fill=white] {Laboratoire};
+    % \draw (\xb, 1) node [fill=white] {École};
+    % \draw (\xb, 1cm-1em) node [] {doctorale};
+    % \draw (\xc, 1) node [fill=white] {Financements};
+    
+    % LOGOS
+    % \draw (\xa-1.1cm, 0) node [] {\includegraphics[width=1.7cm]{images/isae.png}};
+    \node (first) [anchor=west] at (0, 0) {};
+    \node (last) [anchor=east] at (\textwidth, 0) {};
+    % \node (isae) [] at (-5, 0) {\includegraphics[width=0.15\textwidth]{images/isae.png}};
+    \node (isae) [anchor=east] at ($(first)!0.25!(last)$) {\includegraphics[width=0.15\textwidth]{images/isae.png}};    
+    % \node (dga) [anchor=west] at ([xshift=1.5cm]isae.east) {\includegraphics[width=0.15\textwidth]{images/dga.jpg}};
+    \node (dga) [] at ($(first)!0.50!(last)$) {\includegraphics[width=0.15\textwidth]{images/dga.jpg}};
+    \node (edaa) [anchor=west] at ($(first)!0.75!(last)$) {\includegraphics[width=0.15\textwidth]{images/edaa.jpg}};
+\end{tikzpicture}

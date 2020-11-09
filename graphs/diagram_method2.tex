@@ -1,33 +1,34 @@
-      \begin{tikzpicture}[node distance=1.6cm,
+      \begin{tikzpicture}
+      [node distance=1.6cm,
       every node/.style={fill=white, font=\sffamily}, align=left]
      % Specification of nodes (position, etc.)
       \node (start)             [activityStarts]              {Start};
 
-      \onslide<+->{
+      % \onslide<+->{
         \node (initSol)     [startstop, below of=start]          {$x = getInitialSolution()$\\$z^* = \infty$\\$t = clock()$};
         \draw[->]             (start) -- (initSol);
-      }
-      \onslide<+->{
+      % }
+      % \onslide<+->{
         \node (objFunc)      [master, below of=initSol]   {$err= getErrors(x)$\\$z=getObjective(x,err)$};
         \draw[->]     (initSol) -- (objFunc);
-      }
-      \onslide<+->{
+      % }
+      % \onslide<+->{
          \node (maybeBest)      [master, below of=objFunc]   {$z < z^*$};
          \draw[->]     (objFunc) -- (maybeBest);
           \node (updateBest)      [master, right of=maybeBest, xshift=3cm]   {$x^* = x$\\$z^* = z$};
          \draw[->]      (maybeBest) -- node {Yes} (updateBest);
-      }
-      \onslide<+->{
+      % }
+      % \onslide<+->{
         \node (maybeStop)      [master, below of=maybeBest, yshift=-0.5cm]   {$clock() -t > t_{max}$};
         \node (Stop)      [activityStarts, right of=maybeStop, xshift=3cm]   {End};
         \draw[->]     (maybeStop) -- node {Yes}  (Stop);
         \draw[->]      (maybeBest) -- node {No} (maybeStop);
         \draw[->]      (updateBest.south) -- ++(0,-.7) -- ++(-4.5,0)  -- (maybeStop.north);
-      }
-      \onslide<+->{
-        \node (chooseNeighborFunc)     [master, below of=maybeStop, yshift=-0.5cm]   {$move = choose\{S\hspace{-0.5mm}P\hspace{-0.5mm}A, RH\}$\\$\mathcal{T}_{c}, \mathcal{I}_{c} = getCandidate(err, move)$\\$x = move(x, \mathcal{T}_{c}, \mathcal{I}_{c})$};
+      % }
+      % \onslide<+->{
+        \node (chooseNeighborFunc)     [master, below of=maybeStop, yshift=-0.5cm, neighborhoods]   {$move = choose\{S\hspace{-0.5mm}P\hspace{-0.5mm}A, RH\}$\\$\mathcal{T}_{c}, \mathcal{I}_{c} = getCandidate(err, move)$\\$x = move(x, \mathcal{T}_{c}, \mathcal{I}_{c})$};
         \draw[->] (chooseNeighborFunc.west) -- ++(-0.5,0) -- ++(0,3.8) -- ++(0,2) -- (objFunc.west);
         \draw[->]     (maybeStop) -- node {No} (chooseNeighborFunc);
-      }
+      % }
  
       \end{tikzpicture}

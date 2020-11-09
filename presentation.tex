@@ -9,14 +9,13 @@
 \title{Exact and Heuristic Methods to Optimize Maintenances and Flight schedules of Military Aircraft}
 \author{
 % Thesis defense
-  \vspace{1em}
-  \\ 
+  % \vspace{1em}
+  % \\ 
 \large Franco Peschiera\\ 
   \vspace{1em}
 Supervisors:\\
-Alain Haït, Olga Battaïa, Nicolas Dupin.
-}
-\date[Thesis defense 19/11/2020  ~~~~ Franco Peschiera]{November 4th, 2020}
+Alain Haït, Olga Battaïa, Nicolas Dupin.}
+\date[Thesis defense 19/11/2020  ~~~~ Franco Peschiera]{November 19th, 2020}
 
 \begin{document}
 {
@@ -24,18 +23,19 @@ Alain Haït, Olga Battaïa, Nicolas Dupin.
   \addtobeamertemplate{frametitle}{\vspace*{-\baselineskip}}{}
   \begin{frame}[noframenumbering, plain]
     \begin{picture}(0,0)%
-      %\makebox(600,-40)[]{\includegraphics[width=2cm]{images/logos/universite}}
+      \makebox(620,-40)[]{\includegraphics[width=1.8cm]{images/universite}}
     \end{picture}
-    \vspace{1cm}
+    % \vspace{1cm}
     \titlepage
-    \vspace{-1cm}
-    \begin{figure}%
-      \centering
-      %\makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{images/logos/all-logos}}%
-    \end{figure}%
+    % \vspace{-1cm}
+    % \begin{figure}%
+      % \centering
+      \input{graphs/logos}
+      % \makebox[\textwidth][c]{}}%
+    % \end{figure}%
   \end{frame}
 }
-\addtocounter{framenumber}{-1}
+% \addtocounter{framenumber}{-1}
 
 % \def\introtitle{The MFMP problem}
 \def\introtitle{Context}
@@ -134,7 +134,114 @@ Alain Haït, Olga Battaïa, Nicolas Dupin.
   \end{frame}
 \miniframeson
 
+% \include{conclusions}
+
+\begin{frame}{}
+  \centering
+  \vspace{2em}
+  Merci
+\end{frame}
+
+\appendix
+
+\begin{frame}{}
+  \centering
+  More content
+\end{frame}
+
+\begin{frame}{}
+  \centering
+  TODO: predictive maintenance + decision making.
+\end{frame}
+
+
 % \hypertarget{references}{%
 % \section{References}\label{references}}
 
 \end{document}
+
+% TODO: Dassault.
+% TODO: escribir y decir "objective"
+% TODO: imagenes del carro en Maintenance planning.
+
+% Maintenance planning
+  % TODO: por qué solo preventivo.
+
+% El M en la leyenda, quitarlo en todos.
+%   100, 80, 60, ... muchos.
+  % poner la linea horizontal.
+  % pensar en poner preguntas.
+
+% The long term MFMP problem
+  % present the three concepts.
+  % Many objectives: bullets?
+
+% An example MFMP solution
+  % Check with an M in legend
+
+% Complexity analysis
+  % take out maintenance needs => only mission assignments.
+  % sort for [t]
+  % estrella? número?
+
+% MIP model
+  % Título: variables?
+  % transition with "How to solve it eefectively"
+  % Título: constraints
+  % flechitas para los términos.
+
+% Flight hours rule
+  % El texto del gantt ex muy pequeño.
+  % hours flown = flight hours
+  % quitar u_it cuando llega rft_it
+
+% Experiments: too fast.
+
+% Results:
+  % más grande los ejes
+
+% Preliminary conclusions
+  % Quitar "Conclusions"
+
+% Submission: no se entendió.
+
+% Predicting learned-cuts
+  % y prime does not exist
+
+% New formulation
+  % 
+
+% distance between maintenances
+  % D_i => distance.
+  % mu_t't => mu_D
+
+% Results: performance.
+  % ejes más grandes (números, leyenda)
+  % explicar mejor colores y significados. No se entienden.
+  % Time to solve instance (seconds)
+  % Number of instances (not #).
+
+% Pattern representation
+  % tamaño de número.
+  % cambiar amarillo a otro.
+
+% Solution approach: Variable Neighborhood Descent.
+
+%Neighborhood 2:
+ % rectange, not square.
+
+% comparing neighborhoods.
+  % tamaño de ejes.
+  % unidades de Time.
+  % añadir un texto arriba
+
+% large instances:
+  % tamaño de ejes
+  % 8001 => 1
+  % Time (seconds)
+  % qué otros.
+  % añadir un texto arriba
+
+% Preliminary conclusions
+
+  % GRASP siglas en footnote.

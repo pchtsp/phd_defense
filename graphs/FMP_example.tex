@@ -2,20 +2,29 @@
 \newcommand{\plane}{\includegraphics[width=.05\textwidth]{images/plane.png}}
 
 \onslide<2>{
-  \node at (-5, 0) {\big (1)};
+  \node (ref1) at (-5, 0) {\big (1)};
+}
+% \onslide<1->{
+%   \node (flights) [anchor=east] at ([xshift=-2cm]ref1.west) {};
+% }
+\onslide<2->{
+  \node (flights) [anchor=east] at ([xshift=-2cm]ref1.west) {assign aircraft to flights};
+}
+\onslide<3->{
+  \node [anchor=north west, align=left] at (flights.south west) {+capacity in workshop\\+hour-dependent checks};
 }
 \onslide<3>{
-  \node at (-5, 0) {\big (2)};
+  \node (ref2) at (ref1) {\big (2)};
 }
 \node[inner sep=0pt] (airport1) at (0,-2)
     {\includegraphics[width=.10\textwidth]{images/location.png}};
-\node[inner sep=0pt] (airport2) at (5,0)
-    {\includegraphics[width=.10\textwidth]{images/location.png}};
+\node[inner sep=0pt, anchor=west] (airport2) at (5,0)
+    {\includegraphics[width=.10\textwidth]{images/location.png} Airport};
 \node[inner sep=0pt] (airport3) at (-5,-4)
     {\includegraphics[width=.15\textwidth]{images/location.png}};
 
-\node[inner sep=0pt] (workshop) at (airport3.north west)
-    {\includegraphics[width=.05\textwidth]{images/tools.png}};
+\node[inner sep=0pt, anchor=east] (workshop) at (airport3.north west)
+    {Workshop \includegraphics[width=.05\textwidth]{images/tools.png}};
 
 \onslide<3>{
   \node[inner sep=0pt, anchor=east] (gauge) at ([xshift=-5pt]workshop.west)
@@ -28,7 +37,7 @@
     \onslide<2->{\plane}
     \onslide<3->{5h}
     }} 
-  (airport2.south);
+  (airport2.south west);
 \draw[->,very thick,bend right=50, looseness=1,style=arrow] 
 (airport2.north west) 
     to node {{

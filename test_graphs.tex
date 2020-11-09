@@ -1,11 +1,11 @@
 \documentclass[beamer,tikz,preview]{standalone}
 
-\usepackage{adjustbox}
+% \usepackage{adjustbox}
 \usepackage{tikz}
 \usepackage{tikzit}
 \usepackage{pgfgantt}
 \usepackage{pgfplots}
-
+\input{configuration}
 \usetikzlibrary{shapes,fit,arrows,backgrounds,positioning,fadings,shadows,intersections, pgfplots.fillbetween,shapes.misc,automata,patterns,decorations.pathmorphing,arrows.meta,calc}
 
 
@@ -18,8 +18,10 @@
 \input{graphs/graph_example_func.tikz}
 
 
+
 \begin{document}
 \begin{standaloneframe}
+% \input{graphs/diagram_method2.tex}
   \begin{tikzpicture}
     % \input{graphs/rft.tex}
       % \input{graphs/gantt_example.tex}
@@ -27,7 +29,9 @@
       % \input{graphs/graph_example2.tikz}
       % \input{graphs/graph_example_func.tikz}
       % \input{graphs/FMP_example.tex}
-      \input{graphs/gantt_example_anim.tex}
+      % \input{graphs/gantt_example_anim.tex}
+      % \input{graphs/diagram_method2.tex}
+      \input{graphs/gantt_example_first_2}
       % \DrawGraph{6} 
       % % \DrawGraph{2}
   \end{tikzpicture}

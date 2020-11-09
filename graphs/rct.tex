@@ -8,7 +8,7 @@
     ymin = 0,
     ymax = 6,
     ylabel=Periods,
-    % xlabel=$t$,
+    xlabel=$t$,
     xmajorticks=false,
     % ylabel=Remaining \\calendar \\time ($rct$),
     % xlabel=Periods ($t$),
@@ -22,9 +22,22 @@
       at={(axis description cs:0.5,-0.1)},
       anchor=north,
     },
+    axis on top,
     width=\textwidth,
     height=0.3\textwidth
     ]
+    \addplot+[mark=none,
+      domain=1:3,
+      pattern=flexible hatch,
+      hatch distance=5pt,
+      hatch thickness=1pt,
+      pattern color=maintColor] {6}  \closedcycle;
+    \addplot+[mark=none,
+      domain=8:10,
+      pattern=flexible hatch,
+      hatch distance=5pt,
+      hatch thickness=1pt,
+      pattern color=maintColor] {6}  \closedcycle;
   \addplot[color=blue, thick] coordinates {
     (0,2)
     (1,1)
@@ -37,7 +50,6 @@
     (3,0)
     (3,6)
   };
-  % \addplot [fill=maintColor] fill between [of=A and B];
   \addplot[color=blue, thick] coordinates {
     (3,6)
     (4,5)
@@ -54,21 +66,6 @@
     (10,0)
     (10,6)
   };
-    % \addplot [
-    %     thick,
-    %     color=blue,
-    %     fill=blue, 
-    %     fill opacity=0.05
-    % ]
-    % fill between[
-    %     of=C and D,
-    %     split,
-    %     every segment no 0/.style={
-    %         %fill=none,
-    %         yellow,
-    %     },
-    % ];
-
   \addplot[color=blue, thick] coordinates {
     (10,6)
     (11,5)
@@ -76,7 +73,8 @@
     (13,3)
     (14,2)
     (15,1)
-  };
+  } 
+  node[pos=0.80,above, anchor=south, align=right, font=\scriptsize] {Calendar \\potential \\(rct)};;
 
 
 

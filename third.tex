@@ -2,9 +2,6 @@
 
 \begin{frame}
 \frametitle{\textbf{Patterns}}
-  \begin{tabular}{p{5mm}p{90mm}}
-    $b_{ip}$ &: aircraft $i$ uses pattern $p$. \\
-  \end{tabular}
 
   \DrawGantt{2}{2}{0}
 
@@ -12,8 +9,6 @@
 
 \begin{frame}
 \frametitle{\textbf{Pattern representation}}
-  % TODO: legend aircraft i, t, etc.
-  % TODO: animation to explain a node, legend
   \begin{adjustbox}{max totalsize={\textwidth}{\textheight},left, trim=15pt 0 0 0}
     \input{graphs/graph_example2}
   \end{adjustbox}
@@ -59,20 +54,17 @@
 
 \begin{frame}
 \frametitle{\textbf{Solution approach}}
-  % TODO: animation
-  % TODO: size of End.
-  % TODO: arrows
   \pause
   \begin{adjustbox}{max totalsize={0.8\textwidth}{0.8\textheight},center}
+  % \begin{tikzpicture}
     \input{graphs/diagram_method2}
+  % \end{tikzpicture}
   \end{adjustbox}
 
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Neighborhood 1: Shortest Path Algorithm (SPA)}}
-% TODO: explain matrix, legend?
-
   \onslide<2->{
     $SPA(x, \mathcal{I}_c, \mathcal{T}_c)$
   }
@@ -233,7 +225,7 @@
     \end{align*}
     }
 
-  maintFirst()
+  Simulated Annealing()
   \only<8->{}
 
 \end{frame}

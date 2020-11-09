@@ -63,6 +63,8 @@
 \begin{frame}
 \frametitle{\textbf{Complexity analysis}}
   
+  Take an instance $I$ from the MFMP problem.
+  \pause
   \begin{itemize}[<+->]
     \item take out maintenances needs.
     \item minimal assignment of mission = duration of mission.
@@ -71,8 +73,17 @@
   \end{itemize}
 
   \onslide<+->{
-    Becomes the NP-Complete Shift Satisfaction Personnel Task Scheduling Problem first presented in \cite{Arkin1987}.
+    Becomes the NP-Complete Shift Satisfaction Personnel Task Scheduling Problem $\star$.
   }    
+  \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
+    \begin{flushleft}
+    % $\star$
+    \onslide<5->{
+      \citesize $\star$ E. M. Arkin and E. B. Silverberg. Scheduling jobs with fixed start and end times. Discrete Applied Mathematics, 1987.
+    }
+    \end{flushleft}
+  \end{textblock*}
+
 \end{frame}
 
 \begin{frame}
@@ -131,12 +142,6 @@
   }
 
   \begin{align*}
-  % \onslide<2>{
-  %    & \sum_{t' \in \mathcal{T}^s_t} \sum_{i \in \mathcal{I}_k} m_{it'} + N^K_{kt} \leq A^K_{kt}
-  %     &k \in \mathcal{K}, t \in \mathcal{T}\\
-  %    & \sum_{i \in \mathcal{I}_k} rft_{it} \geq H^K_{kt}
-  %     &k \in \mathcal{K}, t \in \mathcal{T}
-  %   }
     \only<2>{
       & u_{it} \geq \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt} H_j 
           & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
@@ -160,6 +165,7 @@
 
 \begin{frame}
 \frametitle{\textbf{Simulated annealing}}
+  \pause
   \input{graphs/gantt_5aircraft_sa}  
 \end{frame}
 
@@ -174,8 +180,8 @@
     \item CPLEX.
     \item Several parameters and configurations.
     \begin{itemize}
-      \item Fleet sizes: 15 (base), 30, 45, 60.
-      \item Planning horizons: 90 (base), 120, 140.
+      \item Fleet sizes ($|\mathcal{I}|$): 15 (base), 30, 45, 60.
+      \item Planning horizons ($|\mathcal{T}|$): 90 (base), 120, 140.
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -189,10 +195,10 @@
   \end{itemize}
   
   \only<1>{
-    \includegraphics[width=0.8\linewidth]{images/clust_params2_cplex_gaps.png}
+    \includegraphics[width=0.8\linewidth]{images/clust1_20190322_gaps.png}
   }
   \only<2>{
-    \includegraphics[width=0.8\linewidth]{images/clust_params2_cplex_times.png}
+    \includegraphics[width=0.8\linewidth]{images/clust1_20190322_times.png}
   }
 \end{frame}
 
