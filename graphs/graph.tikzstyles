@@ -10,11 +10,13 @@
 \tikzstyle{mission}=[fill={rgb, 255: red, 76;green,179;blue,61},  shape=circle, scale=0.7]
 \tikzstyle{source}=[fill={rgb, 255: red, 255;green,255;blue,255}, draw={rgb,255: red,143; green,143; blue,143},  shape=circle, scale=0.7]
 \tikzstyle{blank}=[fill={rgb, 255: red, 255;green,255;blue,255}, draw={rgb,255: red,143; green,143; blue,143}, shape=circle, scale=0.7]
-
 %draw={rgb,255: red,143; green,143; blue,143},
+\tikzstyle{expla}=[text width=3cm, font=\small]
 
 % Edge styles
 \tikzstyle{optimal}=[draw=black, -, tikzit draw=black, fill={rgb,255: red,199; green,255; blue,211}, dashed, tikzit fill={rgb,255: red,199; green,255; blue,211}]
 \tikzstyle{axis}=[draw=blue, tikzit draw=blue, fill=none, line width=1.2pt, {|-|}]
 \tikzstyle{pseudocut}=[-, pattern=north west lines, pattern color=blue, draw=none, tikzit draw=blue]
 \tikzstyle{arrow}=[->, draw=black, line width=0.5mm]
+
+

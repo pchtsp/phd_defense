@@ -9,7 +9,7 @@
         \draw[->]             (start) -- (initSol);
       % }
       % \onslide<+->{
-        \node (objFunc)      [master, below of=initSol]   {$err= getErrors(x)$\\$z=getObjective(x,err)$};
+        \node (objFunc)      [master, below of=initSol]   {$z=getObjective(x)$};
         \draw[->]     (initSol) -- (objFunc);
       % }
       % \onslide<+->{
@@ -26,7 +26,7 @@
         \draw[->]      (updateBest.south) -- ++(0,-.7) -- ++(-4.5,0)  -- (maybeStop.north);
       % }
       % \onslide<+->{
-        \node (chooseNeighborFunc)     [master, below of=maybeStop, yshift=-0.5cm, neighborhoods]   {$move = choose\{S\hspace{-0.5mm}P\hspace{-0.5mm}A, RH\}$\\$\mathcal{T}_{c}, \mathcal{I}_{c} = getCandidate(err, move)$\\$x = move(x, \mathcal{T}_{c}, \mathcal{I}_{c})$};
+        \node (chooseNeighborFunc)     [master, below of=maybeStop, yshift=-0.5cm, neighborhoods]   {$move = choose\{S\hspace{-0.5mm}P\hspace{-0.5mm}A, RH\}$\\$\mathcal{T}_{c}, \mathcal{I}_{c} = getCandidate(x, move)$\\$x = move(x, \mathcal{T}_{c}, \mathcal{I}_{c})$};
         \draw[->] (chooseNeighborFunc.west) -- ++(-0.5,0) -- ++(0,3.8) -- ++(0,2) -- (objFunc.west);
         \draw[->]     (maybeStop) -- node {No} (chooseNeighborFunc);
       % }

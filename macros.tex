@@ -3,6 +3,12 @@
 \definecolor{missionColor}{HTML}{32CD32}
 \definecolor{pathColor}{HTML}{ffd700}
 
+
+\newcommand\Dganttbar[5]{
+    \ganttbar[#5]{#1}{#3}{#4}\ganttbar[inline,bar label font=\tiny\bfseries, #5]{#2}{#3}{#4}
+}
+
+
 \def\Put(#1,#2)#3{\leavevmode\makebox(0,0){\put(#1,#2){#3}}}
 
 \makeatletter
@@ -59,12 +65,13 @@
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{footline}[frame number]
 
-\newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,
+\newcommand{\tikzmarkM}[2]{\tikz[overlay,remember picture,
   baseline=(#1.base)] \node (#1) {#2};}
 %
 \newcommand{\Highlight}[1][submatrix]{%
     \tikz[overlay,remember picture]{
-    \node[highlight,fit=(left.north west) (right.south east)] (#1) {};}
+      \node[highlight,fit=(left.north west) (right.south east)] (#1) {};
+    }
 }
 
 \newcommand{\sectiontitle}{}

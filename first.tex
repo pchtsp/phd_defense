@@ -1,42 +1,49 @@
 \section{\firsttitle}
 
-\begin{frame}
+\def\firsttitleF{MIP model}
+\def\firsttitleS{Simulated Annealing}
+
+
+\begin{frame}[t]
 \frametitle{\textbf{The long term MFMP problem}}
 
+  \begin{block}{\textbf{Basic problem}}
   \begin{columns}[c]
-    \column{0.4\linewidth}
+      \column{0.4\linewidth}
 
-    \pause
-    \begin{itemize}[<+->]
-      \item $j \in \mathcal{J}$ missions.
-      \item $i \in \mathcal{I}$ aircraft.
-      \item Maintenances.
-    \end{itemize}
+      % \pause
+      \begin{itemize}[<+->]
+        \item $j \in \mathcal{J}$ missions.
+        \item $i \in \mathcal{I}$ aircraft.
+        \item Maintenances.
+      \end{itemize}
 
-    \column{0.6\linewidth}
-    \only<2>{
-      \begin{small}
-      \begin{table}
-        \centering
-        \input{tables/6tasks.tex}
-      \end{table}
-      \end{small}
-    }
-    \only<3>{
-      \begin{small}
-      \begin{table}
-        \centering
-        \input{tables/5aircraft.tex}
-      \end{table}
-      \end{small}
-    }
-    \only<4>{
-      \\
-      Frequency (in time, in flight hours).\\
-      Duration.\\
-      Capacity.\\
-    }
-  \end{columns}
+      \column{0.6\linewidth}
+      \only<2>{
+        \begin{small}
+        \begin{table}
+          \centering
+          \input{tables/6tasks.tex}
+        \end{table}
+        \end{small}
+      }
+      \only<3>{
+        \begin{small}
+        \begin{table}
+          \centering
+          \input{tables/5aircraft.tex}
+        \end{table}
+        \end{small}
+      }
+      \only<4>{
+        \\
+        Frequency (in time, in flight hours).\\
+        Duration.\\
+        Capacity.\\
+      }
+    \end{columns}
+  \end{block} 
+  
 
   \onslide<+->{
     \begin{block}{\textbf{More constraints}}
@@ -55,7 +62,7 @@
   \input{graphs/gantt_5aircraft.tex}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{\textbf{An example MFMP solution}}
   \input{graphs/gantt_5aircraft_exp.tex}
 \end{frame}
@@ -83,15 +90,32 @@
     }
     \end{flushleft}
   \end{textblock*}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Solution approaches}}
+  \setbeamercovered{transparent}
+  \begin{block}{\textbf{\firsttitleF}}
+  \end{block}  
+
+  \only<1>{
+    \begin{block}{\textbf{\firsttitleS}}
+    \end{block}  
+  }
+  \only<2->{
+    \transparent{0.3}
+    \begin{block}{\textbf{\firsttitleS}}
+    \end{block}  
+    \transparent{1}
+  }
 
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{MIP model}}
-  
+\frametitle{\textbf{\firsttitleF}}
   \begin{tabular}{ll}
     \onslide<+->{
-      $a^s_{ijt}$ &  :  mission $j$ assigned starts in period $t$ to aircraft $i$.
+      $a^s_{ijt}$ &  : assignment of mission $j$ to aircraft $i$ starts in period.
     }  \\
     \onslide<+->{
       $a_{ijt}$ &  :  mission $j$ assigned in period $t$ to aircraft $i$.
@@ -107,26 +131,27 @@
         \input{graphs/gantt_example_first.tex}
       \end{tikzpicture}  
     \end{adjustbox}
-  }
-  \begin{align*}
-    % maximum capacity1:
-    \onslide<6->{& \sum_{t' \in \mathcal{T}^s_t} \sum_{i \in \mathcal{I}} m_{it'} + N_t \leq C^{max}
-      & t \in \mathcal{T}\\}
-    % min assignments:
-    \onslide<7->{& \sum_{i \in \mathcal{I}_j} a_{ijt} \geq R_j
-            & j \in \mathcal{J}, t \in \mathcal{T}_j \\} 
-    % just doing one thing at any given time:
-    \onslide<8->{& \sum_{t' \in \mathcal{T}^s_t} m_{it'} + \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt} \leq 1 
-            & t \in \mathcal{T}, i \in \mathcal{I}}
-  \end{align*}
+  }  
+  \input{graphs/constraints_explanation}
+  % \begin{align*}
+  %   % maximum capacity1:
+  %   \onslide<6->{& \sum_{t' \in \mathcal{T}^s_t} \sum_{i \in \mathcal{I}} m_{it'} + N_t \leq C^{max}
+  %     & t \in \mathcal{T}\\}
+  %   % min assignments:
+  %   \onslide<7->{& \sum_{i \in \mathcal{I}_j} a_{ijt} \geq R_j
+  %     & j \in \mathcal{J}, t \in \mathcal{T}_j \\} 
+  %   % just doing one thing at any given time:
+  %   \onslide<8->{& \sum_{t' \in \mathcal{T}^s_t} m_{it'} + \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt} \leq 1 
+  %     & t \in \mathcal{T}, i \in \mathcal{I}}
+  % \end{align*}
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{\textbf{Flight hours rule}}
+\frametitle{\textbf{\firsttitleF: Flight hours rule}}
 
   \begin{tabular}{ll}
     \onslide<1->{
-      $u_{it}$ &:  hours flown by aircraft $i$ during period $t$.
+      $u_{it}$ &: flight hours by aircraft $i$ during period $t$.
     }  \\
     \onslide<3->{
       $rft_{it}$ &: remaining flight hours for aircraft $i$ during period $t$.
@@ -164,8 +189,20 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Simulated annealing}}
-  \pause
+\frametitle{\textbf{Solution approaches}}
+  \setbeamercovered{transparent}
+  \transparent{0.3}
+  \begin{block}{\textbf{\firsttitleF}}
+  \end{block}  
+  \transparent{1}
+
+  \begin{block}{\textbf{\firsttitleS}}
+  \end{block}  
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{\firsttitleS}}
+  % \pause
   \input{graphs/gantt_5aircraft_sa}  
 \end{frame}
 
@@ -195,18 +232,16 @@
   \end{itemize}
   
   \only<1>{
-    \includegraphics[width=0.8\linewidth]{images/clust1_20190322_gaps.png}
+    \includegraphics[width=\linewidth]{images/clust1_20190322_gaps.png}
   }
   \only<2>{
-    \includegraphics[width=0.8\linewidth]{images/clust1_20190322_times.png}
+    \includegraphics[width=\linewidth]{images/clust1_20190322_times.png}
   }
 \end{frame}
 
-% TODO: results for simulated annealing.
-
 \begin{frame}
 \frametitle{\textbf{Preliminary conclusions}}
-  \begin{block}{\textbf{Conclusions}}
+  \begin{block}{}
     \begin{itemize}
     \item \textbf{The long term MFMP problem is presented}
       along with a complexity analysis and a configurable instance generator.

@@ -5,9 +5,11 @@
 \usepackage{tikzit}
 \usepackage{pgfgantt}
 \usepackage{pgfplots}
-\input{configuration}
-\usetikzlibrary{shapes,fit,arrows,backgrounds,positioning,fadings,shadows,intersections, pgfplots.fillbetween,shapes.misc,automata,patterns,decorations.pathmorphing,arrows.meta,calc}
 
+\input{configuration}
+\input{macros}
+
+% \usetikzlibrary{tikzmark}
 
 \definecolor{maintColor}{HTML}{878787}
 \definecolor{missionColor}{HTML}{32CD32}
@@ -22,7 +24,9 @@
 \begin{document}
 \begin{standaloneframe}
 % \input{graphs/diagram_method2.tex}
-  \begin{tikzpicture}
+% \input{graphs/graph_example2.tex}
+% \input{graphs/gantt_5aircraft_sa}
+  % \begin{tikzpicture}
     % \input{graphs/rft.tex}
       % \input{graphs/gantt_example.tex}
       % \input{graphs/gantt_example_anim.tex}
@@ -31,10 +35,12 @@
       % \input{graphs/FMP_example.tex}
       % \input{graphs/gantt_example_anim.tex}
       % \input{graphs/diagram_method2.tex}
-      \input{graphs/gantt_example_first_2}
+      % \input{graphs/gantt_5aircraft_sa}
       % \DrawGraph{6} 
       % % \DrawGraph{2}
-  \end{tikzpicture}
+  % \end{tikzpicture}
+\input{graphs/constraints_explanation}
+
 \end{standaloneframe}
 
 \end{document}

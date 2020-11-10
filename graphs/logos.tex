@@ -26,8 +26,10 @@
     \node (first) [anchor=west] at (0, 0) {};
     \node (last) [anchor=east] at (\textwidth, 0) {};
     % \node (isae) [] at (-5, 0) {\includegraphics[width=0.15\textwidth]{images/isae.png}};
-    \node (isae) [anchor=east] at ($(first)!0.25!(last)$) {\includegraphics[width=0.15\textwidth]{images/isae.png}};    
+    \node (isae) [anchor=west] at (first.east) {\includegraphics[width=0.15\textwidth]{images/isae.png}};    
     % \node (dga) [anchor=west] at ([xshift=1.5cm]isae.east) {\includegraphics[width=0.15\textwidth]{images/dga.jpg}};
-    \node (dga) [] at ($(first)!0.50!(last)$) {\includegraphics[width=0.15\textwidth]{images/dga.jpg}};
-    \node (edaa) [anchor=west] at ($(first)!0.75!(last)$) {\includegraphics[width=0.15\textwidth]{images/edaa.jpg}};
+    \node (edaa) [anchor=west] at ($(first)!0.30!(last)$) {\includegraphics[width=0.15\textwidth]{images/edaa.jpg}};
+    \node (dga) [anchor=east] at ($(first)!0.70!(last)$) {\includegraphics[width=0.15\textwidth]{images/dga.jpg}};
+    % \node (dassau) [] at ($(first)!0.80!(last)$) {\includegraphics[width=0.15\textwidth]{images/Logo_Dassault_Aviation.png}};
+    \node (dassau) [anchor=east] at (last.west) {\includegraphics[width=0.15\textwidth]{images/Logo_Dassault_Aviation.png}};
 \end{tikzpicture}

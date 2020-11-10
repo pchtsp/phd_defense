@@ -1,0 +1,48 @@
+\begin{tikzpicture}[remember picture]
+\node [text width=\textwidth] {
+\begin{align*}
+\only<6>{&
+% \overbrace{\sum_{t' \in \mathcal{T}^s_t} \sum_{i \in \mathcal{I}} m_{it'} + N_t}^{\subnode{airMaint}{}} \leq C^{\subnode{maintCap}{max}}
+  \underbrace{\sum_{t' \in \mathcal{T}^s_t} \sum_{i \in \mathcal{I}} m_{it'} + N_t}_{\subnode{airMaint}{}} \leq C^{max}_{\subnode{maintCap}{}}
+      & t \in \mathcal{T}\\  
+}
+\onslide<7->{& 
+  \sum_{t' \in \mathcal{T}^s_t} \sum_{i \in \mathcal{I}} m_{it'} + N_t \leq C^{max}
+      & t \in \mathcal{T}\\
+}
+% min assignments:
+\only<7>{& 
+  \underbrace{\sum_{i \in \mathcal{I}_j} a_{ijt}}_{\subnode{airMission}{}} \geq R_{\subnode{missionNeed}{j}}
+      & j \in \mathcal{J}, t \in \mathcal{T}_j \\
+} 
+\onslide<8->{& 
+  \sum_{i \in \mathcal{I}_j} a_{ijt} \geq R_j
+      & j \in \mathcal{J}, t \in \mathcal{T}_j \\
+} 
+% just doing one thing at any given time:
+\only<8>{&
+   \underbrace{\sum_{t' \in \mathcal{T}^s_t} m_{it'} + \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt}}_{\subnode{airNum}{}} \leq 1 
+      & t \in \mathcal{T}, i \in \mathcal{I}
+      }
+\end{align*}
+      };
+\node (ref) at (-4,-1.5) {};
+\node (ref2) at (2,-1.5) {};
+\only<6>{
+  \node [expla] (demand) at (ref) {Aircraft in maintenance in $t$};
+  \draw[bend right=20,->] (demand) to (airMaint.south);
+  \node [expla] (capacity) at (ref2) {Maintenance capacity};
+  \draw[bend left=20,->] (capacity) to (maintCap.east);
+}
+\only<7>{
+  \node [expla] (assigned) at (ref) {Aircraft assigned to mission $j$ in period $t$};
+  \draw[bend right=20,->] (assigned.north) to (airMission.south);
+  \node [expla] (needs) at (ref2) {Mission needs of mission $j$};
+  \draw[bend left=20,->] (needs.west) to (missionNeed.south);
+}
+\only<8>{
+  \node [expla] (numberText) at ([yshift=-5pt]ref2.south) {Assignments of aircraft $i$ in $t$};
+  \draw[bend left=20,->] (numberText.south west) to (airNum.south);
+}
+
+\end{tikzpicture}

@@ -25,6 +25,14 @@
   \only<7->{
   \DrawGantt{2}{2}{1}
   }
+  \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
+    \begin{flushleft}
+    % $\star$
+    \onslide<2->{
+      \citesize $\star$ Q. Deng, B. F. Santos, and R. Curran. A practical dynamic programming based methodology for aircraft maintenance check scheduling optimization. European Journal of Operational Research, 2020.
+    }
+    \end{flushleft}
+  \end{textblock*}
 \end{frame}
 
 \begin{frame}
@@ -49,11 +57,10 @@
       \input{graphs/graph_example3}
     \end{adjustbox}
   }
-
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Solution approach}}
+\frametitle{\textbf{Solution approach: Variable Neighborhod Descent}}
   \pause
   \begin{adjustbox}{max totalsize={0.8\textwidth}{0.8\textheight},center}
   % \begin{tikzpicture}
@@ -74,7 +81,7 @@
       A_{c} = \left(
       \begin{array}{*6{c}}
     1 & 1 & 1 & 1 & 0 & 0 \\
-    \tikzmark{left}{0} & {\text -}1 & {\text -}1 & {\text -}1 & {\text -}1 & \tikzmark{right}{0} \\
+    \tikzmarkM{left}{0} & {\text -}1 & {\text -}1 & {\text -}1 & {\text -}1 & \tikzmarkM{right}{0} \\
     0 & 0 & 0 & 0 & 2 & 2 \\
     0 & 0 & 0 & 0 & 0 & 0
       \end{array}
@@ -87,7 +94,7 @@
       A_{c+1} = \left(
       \begin{array}{*6{c}}
     1 & 1 & 1 & 1 & 0 & 0 \\
-    \tikzmark{left}{0} & 1 & 1 & 1 & 2 & \tikzmark{right}{-1} \\
+    \tikzmarkM{left}{0} & 1 & 1 & 1 & 2 & \tikzmarkM{right}{-1} \\
     0 & 0 & 0 & 0 & 2 & 2 \\
     0 & 0 & 0 & 0 & 0 & 0
       \end{array}
@@ -111,9 +118,9 @@
     \begin{align*}
       A_{c} = \left(
       \begin{array}{*6{c}}
-        1 & \tikzmark{left}{1} & 1 & 1 & 0 & 0 \\
+        1 & \tikzmarkM{left}{1} & 1 & 1 & 0 & 0 \\
         {\text -}1 & 0 & 0 & 0 & 0 & {\text -}1 \\
-        0 & 0 & 0 & \tikzmark{right}{0} & 2 & 2 \\
+        0 & 0 & 0 & \tikzmarkM{right}{0} & 2 & 2 \\
         0 & 0 & 0 & 0 & 0 & 0
       \end{array}
       \right)
@@ -124,9 +131,9 @@
     \begin{align*}
       A_{c+1} = \left(
       \begin{array}{*6{c}}
-        1 & \tikzmark{left}{0} & 0 & 0 & 0 & 0 \\
+        1 & \tikzmarkM{left}{0} & 0 & 0 & 0 & 0 \\
         {\text -}1 & 0 & 0 & 0 & 0 & {\text -}1 \\
-        0 & 1 & 1 & \tikzmark{right}{1} & 2 & 2 \\
+        0 & 1 & 1 & \tikzmarkM{right}{1} & 2 & 2 \\
         0 & 0 & 0 & 0 & 0 & 0
       \end{array}
       \right)
@@ -161,7 +168,7 @@
         \left(
         \begin{array}{*6{c}}
           0 & 0 & 0 & 0 & 0 & 0 \\
-          \tikzmark{left}{0} & 1 & 1 & 1 & 2 & \tikzmark{right}{-1} \\
+          \tikzmarkM{left}{0} & 1 & 1 & 1 & 2 & \tikzmarkM{right}{-1} \\
           0 & 0 & 0 & 0 & 0 & 0 \\
           0 & 0 & 0 & 0 & 0 & 0
         \end{array}
@@ -173,7 +180,7 @@
       \begin{align*}
         \left(
         \begin{array}{*6{c}}
-          \tikzmark{left}{1} & 1 & 1 & 1 & 0 & \tikzmark{right}{0} \\
+          \tikzmarkM{left}{1} & 1 & 1 & 1 & 0 & \tikzmarkM{right}{0} \\
           0 & 1 & 1 & 1 & 2 & {\text -}1 \\
           0 & 0 & 0 & 0 & 0 & 0 \\
           0 & 0 & 0 & 0 & 0 & 0
@@ -188,7 +195,7 @@
         \begin{array}{*6{c}}
           1 & 1 & 1 & 1 & 0 & 0 \\
           0 & 1 & 1 & 1 & 2 & {\text -}1 \\
-          \tikzmark{left}{0} & 0 & 0 & 0 & 2 & \tikzmark{right}{2} \\
+          \tikzmarkM{left}{0} & 0 & 0 & 0 & 2 & \tikzmarkM{right}{2} \\
           0 & 0 & 0 & 0 & 0 & 0
         \end{array}
         \right)
@@ -201,10 +208,10 @@
       \begin{align*}
         \left(
         \begin{array}{*6{c}}
-          \tikzmark{left}{0} & 0 & 0 & 0 & 0 & 0 \\
+          \tikzmarkM{left}{0} & 0 & 0 & 0 & 0 & 0 \\
           0 & 0 & 0 & 0 & 0 & 0 \\
           0 & 0 & 0 & 0 & 0 & 0 \\
-          0 & 0 & 0 & 0 & 0 & \tikzmark{right}{0}
+          0 & 0 & 0 & 0 & 0 & \tikzmarkM{right}{0}
         \end{array}
         \right)
         \Highlight[first]
@@ -215,10 +222,10 @@
       \begin{align*}
         \left(
         \begin{array}{*6{c}}
-          \tikzmark{left}{1} & 1 & 1 & 1 & 0 & 0 \\
+          \tikzmarkM{left}{1} & 1 & 1 & 1 & 0 & 0 \\
           0 & 1 & 1 & 1 & 2 & {\text -}1 \\
           0 & 0 & 0 & 0 & 2 & 2 \\
-          0 & 0 & 0 & 0 & 0 & \tikzmark{right}{0}
+          0 & 0 & 0 & 0 & 0 & \tikzmarkM{right}{0}
         \end{array}
         \right)
       \Highlight[second]
@@ -241,32 +248,38 @@
   \item 1 graph per cluster of aircraft and node aggregation with respect to remaining flight time.
   \end{itemize}
 
-  \pause
+  % \pause
 
   All instances have 90 periods.
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Results: comparing neighborhoods}}
-  % TODO: VND = RH + SPA
-  % TODO: Time in units
-  \includegraphics[width=\linewidth]{images/compare_neighbors.png}
+  \begin{itemize}
+    \item SPA: fast but reaches local minima.
+    \item RH: slow but avoids local minima.
+    \item VND=SPA+RH: fast and avoids local minima.
+  \end{itemize}
+
+  \includegraphics[width=0.8\linewidth]{images/compare_neighbors.png}
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Results: large instances}}
-  % TODO: Time in units
   % TODO: size of police
-  % TODO: rename instances
+  \begin{itemize}
+    \item Percentage gap: gap to best known lower bound.
+    \item VND outperforms MIP for very large instances (255 aircraft).
+  \end{itemize}
+
   \includegraphics[width=\linewidth]{images/progress_gaps_very_large_255.png}  
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Preliminary conclusions}}
   % TODO: check phrases
-  % TODO: FMP and NRP: long?
   \pause
-  \begin{block}{\textbf{Conclusions}}
+  \begin{block}{}
     \begin{itemize}
     \item \textbf{Graph representation} 
       built to efficiently explore the solution space of an aircraft.

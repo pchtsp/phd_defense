@@ -37,7 +37,7 @@
       \textbf{Input features} & $H(x) = \{h_m(x) \,\, \forall m \in \mathcal{M}\}$ 
   }\\ 
   \onslide<6->{
-      \textbf{Training for optimal} & $G(y^*(x)) \approx \hat{G}(x) = f(H(x))$
+      \textbf{Training for optimal} & $G(y^*(x)) \approx \hat{G}(x) = f(H(x)) \, \star$
   } \\
   \end{tabular}
 
@@ -56,7 +56,14 @@
       \DrawSolution{gyoptim}{none}{0}
    \end{adjustbox}
   }
-  % TODO: add citation of Bengio / Lodi
+  \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
+    \begin{flushleft}
+    % $\star$
+    \onslide<6->{
+      \citesize $\star$ E. Larsen, S. Lachapelle, Y. Bengio, E. Frejinger, S. Lacoste-Julien, and A. Lodi. Predicting Tactical Solutions to Operational Planning Problems under Imperfect Information. arXiv, 2018.
+    }
+    \end{flushleft}
+  \end{textblock*}
 
 \end{frame}
 
@@ -140,10 +147,10 @@
   \end{tabular}
 
   \onslide<5->{
-    \begin{align}
-      & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \leq H^{M} + bigM (1 - m_{ip}) & \notag \\
-      & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p \notag
-    \end{align}
+    \begin{align*}
+      & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \onslide<6-> {\leq H^{M} + bigM (1 - m_{ip})} & \\
+      & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p
+    \end{align*}
   }
 
   \only<1>{
@@ -164,22 +171,24 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Solution feature: distance between maintenances}}
-  % TODO: add G, g()
+\frametitle{\textbf{Solution features: G(y)}}
 
-  For each aircraft $i$: $D_i(y) \in [E^{min},E^{max}] \,\, \forall y \in \mathcal{Y}(x)$. \\
-  \only<+->{
+  \onslide<+->{
     \DrawGantt{2}{0}{distance}
   }
   \onslide<+->{
-    Solution feature: $g_1(y) = \mu_{t'-t} = \frac {\sum_{i \in \mathcal{I}} D_i(y)}{I}$. \\
+    For each aircraft $i$: $D_i(y) \in [E^{min},E^{max}] \,\, \forall y \in \mathcal{Y}(x)$.
+  }
+  \onslide<+->{
+  \begin{block}{\textbf{Average distance between maintenances}}
+    $g_1(y) = \mu_{D} = \frac {\sum_{i \in \mathcal{I}} D_i(y)}{I}$. \\
+  \end{block}
   }
 
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Input features}}
-  % TODO: add H
+\frametitle{\textbf{Input features: H(x)}}
 
   \onslide<1->{  
     \begin{block}{\textbf{Mission related}}
@@ -205,7 +214,7 @@
     \begin{block}{\textbf{Quantile regressions}}
       Upper bound and lower bound at 10\% and 90\%.
       \begin{equation*}
-        \mu_{t'-t} \to [\hat{\mu}_{t'-t}^{lb}, \hat{\mu}_{t'-t}^{ub}]
+        \mu_{D} \to [\hat{\mu}_{D}^{lb}, \hat{\mu}_{D}^{ub}]
      \end{equation*}
     \end{block}
   }
@@ -222,14 +231,14 @@
 
   \begin{block}{\textbf{Pattern filtering:}}
     \begin{equation*}
-      D_{ip} \in [\hat{\mu}_{t'-t}^{lb} - tol, \hat{\mu}_{t'-t}^{ub} + tol] \rightarrow p \in \mathcal{P}_i 
+      D_{ip} \in [\hat{\mu}_{D}^{lb} - tol, \hat{\mu}_{D}^{ub} + tol] \rightarrow p \in \mathcal{P}_i 
     \end{equation*}
   \end{block}
   \pause
 
   \begin{block}{\textbf{Pattern recycling:} with probabiliy $\alpha$}
     \begin{equation*}
-      D_{ip} \notin [\hat{\mu}_{t'-t}^{lb} - tol, \hat{\mu}_{t'-t}^{ub} + tol] \land P(\alpha)  \rightarrow p \in \mathcal{P}_i 
+      D_{ip} \notin [\hat{\mu}_{D}^{lb} - tol, \hat{\mu}_{D}^{ub} + tol] \land P(\alpha)  \rightarrow p \in \mathcal{P}_i 
     \end{equation*}
   \end{block}
 \end{frame}
@@ -248,7 +257,7 @@
   Largest instances have 60 aircraft, 90 periods.
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{\textbf{Results: performance}}
 
   \begin{itemize}[<+->]
@@ -257,11 +266,9 @@
   \end{itemize}
 
   \only<1>{
-    \includegraphics[width=0.8\linewidth]{images/transitions_base_2tasks.png}
+    \includegraphics[width=\linewidth]{images/transitions_base_2tasks.png}
   }
   \only<2>{
-  % TODO: add one line at a time (add the rest of techniques).
-  % TODO: Time to solve instance (seconds)
     \includegraphics[width=0.8\linewidth]{images/time_performance_ordered_2tasks.png}
   }
 \end{frame}
@@ -281,7 +288,7 @@
 \begin{frame}
 \frametitle{\textbf{Preliminary conclusions}}
   \pause
-  \begin{block}{\textbf{Conclusions}}
+  \begin{block}{}
     \begin{itemize}
     \item \textbf{Supervised learning for optimization}
       provides good heuristic solutions.

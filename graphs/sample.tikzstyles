@@ -15,6 +15,8 @@
 \tikzstyle{source}=[fill=white, draw=blue, shape=circle, scale=0.7]
 \tikzstyle{sink}=[fill=white, draw=blue, shape=circle, scale=0.7]
 
+\tikzstyle{expla}=[text width=3cm, font=\footnotesize, scale=0.8]
+
 % Edge styles
 \tikzstyle{optimal}=[draw=black, -, tikzit draw=black, fill={rgb,255: red,199; green,255; blue,211}, dashed, tikzit fill={rgb,255: red,199; green,255; blue,211}]
 \tikzstyle{axis}=[draw=blue, tikzit draw=blue, fill=none, line width=1.2pt, {|-|}]

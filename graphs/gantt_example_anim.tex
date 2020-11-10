@@ -28,11 +28,11 @@
     \node (b) [anchor=north] at (current bounding box.south west){};
     \node (per) [anchor=south] at ([yshift=5pt]current bounding box.north){$t$};
     \node (air) [anchor=north east] at ([xshift=-5pt, yshift=-12pt]current bounding box.west){$i$};
-    \node (star) [anchor=east] at (air.west){$\star$};
     \onslide<2->{
       \node (maint) [fill=maintColor,draw, label=left:{\tiny Check}, minimum width=0.5cm, minimum height=0.15cm, anchor=west] at ([yshift=3pt,xshift=1cm]b.south){};
     }
     \onslide<3->{
+      \node (star) [anchor=east] at (air.west){$\star$};
       \node (miss) [draw, label=left:{\tiny Mission assignment}, minimum width=0.5cm, minimum height=0.15cm, pattern=north west lines, pattern color=missionColor, anchor=west] at ([xshift=3cm]maint.east){};
       % \node[label=left:{\tiny Flight hours}, minimum width=0.5cm, minimum height=0.5cm, anchor=west] at ([xshift=2cm]miss.east){\tiny\bfseries 80h};
     }
