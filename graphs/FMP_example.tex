@@ -8,7 +8,7 @@
 %   \node (flights) [anchor=east] at ([xshift=-2cm]ref1.west) {};
 % }
 \onslide<2->{
-  \node (flights) [anchor=east] at ([xshift=-2cm]ref1.west) {assign aircraft to flights};
+  \node (flights) [anchor=east,text width=7cm] at ([xshift=-1cm]ref1.west) {\alt<1-2>{\textbf{Tail Assignment}}{\textbf{Flight and Maintenance Planning}}:\\ assign aircraft to flights};
 }
 \onslide<3->{
   \node [anchor=north west, align=left] at (flights.south west) {+capacity in workshop\\+hour-dependent checks};

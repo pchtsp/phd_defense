@@ -1,7 +1,7 @@
 \section{\firsttitle}
 
 \def\firsttitleF{MIP model}
-\def\firsttitleS{Simulated Annealing}
+\def\firsttitleS{Initial solution: Simulated Annealing}
 
 
 \begin{frame}[t]
@@ -11,11 +11,13 @@
   \begin{columns}[c]
       \column{0.4\linewidth}
 
-      % \pause
+      \pause
       \begin{itemize}[<+->]
-        \item $j \in \mathcal{J}$ missions.
-        \item $i \in \mathcal{I}$ aircraft.
-        \item Maintenances.
+        \setbeamercolor{alerted text}{fg=black} %change the font color
+        \setbeamerfont{alerted text}{series=\bfseries} %make alerted text bold
+        \item \alert<2>{$j \in \mathcal{J}$ missions}.
+        \item \alert<3>{$i \in \mathcal{I}$ aircraft}.
+        \item \alert<4>{Maintenances}.
       \end{itemize}
 
       \column{0.6\linewidth}
@@ -51,19 +53,19 @@
     \end{block}  
   }
   \onslide<+->{
-    \begin{block}{\textbf{Many objectives}}
+    \begin{block}{\textbf{Objectives}}
       Maximize the availability, minimize the number of checks, minimize maintenance capacity.
     \end{block}  
   }
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{\textbf{An example MFMP solution}}
+\frametitle{\textbf{An example of an MFMP solution}}
   \input{graphs/gantt_5aircraft.tex}
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{\textbf{An example MFMP solution}}
+\frametitle{\textbf{An example of an MFMP solution}}
   \input{graphs/gantt_5aircraft_exp.tex}
 \end{frame}
 
@@ -78,44 +80,46 @@
     \item only one aircraft per mission.
     \item take out objective function: feasibility.
   \end{itemize}
-
+  
+  \begin{block}{}
   \onslide<+->{
     Becomes the NP-Complete Shift Satisfaction Personnel Task Scheduling Problem $\star$.
   }    
+  \end{block}
   \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
     \begin{flushleft}
     % $\star$
-    \onslide<5->{
+    \onslide<6->{
       \citesize $\star$ E. M. Arkin and E. B. Silverberg. Scheduling jobs with fixed start and end times. Discrete Applied Mathematics, 1987.
     }
     \end{flushleft}
   \end{textblock*}
 \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Solution approaches}}
-  \setbeamercovered{transparent}
-  \begin{block}{\textbf{\firsttitleF}}
-  \end{block}  
+% \begin{frame}
+% \frametitle{\textbf{Solution approaches}}
+%   \setbeamercovered{transparent}
+%   \begin{block}{\textbf{\firsttitleF}}
+%   \end{block}  
 
-  \only<1>{
-    \begin{block}{\textbf{\firsttitleS}}
-    \end{block}  
-  }
-  \only<2->{
-    \transparent{0.3}
-    \begin{block}{\textbf{\firsttitleS}}
-    \end{block}  
-    \transparent{1}
-  }
+%   \only<1>{
+%     \begin{block}{\textbf{\firsttitleS}}
+%     \end{block}  
+%   }
+%   \only<2->{
+%     \transparent{0.3}
+%     \begin{block}{\textbf{\firsttitleS}}
+%     \end{block}  
+%     \transparent{1}
+%   }
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{\firsttitleF}}
   \begin{tabular}{ll}
     \onslide<+->{
-      $a^s_{ijt}$ &  : assignment of mission $j$ to aircraft $i$ starts in period.
+      $a^s_{ijt}$ &  : assignment of mission $j$ to aircraft $i$ starts in period $t$.
     }  \\
     \onslide<+->{
       $a_{ijt}$ &  :  mission $j$ assigned in period $t$ to aircraft $i$.
@@ -133,17 +137,7 @@
     \end{adjustbox}
   }  
   \input{graphs/constraints_explanation}
-  % \begin{align*}
-  %   % maximum capacity1:
-  %   \onslide<6->{& \sum_{t' \in \mathcal{T}^s_t} \sum_{i \in \mathcal{I}} m_{it'} + N_t \leq C^{max}
-  %     & t \in \mathcal{T}\\}
-  %   % min assignments:
-  %   \onslide<7->{& \sum_{i \in \mathcal{I}_j} a_{ijt} \geq R_j
-  %     & j \in \mathcal{J}, t \in \mathcal{T}_j \\} 
-  %   % just doing one thing at any given time:
-  %   \onslide<8->{& \sum_{t' \in \mathcal{T}^s_t} m_{it'} + \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt} \leq 1 
-  %     & t \in \mathcal{T}, i \in \mathcal{I}}
-  % \end{align*}
+
 \end{frame}
 
 \begin{frame}[t]
@@ -189,18 +183,6 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{\textbf{Solution approaches}}
-  \setbeamercovered{transparent}
-  \transparent{0.3}
-  \begin{block}{\textbf{\firsttitleF}}
-  \end{block}  
-  \transparent{1}
-
-  \begin{block}{\textbf{\firsttitleS}}
-  \end{block}  
-\end{frame}
-
-\begin{frame}
 \frametitle{\textbf{\firsttitleS}}
   % \pause
   \input{graphs/gantt_5aircraft_sa}  
@@ -212,14 +194,13 @@
   \textbf{Instance simulator}.
   \pause
   \begin{itemize}
-    \item Number of instances: 50.  
-    \item Time limit at 3600 seconds.
-    \item CPLEX.
     \item Several parameters and configurations.
     \begin{itemize}
       \item Fleet sizes ($|\mathcal{I}|$): 15 (base), 30, 45, 60.
       \item Planning horizons ($|\mathcal{T}|$): 90 (base), 120, 140.
     \end{itemize}
+    \item Number of instances per dataset: 50.  
+    \item Resolution: CPLEX with a time limit of 1 hour.
   \end{itemize}
 \end{frame}
 
@@ -227,8 +208,8 @@
 \frametitle{\textbf{Results}}
 
   \begin{itemize}[<+->]
-    \item Small gaps.
-    \item Long times.
+    \item Small gaps overall.
+    \item Solution times highly sensible on the size of the instance.
   \end{itemize}
   
   \only<1>{
@@ -241,25 +222,26 @@
 
 \begin{frame}
 \frametitle{\textbf{Preliminary conclusions}}
-  \begin{block}{}
-    \begin{itemize}
+  % \begin{block}{}
+    \begin{itemize}[<+->]
     \item \textbf{The long term MFMP problem is presented}
       along with a complexity analysis and a configurable instance generator.
-      
-    \item \textbf{Two solving techniques are tested}
-      a MIP model and a Simulated Annealing approach.
-      
+    \item \textbf{Two solving techniques are tested}:
+      a MIP model and a Simulated Annealing approach.  
+    \item \textbf{Improves are needed} 
+      to reduce the model's sensibility to the size of instances.
     \end{itemize}
-  \end{block}  
-  \pause
-  \begin{block}{\textbf{Perspectives}}
-    \begin{itemize}
-      \item \textbf{Extend the problem} to include other real world constraints.
+  % \end{block}  
+  % \pause
+  % \begin{block}{\textbf{Perspectives}}
+  %   \begin{itemize}
+  %     \item \textbf{Extend the problem} to include some additional secondary constraints.        
+      
         
-      \item \textbf{Benchmark} with other similar MFMP problems.
-        
-    \end{itemize}
-  \end{block}
-  \pause
-  \textbf{Submission:} Franco Peschiera, Olga Battaïa, Alain Haït, Nicolas Dupin. Long term planning of military aircraft flight and maintenance operations. Annals of Operations Research.
+  %   \end{itemize}
+  % \end{block}
+  % \pause
+  \onslide<+->{
+    \textbf{Submission:} Franco Peschiera, Olga Battaïa, Alain Haït, Nicolas Dupin. Long term planning of military aircraft flight and maintenance operations. Annals of Operations Research.
+  }
 \end{frame}

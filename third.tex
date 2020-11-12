@@ -28,7 +28,7 @@
   \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
     \begin{flushleft}
     % $\star$
-    \onslide<2->{
+    \onslide<1>{
       \citesize $\star$ Q. Deng, B. F. Santos, and R. Curran. A practical dynamic programming based methodology for aircraft maintenance check scheduling optimization. European Journal of Operational Research, 2020.
     }
     \end{flushleft}
@@ -148,92 +148,23 @@
 \begin{frame}
 \frametitle{\textbf{Initial solution}}
 
-  Three ways.\\ 
-  $SPA(\varnothing, \mathcal{I}, \mathcal{T})$
+  \begin{columns}[c]
+    \column{0.4\linewidth}
+    \begin{itemize}
+      \onslide<1->{
+        \item $SPA(\varnothing, \mathcal{I}, \mathcal{T})$
+      }
+      \onslide<6->{
+        \item $RH(\varnothing, \mathcal{I}, \mathcal{T})$ 
+      }
+      \onslide<8->{
+        \item Simulated Annealing()
+      }
+    \end{itemize}
 
-    \only<2>{
-      \begin{align*}
-        \left(
-        \begin{array}{*6{c}}
-          0 & 0 & 0 & 0 & 0 & 0 \\
-          0 & 0 & 0 & 0 & 0 & 0 \\
-          0 & 0 & 0 & 0 & 0 & 0 \\
-          0 & 0 & 0 & 0 & 0 & 0
-        \end{array}
-        \right)
-    \end{align*}
-    }
-    \only<3>{
-      \begin{align*}
-        \left(
-        \begin{array}{*6{c}}
-          0 & 0 & 0 & 0 & 0 & 0 \\
-          \tikzmarkM{left}{0} & 1 & 1 & 1 & 2 & \tikzmarkM{right}{-1} \\
-          0 & 0 & 0 & 0 & 0 & 0 \\
-          0 & 0 & 0 & 0 & 0 & 0
-        \end{array}
-        \right)
-      \Highlight[second]
-    \end{align*}
-    }
-    \only<4>{
-      \begin{align*}
-        \left(
-        \begin{array}{*6{c}}
-          \tikzmarkM{left}{1} & 1 & 1 & 1 & 0 & \tikzmarkM{right}{0} \\
-          0 & 1 & 1 & 1 & 2 & {\text -}1 \\
-          0 & 0 & 0 & 0 & 0 & 0 \\
-          0 & 0 & 0 & 0 & 0 & 0
-        \end{array}
-        \right)
-      \Highlight[second]
-    \end{align*}
-    }
-    \only<5>{
-      \begin{align*}
-       \left(
-        \begin{array}{*6{c}}
-          1 & 1 & 1 & 1 & 0 & 0 \\
-          0 & 1 & 1 & 1 & 2 & {\text -}1 \\
-          \tikzmarkM{left}{0} & 0 & 0 & 0 & 2 & \tikzmarkM{right}{2} \\
-          0 & 0 & 0 & 0 & 0 & 0
-        \end{array}
-        \right)
-      \Highlight[second]
-    \end{align*}
-    }
-
-  $RH(\varnothing, \mathcal{I}, \mathcal{T})$ \\
-  \only<6>{
-      \begin{align*}
-        \left(
-        \begin{array}{*6{c}}
-          \tikzmarkM{left}{0} & 0 & 0 & 0 & 0 & 0 \\
-          0 & 0 & 0 & 0 & 0 & 0 \\
-          0 & 0 & 0 & 0 & 0 & 0 \\
-          0 & 0 & 0 & 0 & 0 & \tikzmarkM{right}{0}
-        \end{array}
-        \right)
-        \Highlight[first]
-      \end{align*}
-  }
-
-    \only<7>{
-      \begin{align*}
-        \left(
-        \begin{array}{*6{c}}
-          \tikzmarkM{left}{1} & 1 & 1 & 1 & 0 & 0 \\
-          0 & 1 & 1 & 1 & 2 & {\text -}1 \\
-          0 & 0 & 0 & 0 & 2 & 2 \\
-          0 & 0 & 0 & 0 & 0 & \tikzmarkM{right}{0}
-        \end{array}
-        \right)
-      \Highlight[second]
-    \end{align*}
-    }
-
-  Simulated Annealing()
-  \only<8->{}
+    \column{0.6\linewidth}
+    \input{graphs/initial_solution_neighbors}
+  \end{columns}
 
 \end{frame}
 
@@ -241,15 +172,10 @@
 \frametitle{\textbf{Experiments}}
   
   \begin{itemize}
-
-  \item Instance sizes: large ($I$=60), very large ($I$=100) and very-very large ($I$=255).
-  \item CPLEX running 1 thread.
-  \item Time limit at 20 minutes.
-  \item 1 graph per cluster of aircraft and node aggregation with respect to remaining flight time.
+    \item Instance sizes: large ($I$=60), very large ($I$=100) and \textbf{very} large ($I$=255).
+    \item 1 graph per cluster of aircraft and node aggregation with respect to remaining flight time.
+    \item CPLEX running 1 thread for up to 20 minutes.
   \end{itemize}
-
-  % \pause
-
   All instances have 90 periods.
 \end{frame}
 
@@ -275,28 +201,28 @@
   \includegraphics[width=\linewidth]{images/progress_gaps_very_large_255.png}  
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{\textbf{Preliminary conclusions}}
   % TODO: check phrases
   \pause
-  \begin{block}{}
-    \begin{itemize}
+  % \begin{block}{}
+    \begin{itemize}[<+->]
     \item \textbf{Graph representation} 
       built to efficiently explore the solution space of an aircraft.
     \item \textbf{Complementary neighborhoods} 
-      are combined to efficiently explore the solution space.
+      are combined to avoid falling quickly into local minima.
     \end{itemize}
-  \end{block}  
+  % \end{block}  
+  % \pause
+  % \begin{block}{\textbf{Perspectives}}
+  %   \begin{itemize}
+  %     \item \textbf{Combine with pattern sampling}
+  %       e.g., by extracting promising patterns and running a set-covering model as neighborhood.
+  %     \item \textbf{Apply graph in GRASP}$\star$
+  %       by sampling paths in graph to quickly build solutions.
+  %   \end{itemize}
+  % \end{block}  
   \pause
-  \begin{block}{\textbf{Perspectives}}
-    \begin{itemize}
-      \item \textbf{Combine with pattern sampling}
-        e.g., by extracting promising patterns and running a set-covering model as neighborhood.
-      \item \textbf{Apply graph in GRASP}
-        by sampling paths in graph to quickly build solutions.
-    \end{itemize}
-  \end{block}  
-  \pause
-  \textbf{Submission:} Franco Peschiera, Alain Haït, Nicolas Dupin, Olga Battaïa. Novel Graph-based matheuristic to solve the Flight and Maintenance Planning problem.
+  \textbf{To be submitted:} Franco Peschiera, Alain Haït, Nicolas Dupin, Olga Battaïa. Novel Graph-based matheuristic to solve the Flight and Maintenance Planning problem.
 \end{frame}
 

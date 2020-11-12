@@ -29,19 +29,19 @@
 \node (ref) at (-4,-1.5) {};
 \node (ref2) at (2,-1.5) {};
 \only<6>{
-  \node [expla] (demand) at (ref) {Aircraft in maintenance in $t$};
+  \node [expla] (demand) at (ref) {Number of aircraft in maintenance in period $t$};
   \draw[bend right=20,->] (demand) to (airMaint.south);
   \node [expla] (capacity) at (ref2) {Maintenance capacity};
   \draw[bend left=20,->] (capacity) to (maintCap.east);
 }
 \only<7>{
-  \node [expla] (assigned) at (ref) {Aircraft assigned to mission $j$ in period $t$};
+  \node [expla] (assigned) at (ref) {Number of aircraft assigned to mission $j$ in period $t$};
   \draw[bend right=20,->] (assigned.north) to (airMission.south);
   \node [expla] (needs) at (ref2) {Mission needs of mission $j$};
   \draw[bend left=20,->] (needs.west) to (missionNeed.south);
 }
 \only<8>{
-  \node [expla] (numberText) at ([yshift=-5pt]ref2.south) {Assignments of aircraft $i$ in $t$};
+  \node [expla] (numberText) at ([yshift=-5pt]ref2.south) {Assignments of aircraft $i$ in period $t$};
   \draw[bend left=20,->] (numberText.south west) to (airNum.south);
 }
 

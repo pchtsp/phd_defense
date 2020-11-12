@@ -249,9 +249,8 @@
   \begin{itemize}
   \item Number of instances: medium (1000), large (1000) and very large
     (1000).
-  \item Time limit at 3600 seconds.
   \item We seeded instance generation for better comparison.
-  \item CPLEX running 1 thread.
+  \item CPLEX running 1 thread and limited to 1 hour.
   \end{itemize}
 
   Largest instances have 60 aircraft, 90 periods.
@@ -277,8 +276,10 @@
 \frametitle{\textbf{Results: optimality}}
   
   \begin{itemize}[<+->]
-    \item $\le$ 7\% loss of optimality for $\ge$ 95\%.
-    \item better predictions can improve this.
+    \item We compare the instances where the two models returned status "optimal".
+    \item A reduction of 82.1\% in solution time for these instances.
+    \item Less than 7\% loss of optimality for $\ge$ 95\% of these instances. Most below 4\%.
+    \item Better predictions can reduce this loss even further.
   \end{itemize}
 
   \includegraphics[width=0.8\linewidth]{images/quality_degradation_2tasks}
@@ -288,23 +289,23 @@
 \begin{frame}
 \frametitle{\textbf{Preliminary conclusions}}
   \pause
-  \begin{block}{}
-    \begin{itemize}
+  % \begin{block}{}
+    \begin{itemize}[<+->]
     \item \textbf{Supervised learning for optimization}
       provides good heuristic solutions.
     \item \textbf{MFMP application}
       shows the benefits of such an approach.
     \end{itemize}
-  \end{block}  
+  % \end{block}  
+  % \pause
+  % \begin{block}{\textbf{Perspectives}}
+  %   \begin{itemize}
+  %     \item \textbf{Generalize methodology}
+  %       to obtain a probability distribution for patterns, automatize feature extraction.
+  %     \item \textbf{Combine it with other techniques}
+  %       such as Column Generation or graph-based dynamic pattern generation.
+  %   \end{itemize}
+  % \end{block}  
   \pause
-  \begin{block}{\textbf{Perspectives}}
-    \begin{itemize}
-      \item \textbf{Generalize methodology}
-        to obtain a probability distribution for patterns, automatize feature extraction.
-      \item \textbf{Combine it with other techniques}
-        such as Column Generation or graph-based dynamic pattern generation.
-    \end{itemize}
-  \end{block}  
-  \pause
-  \textbf{Publication:} Franco Peschiera, Robert Dell, Johannes Royset, Alain Haït, Nicolas Dupin, Olga Battaïa. A novel solution approach with ML-based pseudo-cuts for the Flight and Maintenance Planning problem. OR Spectrum.
+  \textbf{Publication:} Peschiera, F., Dell, R., Royset, J. et al. A novel solution approach with ML-based pseudo-cuts for the Flight and Maintenance Planning problem. OR Spectrum, 2020.
 \end{frame}

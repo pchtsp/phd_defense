@@ -1,15 +1,15 @@
 \begin{tikzpicture}
        \only<+->{
-            \node [style=example] (exa) at (9.5, 3) {$rft$/$rct$};
+            \node [style=example] (exa) at (9, 3) {$rft$/$rct$};
             \node [anchor=east, fill=none, scale=2] (fpc) at ([xshift=-2pt]exa) {};
-            \node [anchor=east] (fp) at ([yshift=1cm]fpc.west) {Flight potential};
+            \node [anchor=east] (fp) at ([yshift=1cm]fpc.north) {Flight potential};
             \draw [bend left=50, ->] (fpc) to (fp);
 
             \node [anchor=west, fill=none, scale=2] (cpc) at ([xshift=2pt]exa) {};
-            \node [anchor=east] (cp) at ([yshift=-1.5cm]cpc.east) {Calendar potential};
+            \node [anchor=east] (cp) at ([yshift=-1cm]cpc.south) {Calendar potential};
             \draw [bend left=50, ->] (cpc.east) to (cp.east);
 
-            \node [] at ([xshift=0.5cm]exa.east) {$\star$};
+            \node [] at ([xshift=0.2cm]exa.east) {$\star$};
         }
        % \onslide<1->{
        %  }

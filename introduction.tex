@@ -4,17 +4,11 @@
 \frametitle{\textbf{Maintenance}}
 
   \begin{itemize}[<+->]
-  \item
-    Maintenance is costly.
-  \item
-    Complexity and durability needs are growing with time.
-
+    \item Maintenance is costly.
+    \item Complexity and durability needs are growing with time.
     \begin{itemize}[<+->]
-    
-    \item
-      buildings that need to last 100 years.
-    \item
-      green energy needs lasting infrastructure.
+      \item buildings that need to last 100 years.
+      \item green energy needs lasting infrastructure.
     \end{itemize}
   \end{itemize}
 
@@ -23,75 +17,75 @@
 \begin{frame}
 \frametitle{\textbf{Maintenance planning}}
 
+\begin{block}{\textbf{Three types:}}
   \begin{columns}[c]
     \column{0.5\linewidth}
-    Three types:
-    \pause
+    
     \begin{itemize}[<+->]
       \setbeamercolor{alerted text}{fg=black} %change the font color
       \setbeamerfont{alerted text}{series=\bfseries} %make alerted text bold
       \item Corrective.
-      \item \alert<5->{Preventive}.
+      \item \alert<4->{Preventive}.
       \item Predictive.
-      % \only<1->{\item Corrective.}
-      % \only<2-4>{\item Preventive.}
-      % \onslide<5->{\item \textbf{Preventive}.}
-      % \onslide<4->{\item Predictive.}
     \end{itemize} 
 
-  \pause
   \column{0.5\linewidth}
-  Three elements:
 
-  \begin{itemize}[<+->]
-    \item Tasks (planned over time).
-    \item Resources (to do the tasks).
-    \item Recovery tasks (to care for resources).
-  \end{itemize}
   \end{columns}
+\end{block}
+
+  \onslide<5->{
+    \begin{block}{\textbf{Applications}}
+      Production, transportation.
+    \end{block}  
+  }
 
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Maintenance planning applications}}
-
-  In production:
-  \begin{itemize}[<+->]
-    \item Tasks: scheduled jobs, product demand.
-    \item Resources: machines, factories.
-    \item Recovery tasks: setup times, refueling, maintenances.
-  \end{itemize}  
+  
+  \begin{block}{\textbf{Three elements:}}
+    \begin{itemize}[<+->]
+      \item Tasks (planned over time).
+      \item Resources (to do the tasks).
+      \item Recovery tasks (to care for resources).
+    \end{itemize}
+  \end{block}
   % \pause
-  \onslide<5->{In transport: }
-  \pause
-  \begin{itemize}[<+->]
-    \item Tasks: flights, train schedules, routes.
-    \item Resources: aircraft, trains, vehicles.
-    \item Recovery tasks: checks (=maintenances).
-  \end{itemize}
+  \onslide<+->{  
+  \begin{block}{\textbf{In transportation:}}
+    % \pause
+    \begin{itemize}[<+->]
+      \item Tasks: flights, train schedules, routes.
+      \item Resources: aircraft, trains, vehicles.
+      \item Recovery tasks: checks (=maintenances).
+    \end{itemize}
+  \end{block}
+  }
 
 \end{frame}
 
 \begin{frame}[t]
 \frametitle{\textbf{The Flight and Maintenance Planning (FMP) problem}}
   
-  \begin{adjustbox}{max totalsize={\textwidth}{.5\textheight},center}
+  \begin{adjustbox}{max totalsize={\textwidth}{.7\textheight},center}
   \begin{tikzpicture}
     \input{graphs/FMP_example.tex} 
   \end{tikzpicture}
   \end{adjustbox}
 
-  \begin{textblock*}{1.1\textwidth}(0.8cm, 7.5cm)
+  \begin{textblock*}{\textwidth}(0.8cm, 7.5cm)
     \onslide<2->{
       \textbf{State of the art :} FMP
     }
     \begin{flushleft}
     % $\star$
     \onslide<2->{
-      \citesize (1) C. Barnhart, N. L. Boland, L. W. Clarke, E. L. Johnson, G. L. Nemhauser, and R. G. Shenoi. Flight string models for aircraft fleeting and routing. Transportation Science, 1998.\\
+      \citesize (1) C. Barnhart, N. L. Boland, L. W. Clarke, E. L. Johnson, G. L. Nemhauser, and R. G. Shenoi. Flight string models for aircraft fleeting and routing. Transportation Science, 32(3):208–220, aug 1998.\\
     }
     \onslide<3->{
-      \citesize (2) A. Sarac, R. Batta, and C. M. Rump. A branch-and-price approach for operational aircraft maintenance routing. European Journal of Operational Research, 2006.
+      \citesize (2) A. Sarac, R. Batta, and C. M. Rump. A branch-and-price approach for operational aircraft maintenance routing. European Journal of Operational Research, 175(3):1850–1869, dec 2006.
     }
     \end{flushleft}
   \end{textblock*}
@@ -103,11 +97,11 @@
     \input{graphs/gantt_example_anim.tex}
   \end{tikzpicture}
 
-  \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
+  \begin{textblock*}{\textwidth}(0.8cm, 8cm)
     \begin{flushleft}
     % $\star$
     \onslide<3->{
-      \citesize $\star$ R. A. Hahn and A. M. Newman. Scheduling United States Coast Guard helicopter deployment and maintenance at Clearwater Air Station, Florida. Computers and Operations Research, 2008. 
+      \citesize $\star$ R. A. Hahn and A. M. Newman. Scheduling United States Coast Guard helicopter deployment and maintenance at Clearwater Air Station, Florida. Computers and Operations Research, 35(6):1829–1843, jun 2008. 
     }
     \end{flushleft}
   \end{textblock*}
