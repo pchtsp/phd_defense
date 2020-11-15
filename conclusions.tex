@@ -1,16 +1,33 @@
-\section{\conclusiontitle}
+\section[Conclusions]{\conclusiontitle}
 
 \begin{frame}
 \frametitle{\textbf{General conclusions}}
   % \begin{block}{\textbf{Conclusions}}
     \begin{itemize}[<+->]
-    \item \textbf{The long term MFMP problem is presented}, 
+    \item \textbf{The long term MFMP problem is formalized}, 
       analyzed and compared with similar problems.
-    \item \textbf{Several efficient solving approaches are implemented}
-      MIP-based, metaheuristics, ML-based, and graph-based.
-    \item \textbf{A functional desktop application was developed},
-       deployed and validated successfully by Dassault Aviation on real datasets.
+    \item \textbf{Exact methods}
+      provide good quality solutions (less than 5\% gap) in medium-sized instances.
+    \item \textbf{ML-based methods}
+      improve the solution times (by 35\% on average) of exact methods with small optimality loss.
+    \item \textbf{Graph-based methods}
+      solve very large scale instances efficiently (60\% better solutions than MIP on average).
+    \item \textbf{A functional desktop application},
+       was developed, deployed and validated successfully by Dassault Aviation on real-life datasets.
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Desktop application}}
+
+  \centering
+  \only<1>{  
+    \includegraphics[width=0.8\linewidth]{images/gui.png}
+  }
+  \only<2>{  
+    \includegraphics[width=0.8\linewidth]{images/gantt_solution.png}
+  }
+
 \end{frame}
 
 \begin{frame}
@@ -20,7 +37,7 @@
   % \begin{block}{\textbf{Perspectives}}
     \begin{itemize}[<+->]
       \item \textbf{Extend the problem} to include some additional secondary constraints.        
-      \item \textbf{Integrate} novel techniques (ML and graph) inside known frameworks (CG, GRASP).
+      \item \textbf{Integrate} novel techniques (ML and graph) inside known frameworks (Column Generation, GRASP).
       \item \textbf{Generalize ML methodology}
         to obtain a probability distribution for patterns, automatize feature extraction.
       \item \textbf{Combine ML and VND},
@@ -63,3 +80,25 @@
 
 \end{frame}
 
+\begin{frame}
+  \centering
+  \vspace{2em}
+  Thank you for your attention.
+
+  % Flaticon
+  % <div>Icons made by <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+  % 
+  % <div>Icons made by <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+  % <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+% \href{http://drupalfun.com/dance/index.html}{Time machine}
+  % 
+  \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
+    \begin{flushleft}
+    % $\star$
+    % \onslide<1>{
+    \citesize Icons made by \href{http://www.freepik.com/}{Freepik} and \href{https://smashicons.com/}{Smashicons} from \url{www.flaticon.com}
+    % }
+    \end{flushleft}
+  \end{textblock*}
+
+\end{frame}

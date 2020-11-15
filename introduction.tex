@@ -1,4 +1,4 @@
-\section{\introtitle}
+\section[Context and SoA]{\introtitle}
 
 \begin{frame}
 \frametitle{\textbf{Maintenance}}
@@ -29,7 +29,10 @@
       \item Predictive.
     \end{itemize} 
 
-  \column{0.5\linewidth}
+    \column{0.5\linewidth}
+    \only<1>{\includegraphics[width=0.4\linewidth]{images/crash.png}}
+    \only<2>{\includegraphics[width=0.4\linewidth]{images/changing-car-oil.png}}
+    \only<3>{\includegraphics[width=0.4\linewidth]{images/smart-car.png}}
 
   \end{columns}
 \end{block}
@@ -93,19 +96,62 @@
 
 \begin{frame}[t]
 \frametitle{\textbf{The Military Flight and Maintenance Planning (MFMP) problem}}
-  \begin{tikzpicture}
-    \input{graphs/gantt_example_anim.tex}
-  \end{tikzpicture}
 
-  \begin{textblock*}{\textwidth}(0.8cm, 8cm)
+  \begin{adjustbox}{max totalsize={\textwidth}{.7\textheight},center}
+  \begin{tikzpicture}
+    \input{graphs/MFMP_example.tex} 
+  \end{tikzpicture}
+  \end{adjustbox}
+
+  % air base. short-term maintenances
+  % workshop. long-term maintenances.
+  % maintenances. slots, linear capacity.
+  % flights, time-frame (days, weeks, months).
+  % time horizons. year, several years.
+
+  % our problem. 
+  % long term.
+  % mission assignments, min max.
+  % calendar-based.
+  \begin{textblock*}{\textwidth}(0.8cm, 7.5cm)
     \begin{flushleft}
     % $\star$
-    \onslide<3->{
-      \citesize $\star$ R. A. Hahn and A. M. Newman. Scheduling United States Coast Guard helicopter deployment and maintenance at Clearwater Air Station, Florida. Computers and Operations Research, 35(6):1829–1843, jun 2008. 
+    \onslide<2->{
+      \citesize $(1)$ R. A. Hahn and A. M. Newman. Scheduling United States Coast Guard helicopter deployment and maintenance at Clearwater Air Station, Florida. Computers and Operations Research, 35(6):1829–1843, jun 2008. 
+      \citesize $(2)$ G. Kozanidis. A multiobjective model for maximizing fleet availability under the presence of flight and maintenance requirements. Journal of Advanced Transportation, 43(2):155–182, 2009.
+    }\\
+    \onslide<5->{
+      \citesize $(3)$ J. Seif and A. J. Yu. An extensive operations and maintenance planning problem with an efficient solution method. Computers and Operations Research, 95:151–162, jul 2018.
     }
+    % \onslide<3->{
+
+    % }
     \end{flushleft}
   \end{textblock*}
 \end{frame}
+
+\begin{frame}[t]
+\frametitle{\textbf{Maintenance example}}
+  \begin{tikzpicture}
+    \input{graphs/gantt_example_anim.tex}
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{\textbf{The long term Military Flight and Maintenance Planning problem}}
+  
+  \begin{block}{}
+    The French Air Force variant of the MFMP for the Mirage 2000 series.
+  \end{block}
+
+  \begin{adjustbox}{max totalsize={\textwidth}{.7\textheight},center}
+  \begin{tikzpicture}
+    \input{graphs/MFMP_example_2.tex} 
+  \end{tikzpicture}
+  \end{adjustbox}
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{\textbf{Objectives}}

@@ -1,4 +1,4 @@
-\section{\secondtitle}
+\section[ML-based cuts]{\secondtitle}
 
 \def\secondtitleF{Predicting learned-cuts}
 \def\secondtitleS{Applying learned-cuts to the MFMP}
@@ -274,9 +274,11 @@
 
 \begin{frame}
 \frametitle{\textbf{Results: optimality}}
+  \begin{block}{}
+    We compare the instances where the two models returned status "optimal".
+  \end{block}{}
   
-  \begin{itemize}[<+->]
-    \item We compare the instances where the two models returned status "optimal".
+  \begin{itemize}[<+->]    
     \item A reduction of 82.1\% in solution time for these instances.
     \item Less than 7\% loss of optimality for $\ge$ 95\% of these instances. Most below 4\%.
     \item Better predictions can reduce this loss even further.
@@ -291,9 +293,11 @@
   \pause
   % \begin{block}{}
     \begin{itemize}[<+->]
+    \item \textbf{A new "check pattern" model for the MFMP}
+      provides performance advantages over previous models.
     \item \textbf{Supervised learning for optimization}
       provides good heuristic solutions.
-    \item \textbf{MFMP application}
+    \item \textbf{Its application on the MFMP problem}
       shows the benefits of such an approach.
     \end{itemize}
   % \end{block}  

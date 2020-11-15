@@ -1,4 +1,4 @@
-\section{\thirdtitle}
+\section[Graph-based VND]{\thirdtitle}
 
 \begin{frame}
 \frametitle{\textbf{Patterns}}
@@ -145,26 +145,43 @@
   }
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{\textbf{Initial solution}}
 
-  \begin{columns}[c]
-    \column{0.4\linewidth}
+  \begin{columns}[T]
+    \column{0.5\linewidth}
     \begin{itemize}
       \onslide<1->{
         \item $SPA(\varnothing, \mathcal{I}, \mathcal{T})$
+        \vspace{2.5cm}
       }
-      \onslide<6->{
+      \onslide<7->{       
         \item $RH(\varnothing, \mathcal{I}, \mathcal{T})$ 
+        \vspace{2.5cm}
       }
-      \onslide<8->{
+      \onslide<9->{
         \item Simulated Annealing()
       }
     \end{itemize}
 
-    \column{0.6\linewidth}
+    \column{0.5\linewidth}
     \input{graphs/initial_solution_neighbors}
   \end{columns}
+
+  % \begin{tabular}{ll}
+  % \onslide<+->{
+  %   $SPA(\varnothing, \mathcal{I}, \mathcal{T})$ & \input{graphs/initial_solution_neighbors}
+  %   } \\
+  % \onslide<+->{
+  %     $RH(\varnothing, \mathcal{I}, \mathcal{T})$  & 
+  % } \\
+  % % \onslide<+->{
+  % %     \textbf{Input features} & $H(x) = \{h_m(x) \,\, \forall m \in \mathcal{M}\}$ 
+  % % }\\ 
+  % % \onslide<6->{
+  % %     \textbf{Training for optimal} & $G(y^*(x)) \approx \hat{G}(x) = f(H(x)) \, \star$
+  % % } \\
+  % \end{tabular}
 
 \end{frame}
 
@@ -172,7 +189,7 @@
 \frametitle{\textbf{Experiments}}
   
   \begin{itemize}
-    \item Instance sizes: large ($I$=60), very large ($I$=100) and \textbf{very} large ($I$=255).
+    \item Instance sizes: large ($|I|$=60), very large ($|I|$=100) and \textbf{very} large ($|I|$=255).
     \item 1 graph per cluster of aircraft and node aggregation with respect to remaining flight time.
     \item CPLEX running 1 thread for up to 20 minutes.
   \end{itemize}
@@ -187,18 +204,22 @@
     \item VND=SPA+RH: fast and avoids local minima.
   \end{itemize}
 
-  \includegraphics[width=0.8\linewidth]{images/compare_neighbors.png}
+  \begin{block}{}
+    Example of one instance ($|I|$=60) solved 5 times with different random seeds, for 5 minutes.
+    \includegraphics[width=0.8\linewidth]{images/compare_neighbors.png}
+  \end{block}
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Results: large instances}}
-  % TODO: size of police
   \begin{itemize}
-    \item Percentage gap: gap to best known lower bound.
     \item VND outperforms MIP for very large instances (255 aircraft).
   \end{itemize}
 
-  \includegraphics[width=\linewidth]{images/progress_gaps_very_large_255.png}  
+  \begin{block}{}
+    Example comparing the percentage gap to the best known lower bound.
+    \includegraphics[width=\linewidth]{images/progress_gaps_very_large_255.png}  
+  \end{block}{}
 \end{frame}
 
 \begin{frame}[t]
@@ -207,10 +228,12 @@
   \pause
   % \begin{block}{}
     \begin{itemize}[<+->]
-    \item \textbf{Graph representation} 
-      built to efficiently explore the solution space of an aircraft.
+    \item \textbf{A Graph representation is built} 
+      to efficiently explore the solution space of an aircraft and solve the MFMP.
     \item \textbf{Complementary neighborhoods} 
       are combined to avoid falling quickly into local minima.
+    \item \textbf{Efficiently solve large instances} 
+      by reducing gaps in very large instances from 67.1\% to 23.1\%.
     \end{itemize}
   % \end{block}  
   % \pause

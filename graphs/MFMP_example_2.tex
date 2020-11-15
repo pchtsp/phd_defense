@@ -1,0 +1,159 @@
+%!TEX root = ./../test_graphs.tex
+% \begin{tikzpicture}
+\newcommand{\plane}{\includegraphics[width=.05\textwidth]{images/plane.png}}
+\newcommand{\planeT}{\includegraphics[width=.05\textwidth]{images/plane_transp.png}}
+\newcommand{\planeone}{\includegraphics[width=.05\textwidth]{images/plane2.png}}
+\newcommand{\planeoneT}{\includegraphics[width=.05\textwidth]{images/plane2_transp.png}}
+\newcommand{\planetwo}{\includegraphics[width=.05\textwidth]{images/plane3.png}}
+\newcommand{\workshop}{\includegraphics[width=.05\textwidth]{images/tools.png}}
+\newcommand{\semitransp}[2][20]{\textcolor{fg!#1}{#2}}
+
+\pause
+
+% \onslide<+->{
+  \node[inner sep=0pt] (airbase) at (0, 0)
+      {\includegraphics[width=.10\textwidth]{images/location.png}};
+  \draw[->,very thick,looseness=5, out= 0, in=120,style=arrow, draw=missionColor] 
+    (airbase) 
+        to node [anchor=west] (Flights) {{
+        (t)
+      % 50h
+      % Flights
+      % \onslide<3->{5h}
+      }} 
+    (airbase);  
+% }
+% \pause
+% \onslide<+->{
+  \node[inner sep=0pt, anchor=west] (missA) at ([xshift=1cm,yshift=0.5cm]Flights.north east) {\includegraphics[width=.05\textwidth]{images/planning.png} $^\Rightarrow$ \plane};
+  % \node[inner sep=0pt, anchor=west] (missAfree) at (missA.north east) {free};
+  \node[inner sep=0pt, anchor=west] (missMin) at ([yshift=0.5cm]missA.east) {\textbf{\small +Min. assign}};
+  \node[inner sep=0pt, anchor=west] (flightH) at ([xshift=1cm]Flights.south east) {\semitransp{$50h\;{}^\Rightarrow$ \planeT}};
+  % \node[anchor=west] at ([xshift=5pt]missA.east) {\tiny (1)};
+  % \node[anchor=west] at ([xshift=5pt]flightH.east) {\tiny (2)};
+  
+
+  \draw[->, draw=black] (Flights.east) to (missA.west);
+  \draw[->, draw=black, draw opacity=0.2] (Flights.east) to (flightH.west);
+  % \draw[->, bend left, looseness=1.5] (missA.north) to (missMin.north west);
+% }
+
+% \onslide<+->{
+  \node[inner sep=0pt, anchor=south] (period) at ([yshift=1cm, xshift=-3cm]Flights.north) {$\{\semitransp{d,w,}m\}$};
+  \draw[->, draw=black] (Flights.north) -- ++(0,5pt) -| (period.south);
+  \node[inner sep=0pt, anchor=south] at (period.north) {\tiny \textbf{Period}};
+  \node[inner sep=0pt, anchor=west] (length) at (period.east) {\semitransp{$\left[6-52\right]$}$\left[60-120\right]$};
+  \node[inner sep=0pt, anchor=south] at (length.north) {\tiny \textbf{Horizon length}};
+% }
+
+% \onslide<+->{
+  \node[inner sep=0pt, anchor=north] (Fleet) at ([yshift=-2cm]Flights.south) {};
+  \node[inner sep=0pt, anchor=south west] (FleetHomo) at ([xshift=1cm]Fleet.north east) {\planeoneT\planeoneT\planeoneT\planeoneT\planeoneT};
+  \node[inner sep=0pt, anchor=west] (size) at (FleetHomo.east) {$\left[10-50\right]$};
+  \node[inner sep=0pt, anchor=south] at (size.north) {\tiny \textbf{Fleet size}};
+  \draw[->, draw=black] (flightH.east) -| ([xshift=-0.5cm]FleetHomo.north east);
+  \onslide<+->{
+    \node[inner sep=0pt, anchor=north west] (FleetHeter) at (FleetHomo.south west) {\plane\planeone\planeone\plane\planetwo};
+    % \node[anchor=west] at ([xshift=5pt]FleetHeter.east) {\tiny (3)};
+  }
+
+% }
+
+% \onslide<6->{
+  \node[inner sep=0pt, anchor=east] (Maints) at (airbase.south west) {\workshop};
+
+  \node[anchor=east,text width=3cm] (MaintDe) at (Maints.west) 
+  {\small 
+  \semitransp{Man-hours capacity}\\
+  \textbf{Slot capacity}\\
+  % \alt<1-6>{Man-hours capacity}{\textbf{Slot-based capacity}}\\
+   % Variable duration\\
+   Flight potential\\
+   \textbf{+Calendar \\}
+   \hspace{10pt}\textbf{potential}
+   % \alt<7->{\textbf{Calendar potential}}{}
+  };
+
+  % \draw[->,very thick,out=-45, in=180, looseness=5,style=arrow, draw=maintColor] 
+  %   (airbase) 
+  %       to node[anchor=north east] (Maints) {{
+  %       \workshop
+  %     % \onslide<2->{A-C}
+  %     % man-hour capacity\\
+  %     % 1 period
+  %     }}
+  %   (airbase);
+
+  % \node[anchor=north east] (FP) at (FleetHeter.south west) {Flight potential};
+  % \draw[->,very thick,out=-45, in=180, looseness=5,style=arrow, draw=gray] (Maints)
+% }
+
+% \onslide<1-8>{
+% }
+
+% \onslide<7->{
+%   \node[inner sep=0pt, anchor=east] (Maints) at ([xshift=-1cm]airbase.south west) {\workshop};
+
+%   \node[anchor=east,text width=3cm] (MaintDe) at (Maints.west) 
+%   {\small Slot capacity\\
+%    Fixed duration\\
+%    Flight potential\\
+%    Calendar potentail
+%   };
+%   \draw[->,very thick, style=arrow, draw=gray,bend right, looseness=1.5] (airbase.west) to (Maints.north);
+%   \draw[->,very thick, style=arrow, draw=gray,bend right, looseness=1.5] (Maints.south) to (airbase.south);
+% }
+
+
+% \onslide<+->{
+%     \draw[->,draw=black] 
+%     (FP.east) -| 
+%     node[anchor=north, text width=2cm, align=left] {{
+%         Initial state\\
+%         Every state
+%         }}
+%     (FleetHeter.south);
+% }
+
+% \onslide<+->{
+%   \node[inner sep=0pt, anchor=east] (Horizon) at ([xshift=-2cm,yshift=2cm]airbase.north west) {Horizon};
+%   \node[inner sep=0pt, anchor=north west] (horMt) at ([xshift=0.5cm]Horizon.south west) {medium term $\rightarrow$ 0.5-1 y};
+  
+% }
+% \node[inner sep=0pt, anchor=east] (horLt) at (horMt.south) {long term: 5-10 y};
+% \node[inner sep=0pt, anchor=west] (Fleet) at (Fleet.north east) {Homogeneous};
+% \node[inner sep=0pt, anchor=west] (Fleet) at (Fleet.south east) {Heterogeneous};
+
+% \onslide<+->{
+%   \node[inner sep=0pt, anchor=east] (workshop) at ([yshift=-2cm]airbase.south west)
+%       {\includegraphics[width=.10\textwidth]{images/location.png} \workshop};
+%   \node[inner sep=0pt, anchor=west] (minAssi) at ([xshift=1cm,yshift=0.5cm]missA.north west) {min assign};
+%   \node[anchor=north west] (FP) at (FP.south west) {Calendar potential};
+% }
+
+% \onslide<+->{
+
+% }
+
+% \node[inner sep=0pt, anchor=east] (workshop) at (airport3.north west)
+%     {Workshop \includegraphics[width=.05\textwidth]{images/tools.png}};
+
+% \onslide<3>{
+%   \node[inner sep=0pt, anchor=east] (gauge) at ([xshift=-5pt]workshop.west)
+%     {\includegraphics[width=.05\textwidth]{images/gauge.png}};
+% }
+
+% \draw[->,very thick,bend right=50, looseness=1,style=arrow] 
+% (airport2.north west) 
+%     to node {{
+%     \onslide<2->{\plane}
+%     \onslide<3->{10h}
+%     }} 
+% (airport3.north);
+% \draw[->,very thick,bend right=50, looseness=1,style=arrow] 
+% (airport3.east) 
+%     to node {{
+%     \onslide<2->{\plane}
+%     \onslide<3->{4h}
+%     }} 
+% (airport1.south);
