@@ -13,7 +13,7 @@
 
 \tikzstyle{blank}=[fill=white, draw=black, shape=circle, scale=0.7]
 \tikzstyle{source}=[fill=white, draw=blue, shape=circle, scale=0.7, line width=1mm]
-\tikzstyle{sink}=[fill=white, draw=blue, shape=circle, scale=0.7]
+\tikzstyle{sink}=[fill=white, draw=blue, shape=circle, scale=0.7, line width=1mm]
 
 \tikzstyle{expla}=[text width=3cm, font=\footnotesize, scale=0.8]
 

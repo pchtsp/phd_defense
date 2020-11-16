@@ -4,6 +4,7 @@
 \frametitle{\textbf{Maintenance}}
 
   \begin{itemize}[<+->]
+    \item Maintenance is important.
     \item Maintenance is costly.
     \item Complexity and durability needs are growing with time.
     \begin{itemize}[<+->]
@@ -14,35 +15,34 @@
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{\textbf{Maintenance planning}}
 
-\begin{block}{\textbf{Three types:}}
-  \begin{columns}[c]
-    \column{0.5\linewidth}
-    
-    \begin{itemize}[<+->]
-      \setbeamercolor{alerted text}{fg=black} %change the font color
-      \setbeamerfont{alerted text}{series=\bfseries} %make alerted text bold
-      \item Corrective.
-      \item \alert<4->{Preventive}.
-      \item Predictive.
-    \end{itemize} 
+  \begin{block}{\textbf{Three types:}}
+    \begin{columns}[c]
+      \column{0.5\linewidth}
+      
+      \begin{itemize}[<+->]
+        \setbeamercolor{alerted text}{fg=black} %change the font color
+        \setbeamerfont{alerted text}{series=\bfseries} %make alerted text bold
+        \item Corrective.
+        \item \alert<4->{Preventive}.
+        \item Predictive.
+      \end{itemize} 
 
-    \column{0.5\linewidth}
-    \only<1>{\includegraphics[width=0.4\linewidth]{images/crash.png}}
-    \only<2>{\includegraphics[width=0.4\linewidth]{images/changing-car-oil.png}}
-    \only<3>{\includegraphics[width=0.4\linewidth]{images/smart-car.png}}
+      \column{0.5\linewidth}
+      \only<1>{\includegraphics[width=0.4\linewidth]{images/crash.png}}
+      \only<2>{\includegraphics[width=0.4\linewidth]{images/changing-car-oil.png}}
+      \only<3>{\includegraphics[width=0.4\linewidth]{images/smart-car.png}}
 
-  \end{columns}
-\end{block}
+    \end{columns}
+  \end{block}
 
   \onslide<5->{
     \begin{block}{\textbf{Applications}}
       Production, transportation.
     \end{block}  
   }
-
 \end{frame}
 
 \begin{frame}
@@ -66,7 +66,6 @@
     \end{itemize}
   \end{block}
   }
-
 \end{frame}
 
 \begin{frame}[t]
@@ -149,9 +148,19 @@
     \input{graphs/MFMP_example_2.tex} 
   \end{tikzpicture}
   \end{adjustbox}
-
 \end{frame}
 
+\begin{frame}
+\frametitle{\textbf{Comparison of several MFMP problems}}
+
+  \begin{columns}
+    \column{\dimexpr\paperwidth-10pt}
+    \begin{tiny}
+      \input{tables/state_constraints}
+    \end{tiny}
+  \end{columns}
+
+\end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Objectives}}

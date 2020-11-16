@@ -14,6 +14,8 @@
 \makeatletter
 \newcommand*\Alt{\alt{\Alt@branch0}{\Alt@branch1}}
 
+\newcommand{\B}[1]{\textbf{#1}}
+
 \newcommand\Alt@branch[3]{%
   \begingroup
   \ifbool{mmode}{%
@@ -243,7 +245,7 @@
 \newcommand{\N}{\ensuremath{\mathbb{N}}}
 \newcommand{\M}{\ensuremath{\mathcal{M}}}
 \newcommand{\T}{\ensuremath{\mathcal{T}}}
-\newcommand{\B}{\ensuremath{\mathcal{B}}}
+
 \newcommand{\ball}[3]{\ensuremath{\B_{#1} \left( #2, #3 \right)}} % metric center radius
 \newcommand{\intrange}[2]{\ensuremath{\left\{#1, \dots, #2\right\}}} % range of integers
 \newcommand{\intrangeinfty}[2]{\ensuremath{\left\{#1, #2, \dots \right\}}} % infinite range of integers

@@ -142,13 +142,13 @@
 \frametitle{\textbf{New formulation}}
  
   \begin{tabular}{ll}
-    \onslide<2->{$a_{ijtt'}$ & : aircraft $i$ is in mission $j$ between $t$ and $t'$.}  \\
-    \onslide<3->{$m_{ip}$ &: aircraft $i$ uses check pattern $p$.} \\
+    \onslide<2->{$a^\prime_{ijtt'}$ & : aircraft $i$ is in mission $j$ between $t$ and $t'$.}  \\
+    \onslide<3->{$m^\prime_{ip}$ &: aircraft $i$ uses check pattern $p$.} \\
   \end{tabular}
 
   \onslide<5->{
     \begin{align*}
-      & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \onslide<6-> {\leq H^{M} + bigM (1 - m_{ip})} & \\
+      & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a^\prime_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \onslide<6-> {\leq H^{M} + bigM (1 - m^\prime_{ip})} & \\
       & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p
     \end{align*}
   }
@@ -197,7 +197,7 @@
   }
   \onslide<2->{  
     \begin{block}{\textbf{Fleet related}}
-      Sum of initial status (rft).
+      Sum of initial flight potential.
     \end{block}
   }
   \onslide<3->{  
@@ -220,7 +220,7 @@
   }
   \onslide<2->{  
   \begin{block}{\textbf{Training / test set}}
-    of 5000 small instances solved to optimal and splitted: 70/30.
+    of 5000 small instances solved to optimal and divided into 70/30.
   \end{block}
   }
 
@@ -275,11 +275,11 @@
 \begin{frame}
 \frametitle{\textbf{Results: optimality}}
   \begin{block}{}
-    We compare the instances where the two models returned status "optimal".
+    We compare instances where the two models returned ``optimal''.
   \end{block}{}
   
   \begin{itemize}[<+->]    
-    \item A reduction of 82.1\% in solution time for these instances.
+    \item A 82.1\% average reduction in solution time for these instances.
     \item Less than 7\% loss of optimality for $\ge$ 95\% of these instances. Most below 4\%.
     \item Better predictions can reduce this loss even further.
   \end{itemize}
@@ -293,12 +293,14 @@
   \pause
   % \begin{block}{}
     \begin{itemize}[<+->]
-    \item \textbf{A new "check pattern" model for the MFMP}
+    \item \textbf{A new ``check pattern'' model for the MFMP}
       provides performance advantages over previous models.
-    \item \textbf{Supervised learning for optimization}
+    \item \textbf{A supervised learning for optimization scheme}
       provides good heuristic solutions.
     \item \textbf{Its application on the MFMP problem}
       shows the benefits of such an approach.
+    \item \textbf{The performance gains are more visible}
+      when the test instance size is close to the trained instance size.
     \end{itemize}
   % \end{block}  
   % \pause

@@ -1,8 +1,7 @@
 \section[Exact methods]{\firsttitle}
 
-\def\firsttitleF{MIP model}
-\def\firsttitleS{Initial solution: Simulated Annealing}
-
+\def\firsttitleF{Mixed Integer Programming model}
+\def\firsttitleS{Simulated Annealing: initial solution}
 
 \begin{frame}[t]
 \frametitle{\textbf{The long term MFMP problem}}
@@ -76,8 +75,8 @@
   \pause
   \begin{itemize}[<+->]
     \item take out maintenances needs.
-    \item minimal assignment of mission = duration of mission.
-    \item only one aircraft per mission.
+    \item no partial assignments of missions.
+    \item only one aircraft needed per each mission.
     \item take out objective function: feasibility.
   \end{itemize}
   
@@ -96,40 +95,42 @@
   \end{textblock*}
 \end{frame}
 
-% \begin{frame}
-% \frametitle{\textbf{Solution approaches}}
-%   \setbeamercovered{transparent}
-%   \begin{block}{\textbf{\firsttitleF}}
-%   \end{block}  
-
-%   \only<1>{
-%     \begin{block}{\textbf{\firsttitleS}}
-%     \end{block}  
-%   }
-%   \only<2->{
-%     \transparent{0.3}
-%     \begin{block}{\textbf{\firsttitleS}}
-%     \end{block}  
-%     \transparent{1}
-%   }
-
-% \end{frame}
-
 \begin{frame}
-\frametitle{\textbf{\firsttitleF}}
-  \begin{tabular}{ll}
-    \onslide<+->{
-      $a^s_{ijt}$ &  : assignment of mission $j$ to aircraft $i$ starts in period $t$.
-    }  \\
-    \onslide<+->{
-      $a_{ijt}$ &  :  mission $j$ assigned in period $t$ to aircraft $i$.
-    }  \\
-    \onslide<4->{
-      $m_{it}$   & :  aircraft $i$ starts a check in period $t$.
-    }
-  \end{tabular}
+\frametitle{\textbf{Solution approaches}}
+  \setbeamercovered{transparent}
+  \begin{block}{\textbf{\firsttitleF}}
+  \end{block}  
 
-  \onslide<1->{
+  \only<1>{
+    \begin{block}{\textbf{\firsttitleS}}
+    \end{block}  
+  }
+  \only<2->{
+    \transparent{0.3}
+    \begin{block}{\textbf{\firsttitleS}}
+    \end{block}  
+    \transparent{1}
+  }
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{\textbf{\firsttitleF}}
+  
+  \begin{block}{Binary variables}
+    \begin{tabular}{ll}
+      \onslide<+->{
+        $a^s_{ijt}$ &  : assignment of mission $j$ to aircraft $i$ starts in period $t$.
+      }  \\
+      \onslide<+->{
+        $a_{ijt}$ &  :  mission $j$ assigned in period $t$ to aircraft $i$.
+      }  \\
+      \onslide<4->{
+        $m_{it}$   & :  aircraft $i$ starts a check in period $t$.
+      }
+    \end{tabular}
+  \end{block}
+
+  \only<1-5>{
     \begin{adjustbox}{max totalsize={.7\textwidth}{.7\textheight},center}
       \begin{tikzpicture}
         \input{graphs/gantt_example_first.tex}
@@ -137,20 +138,20 @@
     \end{adjustbox}
   }  
   \input{graphs/constraints_explanation}
-
 \end{frame}
 
 \begin{frame}[t]
 \frametitle{\textbf{\firsttitleF: Flight hours rule}}
-
-  \begin{tabular}{ll}
-    \onslide<1->{
-      $u_{it}$ &: flight hours by aircraft $i$ during period $t$.
-    }  \\
-    \onslide<3->{
-      $rft_{it}$ &: remaining flight hours for aircraft $i$ during period $t$.
-    }  \\
-  \end{tabular}
+  \begin{block}{Continuous variables}
+    \begin{tabular}{ll}
+      \onslide<1->{
+        $u_{it}$ &: flight hours by aircraft $i$ during period $t$.
+      }  \\
+      \onslide<3->{
+        $rft_{it}$ &: remaining flight hours for aircraft $i$ during period $t$.
+      }  \\
+    \end{tabular}
+  \end{block}
 
   \onslide<1->{
     \begin{adjustbox}{max totalsize={.7\textwidth}{.7\textheight},center}
@@ -180,6 +181,18 @@
               & t \in \mathcal{T}, i \in \mathcal{I}
     }
   \end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{Solution approaches}}
+  \setbeamercovered{transparent}
+  \transparent{0.3}
+  \begin{block}{\textbf{\firsttitleF}}
+  \end{block}  
+  \transparent{1}
+
+  \begin{block}{\textbf{\firsttitleS}}
+  \end{block}  
 \end{frame}
 
 \begin{frame}
@@ -228,7 +241,7 @@
       along with a complexity analysis and a configurable instance generator.
     \item \textbf{Two solving techniques are tested}:
       a MIP model and a Simulated Annealing approach.  
-    \item \textbf{Improves are needed} 
+    \item \textbf{Improvements are needed} 
       to reduce the model's sensibility to the size of instances.
     \end{itemize}
   % \end{block}  
