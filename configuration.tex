@@ -5,7 +5,6 @@
 \usepackage[noend]{algorithmic}
 \usepackage{algorithm}
 \usepackage{environ}
-\usepackage{xcolor}
 \usepackage{caption}
 \usepackage{multicol}
 \usepackage{array}
@@ -27,6 +26,8 @@
 \usepackage{adjustbox}
 \usepackage{pgfgantt}
 \usepackage{booktabs}
+\usepackage{lmodern}
+\usepackage[beamer,customcolors]{hf-tikz}
 
 \usetikzlibrary{shapes,fit,arrows,backgrounds,positioning,fadings,shadows,intersections, pgfplots.fillbetween,shapes.misc,automata,patterns,decorations.pathmorphing,arrows.meta,calc,tikzmark}
 
@@ -59,13 +60,14 @@
   cross/.default={1mm} % default radius
 }
 
-% \tikzset{
-%     invisible/.style={opacity=0},
-%     visible on/.style={alt={#1{}{invisible}}},
-%     alt/.code args={<#1>#2#3}{%
-%       \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
-%     },
-%   }
+% to paint rows on table
+\tikzset{hl/.style={
+    set fill color=red!80!black!40,
+    set border color=red!80!black,
+    inner sep=0pt,
+    outer sep=0mm
+  },
+}
 
     \tikzset{
         hatch distance/.store in=\hatchdistance,
