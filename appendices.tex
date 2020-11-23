@@ -1,0 +1,63 @@
+\begin{frame}{}
+  \centering
+  Recent references:
+  \begin{block}{ML for CG}
+      Mouad Morabit, Guy Desaulniers, and Andrea Lodi. ``Machine-learning-based column selection for column generation''. Les Cahiers du GERAD G-2020-29, GERAD, HEC Montréal, Canada, May 2020. (https://www.gerad.ca/fr/papers/G-2020-29)
+  \end{block}
+  \begin{block}{ML for vehicle routing}
+    ``Résolution de problèmes réalistes de tournées à flotte hétérogène en milieu urbain : vers un solveur adaptatif mêlant recherche opérationnelle et apprentissage automatique'', PhD thesis defended in parallel to this one (19 November 2020 at 14h).
+  \end{block}
+
+\end{frame}
+
+% \begin{frame}{}
+%   \centering
+%   TODO: predictive maintenance + decision making.
+% \end{frame}
+
+% \begin{frame}{}
+%   \centering
+%   complexity proof.
+% \end{frame}
+
+% \begin{frame}{}
+%   \centering
+%   complexity proof for similar problems.
+% \end{frame}
+
+\begin{frame}
+  % \centering
+  % \begin{block}
+  % \begin{tiny}
+    \begin{algorithm}[H]
+    \small
+    \DontPrintSemicolon
+    \SetKwData{bestsol}{$x^*$}\SetKwData{besterr}{$err^*$}
+    \SetKwData{newsol}{$x^{\prime}$}\SetKwData{newerr}{$err^{\prime}$}
+    \SetKwData{incumbsol}{$x$}\SetKwData{incumberr}{$err$}
+    \KwData{\\\incumbsol: incumbent solution, $err$ its errors. \\\newsol: new candidate solution. \\\bestsol: best solution found.\\$T$: temperature.\\$C$: maximum iterations.\\$R$: cooldown rate.}
+    \BlankLine
+    \Begin{
+      $\incumbsol \leftarrow InitializeEmptySolution()$\;
+      $\incumberr \leftarrow \besterr \leftarrow GetErrors(\incumbsol)$\;
+      $\newsol \leftarrow \incumbsol$\;
+      \For{$c \leftarrow 1$ \KwTo $C$}{
+        $\newsol \leftarrow AssignChecks(\newsol)$\label{algo:maint}\;
+        $\newsol \leftarrow AssignMissions(\newsol)$\label{algo:miss}\;
+        $\newerr \leftarrow GetErrors(\newsol)$\;
+        \If{$AcceptanceFunc(\incumberr, \newerr, T)$}{\label{algo:accept}
+          $\incumbsol, \incumberr \longleftarrow \newsol, \newerr$\;
+          \If{$\sum \newerr < \sum \besterr$}{
+            $\bestsol, \besterr \longleftarrow \newsol, \newerr$\;
+          }
+        }
+        $T \leftarrow R \times T$\;
+        \lIf{$|\besterr| = 0$}{break}
+        $C \leftarrow GetCandidatesReassign(\incumberr)$\label{algo:cand}\;
+        $\newsol \leftarrow PartialRelease(\incumbsol, C)$\label{algo:rel}\;
+      }
+    }
+  \end{algorithm}
+  % \end{tiny}
+  % \end{block}
+\end{frame}
