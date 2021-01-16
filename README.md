@@ -1,6 +1,6 @@
 # PhD defense slides
 
-The title of the thesis is: "Exact and Heuristic Methods to Optimize Maintenances and Flight schedules of Military Aircraft".
+The title of the thesis is: "Exact and Heuristic Methods to Optimize Maintenance and Flight schedules of Military Aircraft".
 
 It was presented by Franco Peschiera at SUPAERO, Toulouse, France in November 19th, 2020. The PhD work was carried out between October 2017 and October 2020.
 
