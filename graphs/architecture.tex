@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+\newcommand{\excel}{\includegraphics[width=.4\textwidth]{images/excel.png}}
+\newcommand{\exe}{\includegraphics[width=.4\textwidth]{images/exe.png}}
+\newcommand{\python}{\includegraphics[width=.4\textwidth]{images/python.png}}
+
+\node (excel) [text width=2cm] at (-5, 0) {\excel\\Excel\\template};
+
+\onslide<2->{
+  \node (exe) [anchor=west,text width=2cm] at ([xshift=2cm]excel.east) {\exe\\Desktop\\App};
+}
+\onslide<4->{
+  \node [text width=2cm] at ([yshift=-0.3cm]exe.north east) {$+$\python};
+}
+
+
+\onslide<3->{
+  \draw[->,very thick,bend right=-50, looseness=1,style=arrow] 
+    (excel.north)       to node [text width=2cm] {{
+      \onslide<3->{instance\\solution}
+      }} 
+      (exe.north west);
+  \draw[->,very thick,bend right=-50, looseness=1,style=arrow] 
+  (exe.south west) 
+      to node {{
+      \onslide<3->{solution}
+      }} 
+  (excel.south);
+}
+\end{tikzpicture}

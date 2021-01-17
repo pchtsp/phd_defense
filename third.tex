@@ -3,24 +3,24 @@
 \def\thirdtitleF{Graph representation of a solution space}
 \def\thirdtitleS{Applying said graphs within a Variable Neighborhood Descent}
 
-\begin{frame}[noframenumbering]
-\frametitle{\textbf{Contents}}
-  \setbeamercovered{transparent}
-  \begin{block}{\textbf{\thirdtitleF}}
-  \end{block}  
+% \begin{frame}[noframenumbering]
+% \frametitle{\textbf{Contents}}
+%   \setbeamercovered{transparent}
+%   \begin{block}{\textbf{\thirdtitleF}}
+%   \end{block}  
 
-  \only<1>{
-    \begin{block}{\textbf{\thirdtitleS}}
-    \end{block}  
-  }
-  \only<2->{
-    \transparent{0.3}
-    \begin{block}{\textbf{\thirdtitleS}}
-    \end{block}  
-    \transparent{1}
-  }
+%   \only<1>{
+%     \begin{block}{\textbf{\thirdtitleS}}
+%     \end{block}  
+%   }
+%   \only<2->{
+%     \transparent{0.3}
+%     \begin{block}{\textbf{\thirdtitleS}}
+%     \end{block}  
+%     \transparent{1}
+%   }
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Patterns}}
@@ -81,28 +81,28 @@
   }
 \end{frame}
 
-\begin{frame}[noframenumbering]
-\frametitle{\textbf{Contents}}
-  \setbeamercovered{transparent}
-  \transparent{0.3}
-  \begin{block}{\textbf{\thirdtitleF}}
-  \end{block}  
-  \transparent{1}
+% \begin{frame}[noframenumbering]
+% \frametitle{\textbf{Contents}}
+%   \setbeamercovered{transparent}
+%   \transparent{0.3}
+%   \begin{block}{\textbf{\thirdtitleF}}
+%   \end{block}  
+%   \transparent{1}
 
-  \begin{block}{\textbf{\thirdtitleS}}
-  \end{block}  
-\end{frame}
+%   \begin{block}{\textbf{\thirdtitleS}}
+%   \end{block}  
+% \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Solution approach: Variable Neighborhod Descent}}
-  \pause
-  \begin{adjustbox}{max totalsize={0.8\textwidth}{0.8\textheight},center}
-  % \begin{tikzpicture}
-    \input{graphs/diagram_method2}
-  % \end{tikzpicture}
-  \end{adjustbox}
+% \begin{frame}
+% \frametitle{\textbf{Solution approach: Variable Neighborhod Descent}}
+%   \pause
+%   \begin{adjustbox}{max totalsize={0.8\textwidth}{0.8\textheight},center}
+%   % \begin{tikzpicture}
+%     \input{graphs/diagram_method2}
+%   % \end{tikzpicture}
+%   \end{adjustbox}
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Neighborhood 1: Shortest Path Algorithm (SPA)}}
@@ -179,56 +179,41 @@
   }
 \end{frame}
 
-\begin{frame}[t]
-\frametitle{\textbf{Initial solution}}
+% \begin{frame}[t]
+% \frametitle{\textbf{Initial solution}}
 
-  \begin{columns}[T]
-    \column{0.5\linewidth}
-    \begin{itemize}
-      \onslide<1->{
-        \item $SPA(\varnothing, \mathcal{I}, \mathcal{T})$
-        \vspace{2.5cm}
-      }
-      \onslide<7->{       
-        \item $RH(\varnothing, \mathcal{I}, \mathcal{T})$ 
-        \vspace{2.5cm}
-      }
-      \onslide<9->{
-        \item Simulated Annealing()
-      }
-    \end{itemize}
+%   \begin{columns}[T]
+%     \column{0.5\linewidth}
+%     \begin{itemize}
+%       \onslide<1->{
+%         \item $SPA(\varnothing, \mathcal{I}, \mathcal{T})$
+%         \vspace{2.5cm}
+%       }
+%       \onslide<7->{       
+%         \item $RH(\varnothing, \mathcal{I}, \mathcal{T})$ 
+%         \vspace{2.5cm}
+%       }
+%       \onslide<9->{
+%         \item Simulated Annealing()
+%       }
+%     \end{itemize}
 
-    \column{0.5\linewidth}
-    \input{graphs/initial_solution_neighbors}
-  \end{columns}
+%     \column{0.5\linewidth}
+%     \input{graphs/initial_solution_neighbors}
+%   \end{columns}
 
-  % \begin{tabular}{ll}
-  % \onslide<+->{
-  %   $SPA(\varnothing, \mathcal{I}, \mathcal{T})$ & \input{graphs/initial_solution_neighbors}
-  %   } \\
-  % \onslide<+->{
-  %     $RH(\varnothing, \mathcal{I}, \mathcal{T})$  & 
-  % } \\
-  % % \onslide<+->{
-  % %     \textbf{Input features} & $H(x) = \{h_m(x) \,\, \forall m \in \mathcal{M}\}$ 
-  % % }\\ 
-  % % \onslide<6->{
-  % %     \textbf{Training for optimal} & $G(y^*(x)) \approx \hat{G}(x) = f(H(x)) \, \star$
-  % % } \\
-  % \end{tabular}
+% \end{frame}
 
-\end{frame}
-
-\begin{frame}
-\frametitle{\textbf{Experiments}}
+% \begin{frame}
+% \frametitle{\textbf{Experiments}}
   
-  \begin{itemize}
-    \item Instance sizes: large ($|I|$=60), very large ($|I|$=100) and \textbf{very} large ($|I|$=255).
-    \item 1 graph per cluster of aircraft and node aggregation with respect to remaining flight time.
-    \item CPLEX running 1 thread for up to 20 minutes.
-  \end{itemize}
-  All instances have 90 periods.
-\end{frame}
+%   \begin{itemize}
+%     \item Instance sizes: large ($|I|$=60), very large ($|I|$=100) and \textbf{very} large ($|I|$=255).
+%     \item 1 graph per cluster of aircraft and node aggregation with respect to remaining flight time.
+%     \item CPLEX running 1 thread for up to 20 minutes.
+%   \end{itemize}
+%   All instances have 90 periods.
+% \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Results: comparing neighborhoods}}
@@ -280,6 +265,6 @@
   %   \end{itemize}
   % \end{block}  
   \pause
-  \textbf{To be submitted:} Franco Peschiera, Alain Haït, Nicolas Dupin, Olga Battaïa. Novel Graph-based matheuristic to solve the Flight and Maintenance Planning problem.
+  \textbf{Submitted:} Franco Peschiera, Alain Haït, Nicolas Dupin, Olga Battaïa. Novel Graph-based matheuristic to solve the Flight and Maintenance Planning problem.
 \end{frame}
 

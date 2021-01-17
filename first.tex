@@ -68,32 +68,32 @@
   %   \input{graphs/gantt_5aircraft_exp.tex}
   % \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Complexity analysis}}
+% \begin{frame}
+% \frametitle{\textbf{Complexity analysis}}
   
-  Take an instance $I$ from the MFMP problem.
-  \pause
-  \begin{itemize}[<+->]
-    \item Take out maintenances needs.
-    \item No partial assignments of missions.
-    \item Only one aircraft needed per each mission.
-    \item Take out objective function: feasibility.
-  \end{itemize}
+%   Take an instance $I$ from the MFMP problem.
+%   \pause
+%   \begin{itemize}[<+->]
+%     \item Take out maintenances needs.
+%     \item No partial assignments of missions.
+%     \item Only one aircraft needed per each mission.
+%     \item Take out objective function: feasibility.
+%   \end{itemize}
   
-  \begin{block}{}
-  \onslide<+->{
-    Becomes the NP-Complete Shift Satisfaction Personnel Task Scheduling Problem $\star$.
-  }    
-  \end{block}
-  \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
-    \begin{flushleft}
-    % $\star$
-    \onslide<6->{
-      \citesize $\star$ E. M. Arkin and E. B. Silverberg. Scheduling jobs with fixed start and end times. Discrete Applied Mathematics, 1987.
-    }
-    \end{flushleft}
-  \end{textblock*}
-\end{frame}
+%   \begin{block}{}
+%   \onslide<+->{
+%     Becomes the NP-Complete Shift Satisfaction Personnel Task Scheduling Problem $\star$.
+%   }    
+%   \end{block}
+%   \begin{textblock*}{1.1\textwidth}(0.8cm, 8cm)
+%     \begin{flushleft}
+%     % $\star$
+%     \onslide<6->{
+%       \citesize $\star$ E. M. Arkin and E. B. Silverberg. Scheduling jobs with fixed start and end times. Discrete Applied Mathematics, 1987.
+%     }
+%     \end{flushleft}
+%   \end{textblock*}
+% \end{frame}
 
 \begin{frame}[noframenumbering]
 \frametitle{\textbf{Solution approaches}}
@@ -140,48 +140,48 @@
   \input{graphs/constraints_explanation}
 \end{frame}
 
-\begin{frame}[t]
-\frametitle{\textbf{\firsttitleF: Flight hours rule}}
-  \begin{block}{Continuous variables}
-    \begin{tabular}{ll}
-      \onslide<1->{
-        $u_{it}$ &: flight hours by aircraft $i$ during period $t$.
-      }  \\
-      \onslide<3->{
-        $rft_{it}$ &: remaining flight hours for aircraft $i$ during period $t$.
-      }  \\
-    \end{tabular}
-  \end{block}
+% \begin{frame}[t]
+% \frametitle{\textbf{\firsttitleF: Flight hours rule}}
+%   \begin{block}{Continuous variables}
+%     \begin{tabular}{ll}
+%       \onslide<1->{
+%         $u_{it}$ &: flight hours by aircraft $i$ during period $t$.
+%       }  \\
+%       \onslide<3->{
+%         $rft_{it}$ &: remaining flight hours for aircraft $i$ during period $t$.
+%       }  \\
+%     \end{tabular}
+%   \end{block}
 
-  \onslide<1->{
-    \begin{adjustbox}{max totalsize={.7\textwidth}{.7\textheight},center}
-      \begin{tikzpicture}
-        \input{graphs/gantt_example_first_2.tex}
-      \end{tikzpicture}  
-    \end{adjustbox}
-  }
+%   \onslide<1->{
+%     \begin{adjustbox}{max totalsize={.7\textwidth}{.7\textheight},center}
+%       \begin{tikzpicture}
+%         \input{graphs/gantt_example_first_2.tex}
+%       \end{tikzpicture}  
+%     \end{adjustbox}
+%   }
 
-  \begin{align*}
-    \only<2>{
-      & u_{it} \geq \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt} H_j 
-          & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
-      & u_{it} \geq U^{min} (1 - \sum_{t' \in \mathcal{T}^s_t} m_{it'})
-          & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
-      & u_{it} \in [0, \max_j{\{H_j\}}]
-            & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
-    }
-    \only<4->{
-      & rft_{i0} = Rft^{Init}_i
-             & i \in \mathcal{I}\\
-      & rft_{it} \leq rft_{i(t-1)} + H^M m_{it} - u_{it}
-          & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
-      & rft_{it} \geq H^M m_{it'}
-              & t \in \mathcal{T}, t' \in \mathcal{T}^s_t, i \in \mathcal{I}\\ 
-      & rft_{it} \in [0,H^M]
-              & t \in \mathcal{T}, i \in \mathcal{I}
-    }
-  \end{align*}
-\end{frame}
+%   \begin{align*}
+%     \only<2>{
+%       & u_{it} \geq \sum_{j \in \mathcal{J}_t \cap \mathcal{O}_i} a_{ijt} H_j 
+%           & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
+%       & u_{it} \geq U^{min} (1 - \sum_{t' \in \mathcal{T}^s_t} m_{it'})
+%           & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
+%       & u_{it} \in [0, \max_j{\{H_j\}}]
+%             & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
+%     }
+%     \only<4->{
+%       & rft_{i0} = Rft^{Init}_i
+%              & i \in \mathcal{I}\\
+%       & rft_{it} \leq rft_{i(t-1)} + H^M m_{it} - u_{it}
+%           & t =1, ..., \mathcal{T}, i \in \mathcal{I} \\
+%       & rft_{it} \geq H^M m_{it'}
+%               & t \in \mathcal{T}, t' \in \mathcal{T}^s_t, i \in \mathcal{I}\\ 
+%       & rft_{it} \in [0,H^M]
+%               & t \in \mathcal{T}, i \in \mathcal{I}
+%     }
+%   \end{align*}
+% \end{frame}
 
 \begin{frame}[noframenumbering]
 \frametitle{\textbf{Solution approaches}}
@@ -201,21 +201,21 @@
   \input{graphs/gantt_5aircraft_sa}  
 \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Experiments}}
+% \begin{frame}
+% \frametitle{\textbf{Experiments}}
 
-  \textbf{Instance simulator}.
-  \pause
-  \begin{itemize}
-    \item Several parameters and configurations.
-    \begin{itemize}
-      \item Fleet sizes ($|\mathcal{I}|$): 15 (base), 30, 45, 60.
-      \item Planning horizons ($|\mathcal{T}|$): 90 (base), 120, 140.
-    \end{itemize}
-    \item Number of instances per dataset: 50.  
-    \item Resolution: CPLEX with a time limit of 1 hour.
-  \end{itemize}
-\end{frame}
+%   \textbf{Instance simulator}.
+%   \pause
+%   \begin{itemize}
+%     \item Several parameters and configurations.
+%     \begin{itemize}
+%       \item Fleet sizes ($|\mathcal{I}|$): 15 (base), 30, 45, 60.
+%       \item Planning horizons ($|\mathcal{T}|$): 90 (base), 120, 140.
+%     \end{itemize}
+%     \item Number of instances per dataset: 50.  
+%     \item Resolution: CPLEX with a time limit of 1 hour.
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Results}}

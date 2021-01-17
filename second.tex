@@ -138,37 +138,37 @@
 \end{frame}
 
 
-\begin{frame}[t]
-\frametitle{\textbf{New formulation}}
+% \begin{frame}[t]
+% \frametitle{\textbf{New formulation}}
  
-  \begin{tabular}{ll}
-    \onslide<2->{$a^\prime_{ijtt'}$ & : aircraft $i$ is in mission $j$ between $t$ and $t'$.}  \\
-    \onslide<3->{$m^\prime_{ip}$ &: aircraft $i$ uses check pattern $p$.} \\
-  \end{tabular}
+%   \begin{tabular}{ll}
+%     \onslide<2->{$a^\prime_{ijtt'}$ & : aircraft $i$ is in mission $j$ between $t$ and $t'$.}  \\
+%     \onslide<3->{$m^\prime_{ip}$ &: aircraft $i$ uses check pattern $p$.} \\
+%   \end{tabular}
 
-  \onslide<5->{
-    \begin{align*}
-      & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a^\prime_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \onslide<6-> {\leq H^{M} + bigM (1 - m^\prime_{ip})} & \\
-      & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p
-    \end{align*}
-  }
+%   \onslide<5->{
+%     \begin{align*}
+%       & \sum_{(j, t, t') \in \mathcal{J}\mathcal{T}\mathcal{T}_{ic}} a^\prime_{ijtt'} H^\prime_{jtt'} + U^{\prime}_{tc} \onslide<6-> {\leq H^{M} + bigM (1 - m^\prime_{ip})} & \\
+%       & \hspace{200px}  i \in \mathcal{I}, p \in \mathcal{P}, c \in \mathcal{C}_p
+%     \end{align*}
+%   }
 
-  \only<1>{
-    \DrawGantt{0}{0}{0}
-  }
-  \only<2>{
-    % missions
-    \DrawGantt{0}{1}{0}
-  }
-  \only<3>{
-    % maintenances and missions
-    \DrawGantt{2}{1}{0}
-  }
-  \only<4->{
-    % maints, missions and cycles
-    \DrawGantt{2}{1}{cycle}
-  }
-\end{frame}
+%   \only<1>{
+%     \DrawGantt{0}{0}{0}
+%   }
+%   \only<2>{
+%     % missions
+%     \DrawGantt{0}{1}{0}
+%   }
+%   \only<3>{
+%     % maintenances and missions
+%     \DrawGantt{2}{1}{0}
+%   }
+%   \only<4->{
+%     % maints, missions and cycles
+%     \DrawGantt{2}{1}{cycle}
+%   }
+% \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Solution features: G(y)}}
@@ -207,54 +207,54 @@
   }
 \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Forecasting technique}}
+% \begin{frame}
+% \frametitle{\textbf{Forecasting technique}}
 
-  \onslide<1->{  
-    \begin{block}{\textbf{Quantile regressions}}
-      Upper bound and lower bound at 10\% and 90\%.
-      \begin{equation*}
-        \mu_{D} \to [\hat{\mu}_{D}^{lb}, \hat{\mu}_{D}^{ub}]
-     \end{equation*}
-    \end{block}
-  }
-  \onslide<2->{  
-  \begin{block}{\textbf{Training / test set}}
-    of 5000 small instances solved to optimal and divided into 70/30.
-  \end{block}
-  }
+%   \onslide<1->{  
+%     \begin{block}{\textbf{Quantile regressions}}
+%       Upper bound and lower bound at 10\% and 90\%.
+%       \begin{equation*}
+%         \mu_{D} \to [\hat{\mu}_{D}^{lb}, \hat{\mu}_{D}^{ub}]
+%      \end{equation*}
+%     \end{block}
+%   }
+%   \onslide<2->{  
+%   \begin{block}{\textbf{Training / test set}}
+%     of 5000 small instances solved to optimal and divided into 70/30.
+%   \end{block}
+%   }
 
-\end{frame}
+% \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Applying learned-cuts}}
+% \begin{frame}
+% \frametitle{\textbf{Applying learned-cuts}}
 
-  \begin{block}{\textbf{Pattern filtering:}}
-    \begin{equation*}
-      D_{ip} \in [\hat{\mu}_{D}^{lb} - tol, \hat{\mu}_{D}^{ub} + tol] \rightarrow p \in \mathcal{P}_i 
-    \end{equation*}
-  \end{block}
-  \pause
+%   \begin{block}{\textbf{Pattern filtering:}}
+%     \begin{equation*}
+%       D_{ip} \in [\hat{\mu}_{D}^{lb} - tol, \hat{\mu}_{D}^{ub} + tol] \rightarrow p \in \mathcal{P}_i 
+%     \end{equation*}
+%   \end{block}
+%   \pause
 
-  \begin{block}{\textbf{Pattern recycling:} with probabiliy $\alpha$}
-    \begin{equation*}
-      D_{ip} \notin [\hat{\mu}_{D}^{lb} - tol, \hat{\mu}_{D}^{ub} + tol] \land P(\alpha)  \rightarrow p \in \mathcal{P}_i 
-    \end{equation*}
-  \end{block}
-\end{frame}
+%   \begin{block}{\textbf{Pattern recycling:} with probabiliy $\alpha$}
+%     \begin{equation*}
+%       D_{ip} \notin [\hat{\mu}_{D}^{lb} - tol, \hat{\mu}_{D}^{ub} + tol] \land P(\alpha)  \rightarrow p \in \mathcal{P}_i 
+%     \end{equation*}
+%   \end{block}
+% \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Experiments}}
+% \begin{frame}
+% \frametitle{\textbf{Experiments}}
   
-  \begin{itemize}
-  \item Number of instances: medium (1000), large (1000) and very large
-    (1000).
-  \item We seeded instance generation for better comparison.
-  \item CPLEX running 1 thread and limited to 1 hour.
-  \end{itemize}
+%   \begin{itemize}
+%   \item Number of instances: medium (1000), large (1000) and very large
+%     (1000).
+%   \item We seeded instance generation for better comparison.
+%   \item CPLEX running 1 thread and limited to 1 hour.
+%   \end{itemize}
 
-  Largest instances have 60 aircraft, 90 periods.
-\end{frame}
+%   Largest instances have 60 aircraft, 90 periods.
+% \end{frame}
 
 \begin{frame}[t]
 \frametitle{\textbf{Results: performance}}
@@ -272,21 +272,21 @@
   }
 \end{frame}
 
-\begin{frame}
-\frametitle{\textbf{Results: optimality}}
-  \begin{block}{}
-    We compare instances where the two models returned ``optimal''.
-  \end{block}{}
+% \begin{frame}
+% \frametitle{\textbf{Results: optimality}}
+%   \begin{block}{}
+%     We compare instances where the two models returned ``optimal''.
+%   \end{block}{}
   
-  \begin{itemize}[<+->]    
-    \item A 82.1\% average reduction in solution time for these instances.
-    \item Less than 7\% loss of optimality for $\ge$ 95\% of these instances. Most below 4\%.
-    \item Better predictions can reduce this loss even further.
-  \end{itemize}
+%   \begin{itemize}[<+->]    
+%     \item A 82.1\% average reduction in solution time for these instances.
+%     \item Less than 7\% loss of optimality for $\ge$ 95\% of these instances. Most below 4\%.
+%     \item Better predictions can reduce this loss even further.
+%   \end{itemize}
 
-  \includegraphics[width=0.8\linewidth]{images/quality_degradation_2tasks}
+%   \includegraphics[width=0.8\linewidth]{images/quality_degradation_2tasks}
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{Preliminary conclusions}}

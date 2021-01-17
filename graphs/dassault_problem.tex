@@ -1,0 +1,95 @@
+% \definecolor{color2}{HTML}{D7191C}
+% \definecolor{color3}{HTML}{1A9641}
+% \definecolor{color4}{HTML}{FDAE61}
+% \definecolor{color5}{HTML}{A6D96A}
+%     \begin{ganttchart}[
+%     expand chart=\textwidth,
+%     y unit chart=0.7cm,
+%     % hgrid,
+%     vgrid,
+%     inline,bar label font=\tiny\bfseries,
+%     time slot format=simple
+%     ]{1}{20}
+%     \ganttset{bar height=0.6}
+%     \ganttset{bar top shift=0.15}
+%     \gantttitlelist{1,...,20}{1} \\
+% \Dganttbar{0}{M}{1}{3}{bar/.append style={fill=maintColor,draw=none}}
+% \Dganttbar{0}{VG}{5}{5}{bar/.append style={fill=color4,draw=none}}
+% \Dganttbar{0}{VI}{7}{7}{bar/.append style={fill=color3,draw=none}, bar left shift=-0.3pt}
+% \Dganttbar{0}{VG}{10}{10}{bar/.append style={fill=color4,draw=none}}
+% \Dganttbar{0}{VS}{11}{11}{bar/.append style={fill=color5,draw=none}}
+% \Dganttbar{0}{VG}{13}{13}{bar/.append style={fill=color4,draw=none}}
+% \Dganttbar{0}{VI}{14}{14}{bar/.append style={fill=color3,draw=none}}
+% \Dganttbar{0}{VG}{17}{17}{bar/.append style={fill=color4,draw=none}}\\
+% \ganttbar[bar/.append style={fill=color4,draw=none}, bar left shift=0.3pt]{VG}{6}{6}
+% \ganttbar[bar/.append style={fill=color3,draw=none}, bar left shift=1pt]{VI}{11}{11}
+% \ganttbar[bar/.append style={fill=color4,draw=none}, bar left shift=-1pt]{VG}{11}{11}
+% \ganttnewline[thick, black]
+
+
+% \Dganttbar{1}{M}{12}{13}{bar/.append style={fill=maintColor,draw=none}}
+
+
+
+% \Dganttbar{2}{M}{7}{8}{bar/.append style={fill=maintColor,draw=none}}
+
+
+
+% \Dganttbar{3}{M}{5}{6}{bar/.append style={fill=maintColor,draw=none}}
+
+
+% \Dganttbar{3}{M}{19}{20}{bar/.append style={fill=maintColor,draw=none}}\ganttnewline
+% \Dganttbar{4}{M}{1}{2}{bar/.append style={fill=maintColor,draw=none}}
+
+% \Dganttbar{4}{M}{14}{15}{bar/.append style={fill=maintColor,draw=none}}
+
+
+% \node (per) [anchor=south] at ([yshift=5pt]current bounding box.north){$t$};
+% \node (air) [anchor=north east] at ([xshift=-5pt, yshift=-12pt]current bounding box.west){$i$};
+% \node (se) [anchor=north] at (current bounding box.south east){};
+
+% \end{ganttchart}
+
+\definecolor{color1}{HTML}{4cb33d}
+\definecolor{color2}{HTML}{878787}
+\definecolor{color3}{HTML}{D7191C}
+\definecolor{color4}{HTML}{EFCC00}
+\definecolor{color5}{HTML}{FDAE61}
+\definecolor{color6}{HTML}{00c8c3}
+\definecolor{color7}{HTML}{31c9ff}
+    \begin{ganttchart}[
+    expand chart=\textwidth,
+y unit chart=0.5cm,
+    hgrid,
+    vgrid,
+    time slot format=isodate-yearmonth,
+    time slot unit=month
+    ]{2019-03}{2024-01}
+    \ganttset{bar height=1}
+    \ganttset{bar top shift=0}
+    \gantttitlecalendar{year} \\
+\Dganttbar{M10}{VG}{2019-09}{2019-09}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M10}{VI}{2019-11}{2019-11}{bar/.append style={fill=color6,draw=none}}
+\Dganttbar{M10}{VG}{2020-05}{2020-05}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M10}{VS}{2020-09}{2020-09}{bar/.append style={fill=color7,draw=none}}
+\Dganttbar{M10}{VG+VI}{2021-01}{2021-01}{bar/.append style={fill=color4,draw=none}}
+\Dganttbar{M10}{VG}{2021-08}{2021-08}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M10}{VX}{2021-12}{2022-03}{bar/.append style={fill=color2,draw=none}}
+\Dganttbar{M10}{VG}{2022-11}{2022-11}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M10}{VG+VI}{2023-07}{2023-07}{bar/.append style={fill=color4,draw=none}}\ganttnewline
+\Dganttbar{M11}{VG}{2019-05}{2019-05}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M11}{VG+VI}{2019-12}{2019-12}{bar/.append style={fill=color4,draw=none}}
+\Dganttbar{M11}{VG}{2020-08}{2020-08}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M11}{VX}{2021-01}{2021-04}{bar/.append style={fill=color2,draw=none}}
+\Dganttbar{M11}{VG}{2021-12}{2021-12}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M11}{VG+VI}{2022-07}{2022-07}{bar/.append style={fill=color4,draw=none}}
+\Dganttbar{M11}{VG}{2023-03}{2023-03}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M11}{VG+VI}{2023-11}{2023-11}{bar/.append style={fill=color4,draw=none}}\ganttnewline
+\Dganttbar{M14}{VG}{2019-09}{2019-09}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M14}{VG+VI}{2020-05}{2020-05}{bar/.append style={fill=color4,draw=none}}
+\Dganttbar{M14}{VG}{2021-01}{2021-01}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M14}{VG+VI+VS}{2021-09}{2021-09}{bar/.append style={fill=color4,draw=none}}
+\Dganttbar{M14}{VG}{2022-05}{2022-05}{bar/.append style={fill=color1,draw=none}}
+\Dganttbar{M14}{VG+VI}{2022-12}{2022-12}{bar/.append style={fill=color4,draw=none}}
+\Dganttbar{M14}{VG}{2023-07}{2023-07}{bar/.append style={fill=color1,draw=none}}
+\end{ganttchart}
